@@ -14,7 +14,7 @@
 <meta name="apple-mobile-web-app-title" content="RL Demandas">
 <meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
-:root{--azul:#005A8A;--azul2:#62B2C2;--azf:#DDEFF3;--azt:#0B4F66;--fundo:#F4F7F9;--borda:#C3CAD0;--texto:#22303A;--t2:#5A6570;--lar:#FCE3CC;--lart:#8A3D00;--cin:#ECEEF1;--cint:#4E5660;--fim:#D9E2F5;--fimt:#1F3B73}
+:root{--azul:#005A8A;--azul2:#4C9BD6;--azf:#DBEBF8;--azt:#0B3D66;--fundo:#F4F7F9;--borda:#C3CAD0;--texto:#22303A;--t2:#5A6570;--lar:#FCE3CC;--lart:#8A3D00;--cin:#ECEEF1;--cint:#4E5660;--fim:#D3DCEA;--fimt:#1F3B73}
 *{box-sizing:border-box}
 html,body{margin:0;background:var(--fundo);color:var(--texto);font-family:'Segoe UI',Roboto,Arial,sans-serif;font-size:14px}
 button,input,select{font:inherit;color:var(--texto)}
@@ -74,13 +74,90 @@ tr.l{cursor:pointer}tr.l:hover td{background:#F4F8FA}
 .fbar{position:relative;margin-bottom:10px}
 .pset{position:absolute;z-index:10;background:#fff;border:1px solid var(--borda);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:10px 12px;min-width:260px;max-width:92vw}
 .pset label{display:flex;gap:8px;align-items:center;padding:6px 2px;cursor:pointer}
+.hoje{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:6px}
+.pess{background:#fff;border:1px solid var(--borda);border-radius:8px;padding:7px 10px;display:flex;flex-direction:column}
+.pess span{font-size:12.5px;color:var(--azt)}.pess.zero{background:var(--lar);border-color:#F1C9A4}.pess.zero span{color:var(--lart)}
+th.ord{cursor:pointer;user-select:none}th.ord:hover{color:var(--azul)}
+.graf .gl{display:flex;align-items:center;gap:8px;margin:5px 0}.gn{width:90px;flex:none;font-size:13px}.gv{width:52px;text-align:right;font-size:13px;flex:none}
+.gb{flex:1;height:14px;background:#EEF1F3;border-radius:4px;position:relative}.gb i{display:block;height:100%;background:var(--azul2);border-radius:4px}
+.gb em{position:absolute;top:-3px;bottom:-3px;width:2px;background:#22303A}
+.gwrap{overflow:auto;border:1px solid var(--borda);border-radius:8px;background:#fff;max-height:70vh}
+.grow{display:flex;min-height:34px;border-bottom:1px solid #EEF1F3}
+.grow.l{cursor:pointer}.grow.l:hover .gnome{background:#F4F8FA}
+.gnome{position:sticky;left:0;z-index:2;background:#fff;width:230px;flex:none;padding:4px 8px;border-right:1px solid #E1E5E8;font-size:12.5px;overflow:hidden}
+.gnome b{display:block;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.gnome span{color:var(--t2);font-size:11px;white-space:nowrap}
+.garea{position:relative;flex:none}
+.gtopo{position:sticky;top:0;z-index:3;background:#fff;min-height:24px}.gtopo .gnome{background:#ECEEF1}
+.gtopo .garea{background:#ECEEF1}
+.gsem{position:absolute;top:4px;font-size:11px;color:var(--t2);padding-left:3px;border-left:1px solid #C3CAD0;height:16px}
+.gcorpo{position:relative}
+.gfundo{position:absolute;top:0;bottom:0;left:230px;pointer-events:none}
+.gfds{position:absolute;top:0;bottom:0;background:#F4F6F8}
+.ghj{position:absolute;top:0;bottom:0;width:2px;background:#E07B1F;z-index:1}
+.ggrupo{background:#F7F9FA;min-height:26px}.ggrupo .gnome{background:#F7F9FA;font-weight:700;color:var(--azul)}
+.gbar{position:absolute;top:9px;height:16px;border-radius:4px;border:1px solid #22303A;box-sizing:border-box}
+.gbar.s-and{background:#4C9BD6}.gbar.s-faz{background:#D5D9DE}.gbar.s-atr{background:#F28E2B}.gbar.s-con{background:#1F4E89}.gbar.s-pau{background:#fff;border:1px dashed #22303A}
+.gorig{position:absolute;top:27px;height:4px;border-radius:2px;background:#5A6570}
+.ghach{position:absolute;top:9px;height:16px;border-radius:0 4px 4px 0;box-sizing:border-box}
+.ghach.atr{background:repeating-linear-gradient(135deg,#F28E2B 0 3px,#FFFFFF 3px 6px);border:1px solid #22303A}
+.ghach.adi{background:repeating-linear-gradient(135deg,#1F4E89 0 3px,#FFFFFF 3px 6px);border:1px solid #22303A}
+.gdesv{position:absolute;top:9px;font-style:normal;font-size:11px;font-weight:700;white-space:nowrap;background:rgba(255,255,255,.85);padding:0 3px;border-radius:3px}
+.gdesv.atr{color:#8A3D00}.gdesv.adi{color:#1F3B73}
+.gleg .ghach{position:static;display:inline-block;width:22px;height:10px;border-radius:2px}
+.gconc{position:absolute;top:8px;font-style:normal;font-size:13px;color:#1F3B73;margin-left:-6px}
+.gleg{display:flex;gap:12px;flex-wrap:wrap;font-size:12px;color:var(--t2);margin-bottom:6px}
+.gleg span{display:flex;align-items:center;gap:5px}.gleg .gbar,.gleg .gorig,.gleg .ghj{position:static;display:inline-block;width:22px;height:10px}.gleg .gorig{height:4px}.gleg .ghj{width:3px;height:12px}
+@media (max-width:640px){.gnome{width:150px}.gfundo{left:150px}}
+@media print{.gwrap{max-height:none;overflow:visible}.gtopo{position:static}}
+/* compacto: filtros, datas e botões menores */
+.filtros{gap:4px;margin-bottom:6px;align-items:center}
+.filtros select,.filtros input{padding:4px 6px;font-size:13px;border-radius:5px;height:30px}
+.filtros input[type=date]{width:auto}
+.filtros .btn,.fbar .btn{padding:4px 9px;font-size:13px;height:30px}
+.fbar{margin-bottom:6px}
+.chk{display:flex;align-items:center;gap:5px;font-size:13px;color:var(--t2);padding:0 4px;cursor:pointer}
+.filtros .chk input{flex:0 0 auto;min-width:0;width:16px;height:16px;padding:0;margin:0}
+.anexo{margin-top:14px}.quebra-word{display:none}
+.anexo{overflow-x:auto}
+.tgantt{min-width:900px}
+@page paisagem{size:A4 landscape;margin:10mm}
+.manual{margin:10px 0 14px}.manual h3{margin:0 0 4px;font-size:15px;color:#005A8A}
+.manual textarea{width:100%;min-height:90px;box-sizing:border-box;font:inherit;font-size:13px;padding:8px;border:1px solid #C3CAD0;border-radius:6px;background:#FFFFFF;resize:vertical}
+.manual textarea.falta{border:2px solid #E07B1F;background:#FFF6EE}
+.manual .obg{color:#8A3D00;font-size:11px;font-weight:600;margin-left:6px}
+.manual .txtp{display:none;white-space:pre-wrap;line-height:1.45}
+.aviso-rel{background:#FCE3CC;color:#8A3D00;border-radius:6px;padding:8px 10px;margin:8px 0;font-weight:600}
+@media print{.manual textarea,.manual .obg{display:none!important}.manual .txtp{display:block}
+ #rel.incompleto>*{display:none!important}
+ #rel.incompleto::before{content:"Relatório incompleto: preencha a Introdução e a Conclusão no painel antes de imprimir ou salvar em PDF.";display:block;font:600 14pt sans-serif;color:#8A3D00;padding:20mm 0}}
+@media print{.anexo{break-before:page;page:paisagem;overflow:visible}.tgantt{min-width:0}.tgantt thead{display:table-header-group}.tgantt tr{break-inside:avoid}}
+.relcab{padding:7px 10px!important;margin-bottom:6px!important}
+.kpis{gap:6px}.kpi{padding:7px 10px}.kpi b{font-size:18px}
+h2{margin:10px 0 6px}
 .relcab{background:#fff;border:1px solid var(--borda);border-left:4px solid var(--azul);border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.relcab .logo-rl{height:54px;width:auto;margin-right:6px}
+/* relatórios: Arial 12, texto preto */
+#rel *{font-family:Arial,Helvetica,sans-serif!important;color:#000!important}
+#rel td,#rel th,#rel p,#rel li,#rel .info,#rel .card,#rel .manual .txtp,#rel .manual textarea,#rel .relcab span{font-size:12pt}
+#rel h2,#rel .manual h3{font-size:14pt}
+#rel .relcab b{font-size:15pt}
+#rel .anexo .info{font-size:9pt}
+#rel .anexo h2{font-size:13pt}
 .relp{padding:10px 12px}
 .relat{border-top:1px solid #E6E9EC;margin-top:8px;padding-top:8px}
 .rl{margin:4px 0 0 4px;font-size:13px}
 .obs{background:#F4F7F9;border-left:3px solid var(--azul2);padding:4px 8px;margin:3px 0 2px;border-radius:3px;white-space:pre-wrap}
 .relck{margin:6px 0 0 4px}
+.so-papel{display:none}
+.fichabot{float:right;display:flex;gap:6px}
 @media print{
+ *{-webkit-print-color-adjust:exact;print-color-adjust:exact}
+ .so-papel{display:block}
+ body.so-ficha #app{display:none!important}
+ body.so-ficha #ov{position:static;background:none;padding:0;display:block!important;overflow:visible}
+ body.so-ficha .ficha{box-shadow:none;max-width:none;padding:0}
+ #ov:not(.oculto) ~ *{}
+ .tab{overflow:visible}
  header,nav,.nao-imprime,#tlogin{display:none!important}
  body,html{background:#fff}
  main{padding:0;max-width:none}
@@ -216,6 +293,18 @@ function ligarFiltro(){
 }
 const nome = l => U[l] ? U[l].nome : (l || "—");
 const curto = l => nome(l).split(" ")[0];
+// diferença entre o prazo e o fim real: atraso (concluiu depois / ainda aberta com prazo vencido) ou adiantada (concluiu antes)
+function desvio(a){
+  const p = dia(a.prazo); if(!p) return null;
+  if(a.status === "Concluída" && a.concluida_em){ const c = dia(a.concluida_em), n = Math.round((c - p) / 864e5);
+    if(n > 0) return {tipo:"atr", de:p, ate:c, dias:n};
+    if(n < 0) return {tipo:"adi", de:c, ate:p, dias:-n};
+    return null; }
+  if(a.status !== "Concluída" && p < HOJE) return {tipo:"atr", de:p, ate:HOJE, dias:Math.round((HOJE - p) / 864e5)};
+  return null;
+}
+const txtDesvio = dv => !dv ? "" : dv.tipo === "atr" ? `+${dv.dias} ${dv.dias===1?"dia":"dias"}` : `${dv.dias} ${dv.dias===1?"dia":"dias"} antes`;
+function temOriginal(a){ return (a.prazo_original && a.prazo_original !== a.prazo) || (a.inicio_original && a.data_inicio && a.inicio_original !== a.data_inicio); }
 function atrasada(a){ return a.status !== "Concluída" && a.prazo && dia(a.prazo) < HOJE; }
 function situacao(a){
   if(atrasada(a)) return ["Atrasada","s-atr"];
@@ -230,7 +319,7 @@ const setorSigla = s => (SE[s]||{}).sigla || s || "—";
 function semana(d){ const x = new Date(d); const w = (x.getDay()+6)%7; x.setDate(x.getDate()-w); return x; }
 function noPeriodo(dt, ini, fim){ return dt >= ini && dt <= fim; }
 // ---------------------------------------------------------------- telas
-const ABAS = [["painel","Painel"],["ativ","Atividades"],["rel","Relatórios"],["horas","Horas"],["reun","Reuniões"],["prot","Protocolos"]];
+const ABAS = [["painel","Painel"],["ativ","Atividades"],["gantt","Cronograma"],["rel","Relatórios"],["horas","Horas"],["reun","Reuniões"],["prot","Protocolos"]];
 function telaApp(){
   document.getElementById("tlogin").classList.add("oculto");
   document.getElementById("app").classList.remove("oculto");
@@ -239,8 +328,9 @@ function telaApp(){
     (min >= 0 ? ` (há ${min < 60 ? min + " min" : Math.round(min/60) + " h"})` : "") + ` · enviado por ${D.gerado_por||"?"}`;
   document.getElementById("abas").innerHTML = ABAS.map(([k,t]) => `<button data-k="${k}" class="${k===ABA?"on":""}">${t}</button>`).join("");
   document.querySelectorAll("#abas button").forEach(b => b.onclick = () => { ABA = b.dataset.k; telaApp(); });
-  ({painel:tPainel, ativ:tAtiv, rel:tRel, horas:tHoras, reun:tReun, prot:tProt})[ABA]();
+  ({painel:tPainel, ativ:tAtiv, gantt:tGantt, rel:tRel, horas:tHoras, reun:tReun, prot:tProt})[ABA]();
   C().insertAdjacentHTML("afterbegin", barraFiltro()); ligarFiltro();
+  if(ABA==="painel") ligarPorPessoa();
 }
 const C = () => document.getElementById("conteudo");
 function linhaAtiv(a, extra=""){
@@ -275,6 +365,7 @@ function tPainel(){
       const hs = D.horas.filter(x => dia(x.data) >= sem && A[x.atividade_id] && A[x.atividade_id].setor===s.id).reduce((t,x)=>t+x.minutos,0);
       return `<tr><td><b>${esc(s.sigla)}</b> <span class="info">${esc(s.nome||"")}</span></td><td>${da.filter(a=>a.status==="Em andamento"&&!atrasada(a)).length}</td>
       <td>${da.filter(atrasada).length}</td><td>${da.filter(a=>a.status==="A fazer"&&!atrasada(a)).length}</td><td>${da.filter(a=>conc7.includes(a)).length}</td><td>${hm(hs)}</td></tr>`; }).join("") + `</tbody></table></div>`;
+  h += blocoHoje() + blocoPorPessoa();
   h += `<h2>Atrasadas (${atr.length})</h2>` + tabelaAtiv(atr.sort((x,y)=>dia(x.prazo)-dia(y.prazo)));
   h += `<h2>Vencem nos próximos 7 dias (${prox.length})</h2>` + tabelaAtiv(prox);
   if(pend.length) h += `<h2>Pedidos pendentes (${pend.length})</h2><div class="tab"><table><thead><tr><th>Atividade</th><th>Pedido</th><th>Quem</th><th>Quando</th></tr></thead><tbody>` +
@@ -286,11 +377,12 @@ function tAtiv(){
   const opt = (v, t, sel) => `<option value="${esc(v)}" ${v===sel?"selected":""}>${esc(t)}</option>`;
   const resp = [...new Set(visiveis().map(a=>a.responsavel))].filter(Boolean).sort((a,b)=>nome(a).localeCompare(nome(b)));
   const obras = [...new Set(visiveis().map(a=>a.obra_id))].filter(Boolean).sort((a,b)=>obraNome(a).localeCompare(obraNome(b)));
-  C().innerHTML = `<div class="filtros">
+  C().innerHTML = `<div class="filtros nao-imprime">
     <select id="fsit">${[["abertas","Não concluídas"],["Em andamento","Em andamento"],["A fazer","A fazer"],["Pausada","Pausadas"],["atr","Atrasadas"],["Concluída","Concluídas"],["","Todas"]].map(([v,t])=>opt(v,t,FA.sit)).join("")}</select>
     <select id="fr">${opt("","Todos os responsáveis",FA.resp)}${resp.map(l=>opt(l,nome(l),FA.resp)).join("")}</select>
     <select id="fo">${opt("","Todas as obras",FA.obra)}${obras.map(o=>opt(o,obraNome(o),FA.obra)).join("")}</select>
-    <input id="fb" placeholder="Buscar título, obra, descrição…" value="${esc(FA.busca)}"></div><div id="lista"></div>`;
+    <input id="fb" placeholder="Buscar título, obra, descrição…" value="${esc(FA.busca)}">
+    <button class="btn" onclick="window.print()">🖨 Imprimir lista</button></div><div id="lista"></div>`;
   const ligar = (id, k, ev="onchange") => document.getElementById(id)[ev] = e => { FA[k] = e.target.value; listar(); };
   ligar("fsit","sit"); ligar("fr","resp"); ligar("fo","obra"); ligar("fb","busca","oninput");
   listar();
@@ -300,9 +392,10 @@ function listar(){
   let L = visiveis().filter(a => (!FA.resp || a.responsavel===FA.resp) && (!FA.obra || a.obra_id===FA.obra)
     && (FA.sit==="" || (FA.sit==="abertas" ? a.status!=="Concluída" : FA.sit==="atr" ? atrasada(a) : a.status===FA.sit))
     && (!b || (a.titulo+" "+obraNome(a.obra_id)+" "+(a.descricao||"")+" "+discSigla(a)).toLowerCase().includes(b)));
-  L.sort((x,y) => (atrasada(y)-atrasada(x)) || ((dia(x.prazo)||0)-(dia(y.prazo)||0)));
-  document.getElementById("lista").innerHTML = `<div class="info" style="margin-bottom:6px">${L.length} atividade(s)</div>` + tabelaAtiv(L.slice(0,500)) +
+  if(FA.ord) L.sort(cmpOrd(FA.ord, FA.dir||1)); else L.sort((x,y) => (atrasada(y)-atrasada(x)) || ((dia(x.prazo)||0)-(dia(y.prazo)||0)));
+  document.getElementById("lista").innerHTML = `<div class="info" style="margin-bottom:6px">${L.length} atividade(s)${FA.resp?` · de ${esc(nome(FA.resp))}`:""} · toque no título de uma coluna para ordenar</div>` + tabelaOrdenavel(L.slice(0,500)) +
     (L.length > 500 ? `<div class="info">Mostrando as 500 primeiras. Use os filtros.</div>` : "");
+  document.querySelectorAll("th.ord").forEach(t => t.onclick = () => { const k = t.dataset.o; FA.dir = FA.ord===k ? -(FA.dir||1) : 1; FA.ord = k; listar(); });
   ligarLinhas();
 }
 function abrirFicha(id){
@@ -312,7 +405,8 @@ function abrirFicha(id){
   const porPessoa = {}; D.horas_totais.filter(t=>t.atividade_id===id).forEach(t => porPessoa[t.login] = (porPessoa[t.login]||0) + t.minutos);
   const ob = OB[a.obra_id]||{}, di = DI[a.disciplina_id]||{};
   const nomeEv = {criacao:"Criação",solicitacao:"Pedido de alteração",aprovacao:"Pedido aprovado",recusa:"Pedido recusado",reprogramacao:"Reprogramação",correcao:"Correção de data",conclusao:"Conclusão",pausa:"Pausa",retomada:"Retomada",reabertura:"Reabertura"};
-  let h = `<button class="btn fechar" onclick="fecharFicha()">✕ Fechar</button><h3>${esc(a.titulo)}</h3>${chip(a)} <span class="st s-faz">${esc(di.sigla||"")} ${esc(di.nome_curto||"")}</span> ${a.prioridade?`<span class="st s-faz">Prioridade ${esc(a.prioridade)}</span>`:""}
+  let h = `<div class="fichabot nao-imprime"><button class="btn" onclick="copiarLink('${a.id}')">🔗 Copiar link</button><button class="btn p" onclick="imprimirFicha()">🖨 Imprimir / PDF</button><button class="btn" onclick="fecharFicha()">✕ Fechar</button></div>
+   <div class="so-papel relcab" style="margin-bottom:10px"><b>RL Demandas · Ficha da atividade</b><br><span class="info">Dados de ${new Date(D.gerado_em).toLocaleDateString("pt-BR")} ${new Date(D.gerado_em).toTimeString().slice(0,5)} · impresso em ${new Date().toLocaleString("pt-BR").slice(0,17)}</span></div><h3>${esc(a.titulo)}</h3>${chip(a)} <span class="st s-faz">${esc(di.sigla||"")} ${esc(di.nome_curto||"")}</span> ${a.prioridade?`<span class="st s-faz">Prioridade ${esc(a.prioridade)}</span>`:""}
    <div class="sec">Dados</div><div class="grade">
    <div><span>Obra</span>${esc(ob.nome||"—")}</div><div><span>Cliente</span>${esc((CL[ob.cliente_id]||{}).nome||"—")}</div><div><span>Setor</span>${esc(setorSigla(a.setor))}</div>
    <div><span>Responsável</span>${esc(nome(a.responsavel))}</div><div><span>Categoria</span>${esc(a.categoria||"—")}</div><div><span>Etapa</span>${esc(a.etapa||"—")}</div>
@@ -338,6 +432,11 @@ function abrirFicha(id){
   document.getElementById("ov").classList.remove("oculto"); document.getElementById("ov").scrollTop = 0;
 }
 function fecharFicha(){ document.getElementById("ov").classList.add("oculto"); }
+function imprimirFicha(){
+  document.body.classList.add("so-ficha");
+  const volta = () => { document.body.classList.remove("so-ficha"); window.removeEventListener("afterprint", volta); };
+  window.addEventListener("afterprint", volta); window.print(); setTimeout(volta, 1500);
+}
 let FH = "sem";
 function tHoras(){
   const per = {sem:"Esta semana", ant:"Semana passada", mes:"Este mês", mant:"Mês passado", d30:"Últimos 30 dias"};
@@ -353,6 +452,7 @@ function tHoras(){
   const tot = H.reduce((t,h)=>t+h.minutos,0);
   C().innerHTML = `<div class="filtros"><select id="fh">${Object.entries(per).map(([k,t])=>`<option value="${k}" ${k===FH?"selected":""}>${t}</option>`).join("")}</select>
    <span class="info" style="align-self:center">${ini[FH].toLocaleDateString("pt-BR")} a ${fim[FH].toLocaleDateString("pt-BR")} · total ${hm(tot)}</span></div>
+   ${graficoPessoas(pp, FH==="sem"||FH==="ant")}
    <h2>Por pessoa</h2><div class="tab"><table><tr><th>Pessoa</th><th>Setor</th><th>Horas</th></tr>${Object.entries(pp).sort((a,b)=>b[1]-a[1]).map(([l,m])=>`<tr><td>${esc(nome(l))}</td><td>${esc(setorSigla((U[l]||{}).setor))}</td><td>${hm(m)}</td></tr>`).join("") || `<tr><td colspan="3" class="vazio">Sem lançamentos no período.</td></tr>`}</table></div>
    <h2>Por obra</h2><div class="tab"><table><tr><th>Obra</th><th>Horas</th></tr>${Object.entries(po).sort((a,b)=>b[1]-a[1]).map(([o,m])=>`<tr><td>${esc(obraNome(o))}</td><td>${hm(m)}</td></tr>`).join("") || `<tr><td colspan="2" class="vazio">—</td></tr>`}</table></div>`;
   document.getElementById("fh").onchange = e => { FH = e.target.value; tHoras(); };
@@ -376,23 +476,81 @@ const DSEM = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
 function tRel(){
   if(!FR.dia){ const o = new Date(HOJE); FR.dia = iso(o); }
   if(!FR.semana){ FR.semana = iso(semana(HOJE)); }
+  if(!FR.mes){ FR.mes = iso(HOJE).slice(0,7); }
+  const obrasRel = [...new Set(visiveis().map(a=>a.obra_id))].filter(Boolean).sort((a,b)=>obraNome(a).localeCompare(obraNome(b)));
+  if(!FR.obra || !obrasRel.includes(FR.obra)) FR.obra = obrasRel[0] || "";
+  const meses = []; for(let k=0;k<12;k++){ const d = new Date(HOJE.getFullYear(), HOJE.getMonth()-k, 1); meses.push(iso(d).slice(0,7)); }
   const semanas = []; for(let k=0;k<12;k++){ const s = semana(HOJE); s.setDate(s.getDate()-7*k); semanas.push(s); }
   C().innerHTML = `<div class="filtros nao-imprime">
-     <select id="rt"><option value="dia" ${FR.tipo==="dia"?"selected":""}>Relatório diário</option><option value="sem" ${FR.tipo==="sem"?"selected":""}>Relatório semanal</option></select>
+     <select id="rt">${[["dia","Relatório diário"],["sem","Relatório semanal"],["mes","Relatório mensal"],["obra","Relatório por obra (projeto)"]].map(([v,t])=>`<option value="${v}" ${FR.tipo===v?"selected":""}>${t}</option>`).join("")}</select>
      ${FR.tipo==="dia" ? `<input type="date" id="rd" value="${FR.dia}" max="${iso(HOJE)}" style="flex:0 0 auto">`
+       : FR.tipo==="mes" ? `<select id="rm">${meses.map(v=>`<option value="${v}" ${v===FR.mes?"selected":""}>${MESES[+v.slice(5)-1]} ${v.slice(0,4)}</option>`).join("")}</select>`
+       : FR.tipo==="obra" ? `<select id="rob">${obrasRel.map(o=>`<option value="${esc(o)}" ${o===FR.obra?"selected":""}>${esc(obraNome(o))}</option>`).join("")}</select>`
        : `<select id="rs">${semanas.map(s=>{ const f=new Date(s); f.setDate(f.getDate()+6); return `<option value="${iso(s)}" ${iso(s)===FR.semana?"selected":""}>${s.toLocaleDateString("pt-BR")} a ${f.toLocaleDateString("pt-BR")}</option>`; }).join("")}</select>`}
-     <button class="btn p" onclick="window.print()">🖨 Imprimir / Salvar PDF</button></div><div id="rel"></div>`;
+     <button class="btn p" onclick="exportarRel('pdf')">🖨 Imprimir / Salvar PDF</button><button class="btn" onclick="exportarRel('word')">⬇ Word</button>
+     <label class="chk"><input type="checkbox" id="anx" ${ANEXO?"checked":""}> 📎 Anexar cronograma</label></div><div id="rel"></div>`;
   document.getElementById("rt").onchange = e => { FR.tipo = e.target.value; tRel(); };
   if(document.getElementById("rd")) document.getElementById("rd").onchange = e => { FR.dia = e.target.value; tRel(); };
   if(document.getElementById("rs")) document.getElementById("rs").onchange = e => { FR.semana = e.target.value; tRel(); };
-  document.getElementById("rel").innerHTML = FR.tipo === "dia" ? relDia() : relSemana();
+  if(document.getElementById("rm")) document.getElementById("rm").onchange = e => { FR.mes = e.target.value; tRel(); };
+  if(document.getElementById("rob")) document.getElementById("rob").onchange = e => { FR.obra = e.target.value; tRel(); };
+  document.getElementById("anx").onchange = e => { ANEXO = e.target.checked; try { localStorage.setItem("rl_anexo", ANEXO ? "1" : "0"); } catch(x) {} tRel(); };
+  const corpo = {dia:relDia, sem:relSemana, mes:relMes, obra:relObra}[FR.tipo]();
+  let anexo = "";
+  if(ANEXO){
+    // período do cronograma acompanha o relatório: diário/semanal = só a semana (seg a dom); mensal = as semanas do mês
+    if(FR.tipo === "dia") anexo = anexoGantt(null, {ini: semana(dia(FR.dia)), semanas: 1});
+    else if(FR.tipo === "sem") anexo = anexoGantt(null, {ini: semana(dia(FR.semana)), semanas: 1});
+    else if(FR.tipo === "mes"){ const [y,m] = FR.mes.split("-").map(Number);
+      const i0 = semana(new Date(y, m-1, 1)), i1 = semana(new Date(y, m, 0));
+      anexo = anexoGantt(null, {ini: i0, semanas: Math.round((i1-i0)/864e5/7)+1}); }
+    else { const at = visiveis().filter(a => a.obra_id === FR.obra && a.prazo);
+      if(at.length){ const i0 = new Date(Math.min(...at.map(a => dia(a.data_inicio)||dia(a.prazo)))), i1 = new Date(Math.max(...at.map(a => dia(a.prazo))));
+        anexo = anexoGantt(new Date(i0.getFullYear(), i0.getMonth(), i0.getDate()+7), {obra: FR.obra, sit: "", semanas: Math.min(26, Math.max(4, Math.ceil((i1-i0)/864e5/7)+2))}); } }
+  }
+  const intro = campoManual("intro", "Introdução", "Escreva aqui a introdução do relatório (contexto, objetivo, destaques do período)…");
+  const concl = campoManual("concl", "Conclusão", "Escreva aqui a conclusão (situação geral, pendências, próximos passos)…");
+  document.getElementById("rel").innerHTML = (corpo.includes("<!--fimcab-->") ? corpo.replace("<!--fimcab-->", intro) : intro + corpo) + concl + anexo;
+  document.querySelectorAll(".manual textarea").forEach(t => t.oninput = () => {
+    t.classList.remove("falta"); t.nextElementSibling.textContent = t.value;
+    try { localStorage.setItem(chaveManual(t.dataset.k), t.value); } catch(x) {}
+    marcarIncompleto(); });
+  marcarIncompleto();
   ligarLinhas();
+}
+// ---- campos de preenchimento manual (obrigatórios para exportar). Ficam guardados só neste aparelho.
+function chaveManual(k){
+  const per = {dia:FR.dia, sem:FR.semana, mes:FR.mes, obra:FR.obra}[FR.tipo] || "";
+  return "rl_rel_" + k + "_" + FR.tipo + "_" + per + "_" + [...(SEL||[])].sort().join(",");
+}
+function campoManual(k, titulo, dica){
+  let v = ""; try { v = localStorage.getItem(chaveManual(k)) || ""; } catch(x) {}
+  return `<div class="manual"><h3>${titulo}<span class="obg nao-imprime">* obrigatório para exportar</span></h3>
+    <textarea data-k="${k}" placeholder="${dica}">${esc(v)}</textarea><div class="txtp">${esc(v)}</div></div>`;
+}
+function camposFaltando(){ return [...document.querySelectorAll(".manual textarea")].filter(t => !t.value.trim()); }
+function marcarIncompleto(){ const r = document.getElementById("rel"), f = camposFaltando().length > 0;
+  if(r) r.classList.toggle("incompleto", f); if(!f) document.querySelectorAll(".aviso-rel").forEach(x => x.remove()); }
+function exportarRel(tipo){
+  const falta = camposFaltando();
+  document.querySelectorAll(".aviso-rel").forEach(x => x.remove());
+  if(falta.length){
+    falta.forEach(t => t.classList.add("falta"));
+    const nomes = falta.map(t => t.dataset.k === "intro" ? "Introdução" : "Conclusão").join(" e ");
+    const av = document.createElement("div"); av.className = "aviso-rel nao-imprime";
+    av.textContent = "Para exportar, preencha: " + nomes + ".";
+    document.getElementById("rel").before(av);
+    falta[0].scrollIntoView({behavior:"smooth", block:"center"}); falta[0].focus();
+    return;
+  }
+  if(tipo === "word") baixarWord(); else window.print();
 }
 const doSetor = a => ativNoFiltro(a);
 const naData = (s, ini, fim) => { const d = dia(s); return d && d >= ini && d <= fim; };
+const LOGO = "logo_ribeiro.jpg";
 function cabRel(titulo, periodo){
-  return `<div class="relcab"><div class="logo" style="margin:0"><div class="q" style="width:32px;height:32px;font-size:13px">RL</div>
-   <div><b>${titulo}</b><br><span class="info">${periodo}${" · " + esc(textoFiltro())} · dados de ${new Date(D.gerado_em).toLocaleDateString("pt-BR")} ${new Date(D.gerado_em).toTimeString().slice(0,5)}</span></div></div></div>`;
+  return `<div class="relcab"><div class="logo" style="margin:0"><img class="logo-rl" src="${LOGO}" alt="Ribeiro Lopes">
+   <div><b>${titulo}</b><br><span class="info">${periodo}${" · " + esc(textoFiltro())} · dados de ${new Date(D.gerado_em).toLocaleDateString("pt-BR")} ${new Date(D.gerado_em).toTimeString().slice(0,5)}</span></div></div></div><!--fimcab-->`;
 }
 function eventosPeriodo(ini, fim){
   return D.eventos.filter(e => naData(e.quando, ini, fim) && doSetor(A[e.atividade_id]));
@@ -460,6 +618,306 @@ function relSemana(){
   return h;
 }
 
+// ---------------------------------------------------------------- extras: hoje, por pessoa, ordenar, link, gráfico, Gantt, Word
+function blocoHoje(){
+  const hojeIso = iso(HOJE);
+  const pessoas = D.usuarios.filter(u => u.ativo !== false && SEL.has(u.setor)).sort((a,b)=>a.nome.localeCompare(b.nome));
+  const min = {}; D.horas.forEach(h => { if(String(h.data).slice(0,10) === hojeIso) min[h.login] = (min[h.login]||0) + h.minutos; });
+  if(!pessoas.length) return "";
+  return `<h2>Hoje · quem já lançou horas</h2><div class="hoje">` + pessoas.map(u => { const m = min[u.login]||0;
+    return `<div class="pess ${m?"":"zero"}"><b>${esc(u.nome.split(" ")[0])}</b><span>${m?hm(m):"sem lançamento"}</span></div>`; }).join("") + `</div>`;
+}
+function blocoPorPessoa(){
+  const at = visiveis().filter(a => a.status !== "Concluída"), sete = new Date(HOJE); sete.setDate(sete.getDate()+7);
+  const P = {}; at.forEach(a => { const p = P[a.responsavel] = P[a.responsavel] || {atr:0, ven:0, and:0};
+    if(atrasada(a)) p.atr++; else if(a.prazo && dia(a.prazo) <= sete) p.ven++; if(a.status === "Em andamento") p.and++; });
+  const L = Object.entries(P).sort((x,y)=>(y[1].atr-x[1].atr)||(y[1].ven-x[1].ven));
+  if(!L.length) return "";
+  return `<h2>Por pessoa</h2><div class="tab"><table><tr><th>Responsável</th><th>Atrasadas</th><th>Vencem em 7 dias</th><th>Em andamento</th></tr>` +
+    L.map(([l,p]) => `<tr class="l" data-resp="${esc(l)}"><td>${esc(nome(l))}</td><td>${p.atr?`<span class="st s-atr">${p.atr}</span>`:"0"}</td><td>${p.ven}</td><td>${p.and}</td></tr>`).join("") +
+    `</table></div><div class="info">Toque numa pessoa para ver as atividades dela.</div>`;
+}
+function ligarPorPessoa(){ document.querySelectorAll("tr[data-resp]").forEach(t => t.onclick = () => {
+  FA.resp = t.dataset.resp; FA.sit = "abertas"; FA.obra = ""; FA.busca = ""; ABA = "ativ"; telaApp(); }); }
+// ordenação da lista
+const ORD = {sit:a=>[atrasada(a)?0:1, a.status], tit:a=>a.titulo.toLowerCase(), resp:a=>nome(a.responsavel), setor:a=>setorSigla(a.setor),
+  prazo:a=>dia(a.prazo)||new Date(9e15), ck:a=>{const c=a.checklist||[];return c.length?c.filter(x=>x.feito).length/c.length:-1;}, horas:a=>TOT[a.id]||0};
+function cmpOrd(k, dir){ return (x,y) => { let a = ORD[k](x), b = ORD[k](y); if(Array.isArray(a)){ a = a.join("|"); b = b.join("|"); }
+  return (a > b ? 1 : a < b ? -1 : 0) * dir; }; }
+function tabelaOrdenavel(lista){
+  if(!lista.length) return `<div class="vazio">Nenhuma atividade.</div>`;
+  const th = (k, t, cls="") => `<th class="ord ${cls}" data-o="${k}">${t}${FA.ord===k?(FA.dir>0?" ▲":" ▼"):""}</th>`;
+  return `<div class="tab"><table><thead><tr>${th("sit","Situação")}${th("tit","Atividade")}${th("resp","Resp.")}${th("setor","Setor","esconde-cel")}${th("prazo","Prazo")}${th("ck","Checklist","esconde-cel")}${th("horas","Horas","esconde-cel")}</tr></thead><tbody>${lista.map(a=>linhaAtiv(a)).join("")}</tbody></table></div>`;
+}
+// link direto
+function copiarLink(id){
+  const url = location.origin + location.pathname + location.search + "#a=" + id;
+  const ok = () => alert("Link copiado. Quem abrir precisa da senha do painel.");
+  if(navigator.clipboard) navigator.clipboard.writeText(url).then(ok, () => prompt("Copie o link:", url)); else prompt("Copie o link:", url);
+}
+function abrirDoLink(){ const m = location.hash.match(/a=([^&]+)/); if(m && A[m[1]]){ abrirFicha(m[1]); } }
+// gráfico de horas por pessoa
+function graficoPessoas(pp, semanal){
+  const L = Object.entries(pp).sort((a,b)=>b[1]-a[1]); if(!L.length) return "";
+  const ref = semanal ? 40*60 : 0, max = Math.max(ref, ...L.map(x=>x[1]));
+  return `<h2>Gráfico por pessoa</h2><div class="card graf">` + L.map(([l,m]) => `<div class="gl"><span class="gn">${esc(curto(l))}</span>
+    <span class="gb"><i style="width:${(100*m/max).toFixed(1)}%"></i>${ref?`<em style="left:${(100*ref/max).toFixed(1)}%"></em>`:""}</span><span class="gv">${hm(m)}</span></div>`).join("") +
+    (ref ? `<div class="info" style="margin-top:6px">Linha vertical: referência de 40h na semana.</div>` : "") + `</div>`;
+}
+// ---------------------------------------------------------------- Gantt (cronograma automático pelos filtros)
+let FG = {resp:"", obra:"", sit:"abertas", janela:"8", grupo:""};
+function tGantt(){
+  const opt = (v, t, sel) => `<option value="${esc(v)}" ${v===sel?"selected":""}>${esc(t)}</option>`;
+  const base = visiveis();
+  const resp = [...new Set(base.map(a=>a.responsavel))].filter(Boolean).sort((a,b)=>nome(a).localeCompare(nome(b)));
+  const obras = [...new Set(base.map(a=>a.obra_id))].filter(Boolean).sort((a,b)=>obraNome(a).localeCompare(obraNome(b)));
+  C().innerHTML = `<div class="filtros nao-imprime">
+    <select id="gs">${[["abertas","Não concluídas"],["Em andamento","Em andamento"],["A fazer","A fazer"],["atr","Atrasadas"],["","Todas"]].map(([v,t])=>opt(v,t,FG.sit)).join("")}</select>
+    <select id="gr">${opt("","Todos os responsáveis",FG.resp)}${resp.map(l=>opt(l,nome(l),FG.resp)).join("")}</select>
+    <select id="go">${opt("","Todas as obras",FG.obra)}${obras.map(o=>opt(o,obraNome(o),FG.obra)).join("")}</select>
+    <select id="gj">${[["4","4 semanas"],["8","8 semanas"],["13","3 meses"],["26","6 meses"]].map(([v,t])=>opt(v,t,FG.janela)).join("")}</select>
+    <select id="gg">${[["","Sem agrupar"],["resp","Agrupar por responsável"],["obra","Agrupar por obra"]].map(([v,t])=>opt(v,t,FG.grupo)).join("")}</select>
+    <button class="btn" onclick="window.print()">🖨 Imprimir / PDF</button></div><div id="gantt"></div>`;
+  [["gs","sit"],["gr","resp"],["go","obra"],["gj","janela"],["gg","grupo"]].forEach(([id,k]) => document.getElementById(id).onchange = e => { FG[k] = e.target.value; desenharGantt(); });
+  desenharGantt();
+}
+function desenharGantt(){
+  let L = visiveis().filter(a => (!FG.resp || a.responsavel===FG.resp) && (!FG.obra || a.obra_id===FG.obra)
+    && (FG.sit==="" || (FG.sit==="abertas" ? a.status!=="Concluída" : FG.sit==="atr" ? atrasada(a) : a.status===FG.sit))
+    && a.prazo);
+  const ini = semana(HOJE); ini.setDate(ini.getDate()-7);
+  const dias = +FG.janela * 7, fim = new Date(ini); fim.setDate(fim.getDate()+dias-1);
+  const px = Math.max(6, Math.min(30, Math.floor(1000 / dias)));
+  L = L.filter(a => dia(a.prazo) >= ini && (dia(a.data_inicio)||dia(a.prazo)) <= fim);
+  const chave = a => FG.grupo==="resp" ? nome(a.responsavel) : FG.grupo==="obra" ? obraNome(a.obra_id) : "";
+  L.sort((x,y) => chave(x).localeCompare(chave(y)) || ((dia(x.data_inicio)||0)-(dia(y.data_inicio)||0)));
+  const pos = d => Math.round((d - ini) / 864e5);
+  const larg = dias * px;
+  let cab = "", cols = "";
+  for(let k=0;k<dias;k++){ const d = new Date(ini); d.setDate(d.getDate()+k);
+    const fds = d.getDay()===0 || d.getDay()===6;
+    if(fds) cols += `<i class="gfds" style="left:${k*px}px;width:${px}px"></i>`;
+    if(d.getDay()===1) cab += `<span class="gsem" style="left:${k*px}px">${String(d.getDate()).padStart(2,"0")}/${String(d.getMonth()+1).padStart(2,"0")}</span>`; }
+  const hj = pos(HOJE) * px;
+  let linhas = "", grupoAtual = null;
+  L.forEach(a => {
+    const g = chave(a);
+    if(FG.grupo && g !== grupoAtual){ grupoAtual = g; linhas += `<div class="grow ggrupo"><div class="gnome">${esc(g)}</div><div class="garea" style="width:${larg}px"></div></div>`; }
+    const di = dia(a.data_inicio) || dia(a.prazo), df = dia(a.prazo);
+    const dv = desvio(a), fimSol = dv && dv.tipo === "adi" ? dv.de : df;
+    const x0 = Math.max(0, pos(di)) * px, x1 = Math.min(dias, pos(fimSol)+1) * px;
+    const [txt, cls] = situacao(a);
+    let orig = "", hach = "";
+    if(dv){ const h0 = Math.max(0, pos(dv.de)+1) * px, h1 = Math.min(dias, pos(dv.ate)+1) * px;
+      if(h1 > h0) hach = `<i class="ghach ${dv.tipo}" style="left:${h0}px;width:${h1-h0}px" title="${dv.tipo==="atr"?"Atraso":"Adiantada"}: ${txtDesvio(dv)}"></i>`;
+      const xl = Math.max(h1, x1);
+      if(xl > 0) hach += `<i class="gdesv ${dv.tipo}" style="${xl + 60 < larg ? `left:${xl+3}px` : `right:${larg - Math.min(larg, xl) + 3}px`}">${txtDesvio(dv)}</i>`; }
+    if(temOriginal(a)){ const o0 = dia(a.inicio_original)||di, o1 = dia(a.prazo_original);
+      const y0 = Math.max(0,pos(o0))*px, y1 = Math.min(dias,pos(o1)+1)*px; if(y1>y0) orig = `<i class="gorig" style="left:${y0}px;width:${y1-y0}px" title="Datas originais: ${br(a.inicio_original||a.data_inicio)} → ${br(a.prazo_original||a.prazo)}"></i>`; }
+    const conc = a.concluida_em && dia(a.concluida_em) >= ini && dia(a.concluida_em) <= fim ? `<i class="gconc" style="left:${pos(dia(a.concluida_em))*px}px" title="Concluída em ${br(a.concluida_em)}">◆</i>` : "";
+    linhas += `<div class="grow l" data-a="${a.id}"><div class="gnome" title="${esc(a.titulo)}"><b>${esc(a.titulo)}</b><span>${esc(curto(a.responsavel))} · ${esc(obraNome(a.obra_id))} · ${br(a.prazo)}</span></div>
+      <div class="garea" style="width:${larg}px">${orig}<i class="gbar ${cls}" style="left:${x0}px;width:${Math.max(px,x1-x0)}px" title="${esc(txt)} · ${br(a.data_inicio)} → ${br(a.prazo)}"></i>${hach}${conc}</div></div>`;
+  });
+  document.getElementById("gantt").innerHTML = `<div class="info" style="margin-bottom:6px">${L.length} atividade(s) · ${ini.toLocaleDateString("pt-BR")} a ${fim.toLocaleDateString("pt-BR")} · muda sozinho conforme os filtros e o filtro de setores</div>
+   <div class="gleg"><span><i class="gbar s-and"></i>Em andamento</span><span><i class="gbar s-faz"></i>A fazer</span><span><i class="gbar s-atr"></i>Atrasada</span><span><i class="gbar s-con"></i>Concluída</span><span><i class="ghach atr"></i>Atraso</span><span><i class="ghach adi"></i>Adiantada (concluiu antes do prazo)</span><span><i class="gorig"></i>Datas originais (antes da reprogramação)</span><span><i class="ghj"></i>Hoje</span></div>
+   ${L.length ? `<div class="gwrap"><div class="grow gtopo"><div class="gnome"></div><div class="garea" style="width:${larg}px">${cab}</div></div>
+     <div class="gcorpo" style="--larg:${larg}px"><div class="gfundo" style="width:${larg}px">${cols}<i class="ghj" style="left:${hj}px"></i></div>${linhas}</div></div>` : `<div class="vazio">Nenhuma atividade no período com esses filtros.</div>`}`;
+  document.querySelectorAll(".grow[data-a]").forEach(r => r.onclick = () => abrirFicha(r.dataset.a));
+}
+// ---------------------------------------------------------------- Word (relatórios)
+function baixarWord(){
+  const orig = document.getElementById("rel"); if(!orig) return;
+  const el = orig.cloneNode(true);
+  el.querySelectorAll(".kpis").forEach(k => { const t = document.createElement("table");
+    t.innerHTML = "<tr>" + [...k.querySelectorAll(".kpi")].map(x => `<td style="border:1px solid #C3CAD0;padding:4pt 8pt"><b style="font-size:14pt">${x.querySelector("b").textContent}</b><br>${x.querySelector("span").textContent}</td>`).join("") + "</tr>";
+    k.replaceWith(t); });
+  el.querySelectorAll(".relcab .q").forEach(q => q.remove());
+  el.querySelectorAll(".relcab img").forEach(i => { i.setAttribute("src", LOGO.startsWith("data:") ? LOGO : new URL(LOGO, location.href).href);
+    i.setAttribute("width", "120"); i.setAttribute("height", "76"); i.removeAttribute("class"); });
+  // legenda do anexo: o Word não faz listras
+  el.querySelectorAll(".anexo .info span").forEach(sp => { const st = sp.getAttribute("style") || "";
+    if(st.includes("repeating")) sp.setAttribute("style", "background:" + (st.includes("#F28E2B") ? "#F6D2B0" : "#B9C6DC") + ";border:1px solid #22303A"); });
+  el.querySelectorAll(".manual textarea, .manual .obg").forEach(q => q.remove());
+  el.querySelectorAll(".manual h3").forEach(h => { const n = document.createElement("h2"); n.textContent = h.textContent; h.replaceWith(n); });
+  el.querySelectorAll(".quebra-word").forEach(q => q.remove());
+  // cronograma no Word: barras viram células pintadas e o dia da semana vira a inicial (o Word não gira texto)
+  el.querySelectorAll(".tgantt .vn").forEach(v => v.replaceWith(v.dataset.i));
+  // Word só pinta a célula inteira: linhas baixas + borda em cima/embaixo da cor do fundo = parece barra
+  const hex = c => { const m = String(c).match(/\d+/g); return (!m || String(c).startsWith("#")) ? (c || "#FFFFFF") : "#" + m.slice(0,3).map(n => (+n).toString(16).padStart(2,"0")).join("").toUpperCase(); };
+  el.querySelectorAll(".tgantt tbody tr").forEach(tr => { tr.style.height = "26pt"; });
+  el.querySelectorAll(".tgantt tbody td").forEach(td => {
+    if(td.colSpan > 1) return;
+    if(td.cellIndex < 3){ td.style.fontSize = "8pt"; td.style.lineHeight = "1.1"; td.querySelectorAll("span, div").forEach(x => x.style.fontSize = "7pt"); return; }
+    const fundo = hex(td.style.backgroundColor || "#FFFFFF"), ehHoje = td.dataset.hj === "1";
+    const b = td.querySelector(".abar"), h = td.querySelector(".ahach"), o = td.querySelector(".abase");
+    const cor = b ? b.dataset.c : h ? (h.dataset.t === "atr" ? "#F6D2B0" : "#B9C6DC") : fundo;
+    td.setAttribute("style", `padding:0;font-size:4pt;background:${cor};border-top:5pt solid ${fundo};border-bottom:5pt solid ${o ? "#5A6570" : fundo};`
+      + `border-left:${ehHoje ? "2pt solid #E07B1F" : "0.5pt solid #E1E5E8"};border-right:none;vertical-align:middle`);
+    td.innerHTML = "&nbsp;"; });
+  el.querySelectorAll(".tgantt td, .tgantt th").forEach(c => { c.style.fontSize = c.style.fontSize || "7pt"; });
+  let anexo = el.querySelector(".anexo"); if(anexo) anexo.remove();
+  const nomeArq = ({dia:"Relatorio diario " + FR.dia, sem:"Relatorio semanal " + FR.semana, mes:"Relatorio mensal " + FR.mes,
+                    obra:"Relatorio da obra " + obraNome(FR.obra)}[FR.tipo] || "Relatorio") .replace(/[\\/:*?"<>|]/g,"-") + ".doc";
+  const css = `body,p,div,span,td,th,b{font-family:Arial;color:#000000} body{font-size:12pt} h2{font-family:Arial;font-size:14pt;color:#000000;margin:14pt 0 4pt}
+    table{border-collapse:collapse;width:100%} th{background:#ECEEF1;text-align:left;padding:3pt 5pt;font-size:12pt} td{padding:3pt 5pt;border-bottom:1px solid #DDE3E7;font-size:12pt;vertical-align:top}
+    .info{font-size:12pt} .WordSection2 .info{font-size:9pt} .WordSection2 h2{font-size:13pt} .kpi{display:inline-block;border:1px solid #C3CAD0;padding:4pt 8pt;margin:0 6pt 6pt 0} .kpi b{font-size:14pt;display:block}
+    .st{font-weight:bold} .obs{background:#F4F7F9;border-left:3pt solid #4C9BD6;padding:2pt 6pt} .card{border:1px solid #C3CAD0;padding:6pt;margin-bottom:6pt}
+    .ck .b{font-family:'Segoe UI Symbol'} .pb,.gb{display:none}
+    @page WordSection1{size:595.3pt 841.9pt;margin:2cm} div.WordSection1{page:WordSection1}
+    @page WordSection2{size:841.9pt 595.3pt;mso-page-orientation:landscape;margin:1cm} div.WordSection2{page:WordSection2}
+    .tgantt td,.tgantt th{padding:0 1pt;border-bottom:0} .tgantt{table-layout:fixed}`;
+  const corpo = el.innerHTML.replace(/<span class="b">✓<\/span>/g,"☑ ").replace(/<span class="b"><\/span>/g,"☐ ");
+  const pais = anexo ? `<span style="font-size:1pt"><br clear=all style="page-break-before:always;mso-break-type:section-break"></span><div class="WordSection2">${anexo.innerHTML}</div>` : "";
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+   <head><meta charset="utf-8"><title>${esc(nomeArq)}</title><style>${css}</style></head><body><div class="WordSection1">${corpo}</div>${pais}</body></html>`;
+  const blob = new Blob(["﻿", html], {type:"application/msword"});
+  const a = document.createElement("a"); a.href = URL.createObjectURL(blob); a.download = nomeArq; document.body.appendChild(a); a.click();
+  setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+// ---------------------------------------------------------------- atualizar sozinho (5 min)
+let ultimaAuto = Date.now();
+setInterval(async () => {
+  if(!SENHA || document.hidden || !document.getElementById("ov").classList.contains("oculto")) return;
+  if(Date.now() - ultimaAuto < 5*60*1000) return;
+  ultimaAuto = Date.now();
+  try { const antes = D.gerado_em; await carregar(SENHA); if(D.gerado_em !== antes && !document.querySelector(".pset:not(.oculto)")) telaApp(); } catch(e) {}
+}, 30000);
+
+// ---------------------------------------------------------------- anexo: cronograma em tabela (funciona no papel, PDF e Word)
+let ANEXO = (() => { try { return localStorage.getItem("rl_anexo") !== "0"; } catch(e) { return true; } })();   // padrão: anexado
+const COR_SIT = {"s-and":"#4C9BD6","s-faz":"#D5D9DE","s-atr":"#F28E2B","s-con":"#1F4E89","s-pau":"#EEF1F3"};
+function anexoGantt(ref, op){
+  op = op || {};
+  const F = {resp: op.obra ? "" : FG.resp, obra: op.obra || FG.obra, sit: op.sit !== undefined ? op.sit : FG.sit, janela: op.semanas || FG.janela, grupo: op.obra ? "" : FG.grupo};
+  // a semana começa na SEGUNDA, igual ao RL Demandas
+  const ini = op.ini ? new Date(op.ini) : semana(ref); if(!op.ini) ini.setDate(ini.getDate()-7);
+  const dias = +F.janela * 7, fim = new Date(ini); fim.setDate(fim.getDate()+dias-1);
+  const chave = a => F.grupo==="resp" ? nome(a.responsavel) : F.grupo==="obra" ? obraNome(a.obra_id) : "";
+  const L = visiveis().filter(a => a.prazo && dia(a.prazo) >= ini && (dia(a.data_inicio)||dia(a.prazo)) <= fim
+      && (!F.resp || a.responsavel===F.resp) && (!F.obra || a.obra_id===F.obra)
+      && (F.sit==="" || (F.sit==="abertas" ? a.status!=="Concluída" : F.sit==="atr" ? atrasada(a) : a.status===F.sit)))
+    .sort((x,y) => chave(x).localeCompare(chave(y)) || ((dia(x.data_inicio)||0)-(dia(y.data_inicio)||0)));
+  const filtrosTxt = [textoFiltro(), {abertas:"não concluídas","Em andamento":"em andamento","A fazer":"a fazer",atr:"atrasadas","":"todas as situações"}[F.sit],
+    F.resp ? nome(F.resp) : "", F.obra ? obraNome(F.obra) : "", F.janela + (+F.janela === 1 ? " semana" : " semanas")].filter(Boolean).join(" · ");
+  const pos = d => Math.round((d - ini) / 864e5), hj = pos(HOJE);
+  // ---- tamanho automático para ocupar 1 página A4 deitada (277 × 190 mm úteis)
+  const grupos = F.grupo ? new Set(L.map(chave)).size : 0;
+  const nLin = Math.max(1, L.length + grupos);
+  const altUtil = 148;                                         // mm para as linhas (fora título, legenda e cabeçalho)
+  const alt = Math.max(4.6, Math.min(30, altUtil / nLin));     // altura de cada linha: cresce até ocupar a folha
+  const fonte = alt >= 14 ? 10.5 : alt >= 9 ? 9 : alt >= 7 ? 8 : 7;   // pt
+  const altBarra = Math.min(9, alt * 0.55);
+  const colAtv = 68, colSit = 28, colPrz = 17;                 // mm
+  const colDia = (277 - colAtv - colSit - colPrz) / dias;      // mm por dia
+  const NOMES = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"];
+  const deitado = colDia < 11;                                  // coluna estreita: nome do dia na vertical
+  const nomeDia = d => deitado ? `<div class="vn" data-i="${"DSTQQSS"[d.getDay()]}" style="writing-mode:vertical-rl;transform:rotate(180deg);margin:0 auto;height:12mm;line-height:1;font-size:${colDia>=4?6.5:5.5}pt">${NOMES[d.getDay()]}</div>` : NOMES[d.getDay()];
+  const cel = "padding:0;border:0;";
+  let hSem = "", hDia = "";
+  for(let k=0;k<dias;k+=7){ const d = new Date(ini); d.setDate(d.getDate()+k); const f = new Date(d); f.setDate(f.getDate()+6);
+    const dd = x => String(x.getDate()).padStart(2,"0") + "/" + String(x.getMonth()+1).padStart(2,"0");
+    hSem += `<th colspan="7" style="font-size:7.5pt;font-weight:600;padding:2px 3px;border-left:1px solid #C3CAD0;text-align:center;background:#ECEEF1;white-space:nowrap;overflow:hidden">${colDia*7 >= 34 ? "Semana " : ""}${dd(d)} a ${dd(f)}</th>`; }
+  for(let k=0;k<dias;k++){ const d = new Date(ini); d.setDate(d.getDate()+k); const fds = d.getDay()===0 || d.getDay()===6;
+    hDia += `<th style="font-size:${colDia>=4?6.5:5.5}pt;font-weight:${k===hj?"700":"400"};padding:1px 0;text-align:center;vertical-align:bottom;color:${k===hj?"#8A3D00":"#5A6570"};background:${fds?"#F4F6F8":"#FFFFFF"};${d.getDay()===1?"border-left:1px solid #C3CAD0;":""}">${nomeDia(d)}<br>${d.getDate()}</th>`; }
+  let grpAtual = null;
+  const linhas = L.map(a => {
+    let cabG = "";
+    if(F.grupo){ const g = chave(a); if(g !== grpAtual){ grpAtual = g; cabG = `<tr style="height:${alt}mm"><td colspan="${dias+3}" style="background:#F7F9FA;color:#005A8A;font-weight:bold;font-size:${fonte}pt;padding:2px 6px">${esc(g)}</td></tr>`; } }
+    const dv = desvio(a);
+    const di = Math.max(0, pos(dia(a.data_inicio)||dia(a.prazo))), df = Math.min(dias-1, pos(dv && dv.tipo==="adi" ? dv.de : dia(a.prazo)));
+    const h0 = dv ? pos(dv.de) + 1 : 1e9, h1 = dv ? pos(dv.ate) : -1;
+    const hIni = Math.max(0, h0), hFim = Math.min(dias-1, h1);
+    const base = temOriginal(a), o0 = base ? pos(dia(a.inicio_original)||dia(a.data_inicio)||dia(a.prazo)) : 1e9, o1 = base ? pos(dia(a.prazo_original)||dia(a.prazo)) : -1;
+    const altBase = Math.min(1.6, Math.max(0.9, alt * 0.09));
+    const [txt, cls] = situacao(a), cor = COR_SIT[cls] || "#D5D9DE";
+    const corH = dv && dv.tipo === "atr" ? "#F28E2B" : "#1F4E89";
+    const [fundoSit, textoSit] = {"s-and":["#DBEBF8","#0B3D66"],"s-faz":["#ECEEF1","#4E5660"],"s-atr":["#FCE3CC","#8A3D00"],"s-con":["#D3DCEA","#1F3B73"],"s-pau":["#FFFFFF","#4E5660"]}[cls] || ["#ECEEF1","#4E5660"];
+    let tds = "";
+    for(let k=0;k<dias;k++){
+      const d = new Date(ini); d.setDate(d.getDate()+k); const fds = d.getDay()===0 || d.getDay()===6;
+      const naBarra = k>=di && k<=df;
+      const bg = fds ? "#F4F6F8" : "#FFFFFF";
+      const bord = (k===hj ? "border-left:2px solid #E07B1F;" : (d.getDay()===1 && !(naBarra && k>di) ? "border-left:1px solid #E1E5E8;" : ""));
+      const naHach = k >= hIni && k <= hFim;
+      const fimArred = k===df && !(naHach || (dv && h0 === df + 1 && h0 <= dias-1));
+      let barra = naBarra ? `<div class="abar" data-c="${cor}" style="box-sizing:border-box;background:${cor};height:${altBarra.toFixed(1)}mm;border-top:1px solid #22303A;border-bottom:1px solid #22303A;${k===di?"border-left:1px solid #22303A;":""}${fimArred?"border-right:1px solid #22303A;":""}margin:0 ${fimArred?"1px":"0"} 0 ${k===di?"1px":"0"};${k===di&&fimArred?"border-radius:3px;":k===di?"border-radius:3px 0 0 3px;":fimArred?"border-radius:0 3px 3px 0;":""}"></div>`
+        : naHach ? `<div class="ahach" data-t="${dv.tipo}" style="box-sizing:border-box;height:${altBarra.toFixed(1)}mm;background:repeating-linear-gradient(135deg,${corH} 0 1mm,#FFFFFF 1mm 2mm);border-top:1px solid #22303A;border-bottom:1px solid #22303A;${k===hFim?`border-right:1px solid #22303A;border-radius:0 3px 3px 0;margin-right:1px;`:""}${k===hIni && k!==df+1?`border-left:1px solid #22303A;`:""}"></div>`
+        : (base ? `<div style="height:${altBarra.toFixed(1)}mm"></div>` : "");
+      if(base) barra += (k >= o0 && k <= o1) ? `<div class="abase" style="height:${altBase.toFixed(1)}mm;background:#5A6570;margin-top:0.6mm;${k===Math.max(0,o0)?"border-radius:2px 0 0 2px;margin-left:1px;":""}${k===Math.min(dias-1,o1)?"border-radius:0 2px 2px 0;margin-right:1px;":""}"></div>` : `<div style="height:${altBase.toFixed(1)}mm;margin-top:0.6mm"></div>`;
+      tds += `<td ${k===hj?'data-hj="1" ':""}style="${cel}background:${bg};${bord}vertical-align:middle">${barra}</td>`;
+    }
+    const titulo = a.titulo.length > 48 ? a.titulo.slice(0,46) + "…" : a.titulo;
+    return cabG + `<tr style="height:${alt}mm">
+      <td style="font-size:${fonte}pt;padding:1px 6px;border-bottom:1px solid #EEF1F3;overflow:hidden;line-height:1.2;vertical-align:middle"><b>${esc(titulo)}</b>${alt >= 7 ? `<br><span style="color:#5A6570;font-size:${fonte-1}pt">${esc(curto(a.responsavel))} · ${esc(obraNome(a.obra_id))}</span>` : ` <span style="color:#5A6570">· ${esc(curto(a.responsavel))}</span>`}</td>
+      <td style="font-size:${Math.min(8,fonte-1)}pt;padding:1px 2px;border-bottom:1px solid #EEF1F3;text-align:center;vertical-align:middle"><span style="background:${fundoSit};color:${textoSit};border-radius:8px;padding:1px 6px;font-weight:600;white-space:nowrap">${txt}</span>${dv ? `<div style="margin-top:1px;font-weight:700;color:${dv.tipo==="atr"?"#8A3D00":"#1F3B73"};white-space:nowrap">${txtDesvio(dv)}</div>` : ""}${base ? `<div style="color:#5A6570;white-space:nowrap">orig. ${br(a.prazo_original||a.prazo)}</div>` : ""}</td>
+      <td style="font-size:${fonte-1}pt;padding:1px 4px;border-bottom:1px solid #EEF1F3;text-align:center;white-space:nowrap;vertical-align:middle">${br(a.prazo)}</td>${tds}</tr>`;
+  }).join("");
+  const colgroup = `<colgroup><col style="width:${colAtv}mm"><col style="width:${colSit}mm"><col style="width:${colPrz}mm">${`<col style="width:${colDia.toFixed(2)}mm">`.repeat(dias)}</colgroup>`;
+  return `<div class="anexo"><br style="page-break-before:always;mso-break-type:page-break" class="quebra-word">
+   <h2 style="margin:0 0 2px">Anexo · Cronograma (${ini.toLocaleDateString("pt-BR")} a ${fim.toLocaleDateString("pt-BR")})</h2>
+   <div class="info" style="margin-bottom:2px">Filtros: ${esc(filtrosTxt)} · semanas de segunda a domingo</div>
+   <div class="info" style="margin-bottom:4px">Barras = datas atuais ·
+     <span style="background:#4C9BD6;border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> em andamento &nbsp;<span style="background:#D5D9DE;border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> a fazer
+     &nbsp;<span style="background:#F28E2B;border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> atrasada &nbsp;<span style="background:#1F4E89;border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> concluída
+     &nbsp;<span style="background:repeating-linear-gradient(135deg,#F28E2B 0 3px,#FFFFFF 3px 6px);border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> atraso
+     &nbsp;<span style="background:repeating-linear-gradient(135deg,#1F4E89 0 3px,#FFFFFF 3px 6px);border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> adiantada
+     &nbsp;<span style="background:#5A6570;font-size:5pt">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span> datas originais
+     &nbsp;<span style="border-left:2px solid #E07B1F">&nbsp;</span> hoje (${HOJE.toLocaleDateString("pt-BR")}) · fins de semana em cinza</div>
+   ${L.length ? `<table class="tgantt" style="border-collapse:collapse;table-layout:fixed;width:100%;border:1px solid #C3CAD0">${colgroup}
+     <thead><tr><th rowspan="2" style="font-size:8pt;text-align:left;padding:2px 6px;background:#ECEEF1">Atividade</th><th rowspan="2" style="font-size:8pt;background:#ECEEF1">Situação</th><th rowspan="2" style="font-size:8pt;background:#ECEEF1">Prazo</th>${hSem}</tr><tr>${hDia}</tr></thead>
+     <tbody>${linhas}</tbody></table>` : `<div class="vazio">Nenhuma atividade no período.</div>`}</div>`;
+}
+const MESES = ["janeiro","fevereiro","março","abril","maio","junho","julho","agosto","setembro","outubro","novembro","dezembro"];
+function relMes(){
+  const [ano, m] = FR.mes.split("-").map(Number), ini = new Date(ano, m-1, 1), fim = new Date(ano, m, 0);
+  const H = D.horas.filter(h => naData(h.data, ini, fim) && doSetor(A[h.atividade_id]));
+  const tot = H.reduce((t,h)=>t+h.minutos,0);
+  const conc = D.atividades.filter(a => naData(a.concluida_em, ini, fim) && doSetor(a));
+  const corte = fim < HOJE ? fim : HOJE;
+  const atr = D.atividades.filter(a => doSetor(a) && a.prazo && dia(a.prazo) < corte && (a.status !== "Concluída" || dia(a.concluida_em) > corte));
+  const evs = eventosPeriodo(ini, fim), rep = evs.filter(e => e.tipo === "reprogramacao");
+  const noPrazo = conc.filter(a => !a.prazo_original || dia(a.concluida_em) <= dia(a.prazo_original)).length;
+  // semanas do mês
+  const sems = []; for(let s = semana(ini); s <= fim; s = new Date(s.getFullYear(), s.getMonth(), s.getDate()+7)) sems.push(new Date(s));
+  const pp = {}; H.forEach(h => { const k = sems.findIndex((s,i) => dia(h.data) >= s && (i===sems.length-1 || dia(h.data) < sems[i+1])); (pp[h.login] = pp[h.login] || Array(sems.length).fill(0))[k] += h.minutos; });
+  const po = {}; H.forEach(h => { const o = (A[h.atividade_id]||{}).obra_id || "?"; po[o] = (po[o]||0) + h.minutos; });
+  let h = cabRel("Relatório mensal", `${MESES[m-1]} de ${ano}`);
+  h += `<div class="kpis"><div class="kpi"><b>${hm(tot)}</b><span>horas lançadas</span></div><div class="kpi"><b>${conc.length}</b><span>concluídas</span></div>
+    <div class="kpi"><b>${conc.length ? Math.round(100*noPrazo/conc.length) : 0}%</b><span>concluídas no prazo original</span></div>
+    <div class="kpi al"><b>${atr.length}</b><span>atrasadas no fim do mês</span></div><div class="kpi"><b>${rep.length}</b><span>reprogramações</span></div></div>`;
+  h += `<h2>Horas por pessoa (por semana)</h2><div class="tab"><table><tr><th>Pessoa</th>${sems.map(s=>`<th>Sem. ${String(s.getDate()).padStart(2,"0")}/${String(s.getMonth()+1).padStart(2,"0")}</th>`).join("")}<th>Total</th></tr>` +
+    (Object.entries(pp).sort((a,b)=>nome(a[0]).localeCompare(nome(b[0]))).map(([l,v]) => `<tr><td>${esc(nome(l))}</td>${v.map(x=>`<td>${x?hm(x):"—"}</td>`).join("")}<td><b>${hm(v.reduce((a,b)=>a+b,0))}</b></td></tr>`).join("") || `<tr><td colspan="9" class="vazio">Sem lançamentos.</td></tr>`) + `</table></div>`;
+  h += `<h2>Horas por obra</h2><div class="tab"><table><tr><th>Obra</th><th>Horas</th><th>%</th></tr>${Object.entries(po).sort((a,b)=>b[1]-a[1]).map(([o,x])=>`<tr><td>${esc(obraNome(o))}</td><td>${hm(x)}</td><td>${tot?Math.round(100*x/tot):0}%</td></tr>`).join("") || `<tr><td colspan="3" class="vazio">—</td></tr>`}</table></div>`;
+  h += `<h2>Concluídas no mês (${conc.length})</h2>` + tabelaAtiv(conc);
+  h += `<h2>Atrasadas no fim do mês (${atr.length})</h2>` + tabelaAtiv(atr);
+  h += `<h2>Reprogramações (${rep.length})</h2>` + blocoEventos(rep);
+  return h;
+}
+function relObra(){
+  const ob = OB[FR.obra] || {}, AT = D.atividades.filter(a => a.obra_id === FR.obra && doSetor(a));
+  const tot = AT.reduce((t,a)=>t+(TOT[a.id]||0),0), est = AT.reduce((t,a)=>t+(+a.horas_estimadas||0),0)*60;
+  const conc = AT.filter(a=>a.status==="Concluída"), atr = AT.filter(atrasada);
+  const porDisc = {}, porPes = {};
+  D.horas_totais.filter(t => A[t.atividade_id] && A[t.atividade_id].obra_id === FR.obra && doSetor(A[t.atividade_id])).forEach(t => {
+    const d = discSigla(A[t.atividade_id]) || "—"; porDisc[d] = (porDisc[d]||0) + t.minutos; porPes[t.login] = (porPes[t.login]||0) + t.minutos; });
+  const ids = new Set(AT.map(a=>a.id));
+  const rep = D.eventos.filter(e => ids.has(e.atividade_id) && e.tipo === "reprogramacao");
+  const rod = D.rodadas.filter(r => ids.has(r.atividade_id));
+  const reun = D.reunioes.filter(r => (A[r.id]||{}).obra_id === FR.obra);
+  let h = cabRel("Relatório da obra", esc(ob.nome || "—") + ((CL[ob.cliente_id]||{}).nome ? " · " + esc(CL[ob.cliente_id].nome) : ""));
+  h += `<div class="kpis"><div class="kpi"><b>${AT.length}</b><span>atividades</span></div><div class="kpi"><b>${conc.length}</b><span>concluídas</span></div>
+    <div class="kpi al"><b>${atr.length}</b><span>atrasadas</span></div><div class="kpi"><b>${hm(tot)}</b><span>horas lançadas${est?` de ${hm(est)} estimadas`:""}</span></div>
+    <div class="kpi"><b>${rep.length}</b><span>reprogramações</span></div></div>`;
+  h += `<h2>Atividades da obra</h2>` + tabelaAtiv(AT.slice().sort((x,y)=>(dia(x.prazo)||0)-(dia(y.prazo)||0)));
+  h += `<h2>Horas por disciplina</h2><div class="tab"><table><tr><th>Disciplina</th><th>Horas</th></tr>${Object.entries(porDisc).sort((a,b)=>b[1]-a[1]).map(([d,x])=>`<tr><td>${esc(d)}</td><td>${hm(x)}</td></tr>`).join("") || `<tr><td colspan="2" class="vazio">—</td></tr>`}</table></div>`;
+  h += `<h2>Horas por pessoa</h2><div class="tab"><table><tr><th>Pessoa</th><th>Horas</th></tr>${Object.entries(porPes).sort((a,b)=>b[1]-a[1]).map(([l,x])=>`<tr><td>${esc(nome(l))}</td><td>${hm(x)}</td></tr>`).join("") || `<tr><td colspan="2" class="vazio">—</td></tr>`}</table></div>`;
+  h += `<h2>Prazos alterados (${rep.length})</h2>` + blocoEventos(rep);
+  if(rod.length) h += `<h2>Protocolos nos órgãos (${rod.length})</h2><div class="tab"><table><tr><th>Órgão</th><th>Protocolo</th><th>Entrada</th><th>Retorno</th><th>Resultado</th></tr>` +
+    rod.map(r => `<tr><td>${esc(r.orgao)}</td><td>${esc(r.protocolo||"")}</td><td>${br(r.entrada)}</td><td>${br(r.retorno)}</td><td>${esc(r.resultado||"")}</td></tr>`).join("") + `</table></div>`;
+  if(reun.length) h += `<h2>Reuniões (${reun.length})</h2>` + reun.map(r => `<div class="card"><b>${esc(r.titulo||"Reunião")}</b> · ${br(r.data)} ${esc(r.hora_ini||"")}${r.decisoes?`<div class="txt info">${esc(r.decisoes)}</div>`:""}</div>`).join("");
+  return h;
+}
+
 function tProt(){
   const R = D.rodadas.filter(r => ativNoFiltro(A[r.atividade_id])).sort((a,b)=>String(b.entrada).localeCompare(String(a.entrada)));
   C().innerHTML = `<div class="info" style="margin-bottom:6px">${R.length} registro(s) de protocolo nos órgãos</div>` + (R.length ? `<div class="tab"><table><thead><tr><th>Órgão</th><th>Protocolo</th><th>Atividade</th><th>Entrada</th><th>Retorno</th><th>Resultado</th><th class="esconde-cel">Exig.</th></tr></thead><tbody>` +
@@ -472,7 +930,7 @@ async function entrar(){
   const s = document.getElementById("senha").value; const m = document.getElementById("msg");
   if(!s){ m.textContent = "Digite a senha."; return; }
   m.textContent = "Abrindo…";
-  try { await carregar(s); try{ sessionStorage.setItem("rlp", s); }catch(e){} m.textContent = ""; telaApp(); }
+  try { await carregar(s); try{ sessionStorage.setItem("rlp", s); }catch(e){} m.textContent = ""; telaApp(); abrirDoLink(); }
   catch(e){ m.textContent = e.message || "Não foi possível abrir."; }
 }
 document.getElementById("entrar").onclick = entrar;
