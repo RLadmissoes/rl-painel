@@ -1,0 +1,435 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>RL Demandas · Painel</title>
+<style>
+:root{--azul:#005A8A;--azul2:#62B2C2;--azf:#DDEFF3;--azt:#0B4F66;--fundo:#F4F7F9;--borda:#C3CAD0;--texto:#22303A;--t2:#5A6570;--lar:#FCE3CC;--lart:#8A3D00;--cin:#ECEEF1;--cint:#4E5660;--fim:#D9E2F5;--fimt:#1F3B73}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--fundo);color:var(--texto);font-family:'Segoe UI',Roboto,Arial,sans-serif;font-size:14px}
+button,input,select{font:inherit;color:var(--texto)}
+.oculto{display:none!important}
+/* login */
+#tlogin{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:16px}
+.caixa{background:#fff;border:1px solid var(--borda);border-radius:10px;padding:26px 24px;width:100%;max-width:360px;box-shadow:0 6px 24px rgba(0,0,0,.08)}
+.logo{display:flex;gap:10px;align-items:center;margin-bottom:16px}
+.logo .q{width:40px;height:40px;border-radius:8px;background:var(--azul);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center}
+.caixa input{width:100%;padding:10px 11px;border:1px solid var(--borda);border-radius:6px;margin:6px 0 12px}
+.btn{border:1px solid var(--borda);background:#fff;border-radius:6px;padding:7px 13px;cursor:pointer;white-space:nowrap}
+.btn:hover{background:#EEF3F6}.btn.p{background:var(--azul);border-color:var(--azul);color:#fff;font-weight:600}
+.caixa .btn.p{width:100%;padding:10px}
+.msg{color:var(--lart);font-size:13px;min-height:18px;margin-top:8px}
+.info{color:var(--t2);font-size:12.5px}
+/* app */
+header{background:var(--azul);color:#fff;padding:10px 16px;display:flex;align-items:center;gap:12px;flex-wrap:wrap;position:sticky;top:0;z-index:5}
+header .tit{font-weight:700;font-size:15px}
+header .at{font-size:12px;opacity:.9;flex:1}
+header .btn{background:transparent;border-color:rgba(255,255,255,.5);color:#fff;padding:5px 10px}
+nav{display:flex;gap:4px;padding:8px 12px 0;overflow-x:auto;background:#fff;border-bottom:1px solid var(--borda);position:sticky;top:46px;z-index:4}
+nav button{border:none;background:none;padding:9px 14px;border-bottom:3px solid transparent;cursor:pointer;white-space:nowrap;color:var(--t2)}
+nav button.on{border-bottom-color:var(--azul);color:var(--azul);font-weight:600}
+main{padding:14px 16px 40px;max-width:1300px;margin:0 auto}
+h2{font-size:17px;margin:14px 0 8px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:8px}
+.kpi{background:#fff;border:1px solid var(--borda);border-radius:8px;padding:10px 12px;cursor:default}
+.kpi b{display:block;font-size:22px}.kpi span{color:var(--t2);font-size:12.5px}
+.kpi.al b{color:var(--lart)}
+.card{background:#fff;border:1px solid var(--borda);border-radius:8px;padding:10px 12px;margin-bottom:8px}
+.filtros{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:10px}
+.filtros select,.filtros input{padding:7px 8px;border:1px solid var(--borda);border-radius:6px;background:#fff;max-width:100%}
+.filtros input{flex:1;min-width:160px}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:13px}
+th{background:var(--cin);text-align:left;padding:7px 8px;font-weight:600;white-space:nowrap;position:sticky;top:0}
+td{padding:7px 8px;border-bottom:1px solid #E6E9EC;vertical-align:top}
+.tab{overflow:auto;border:1px solid var(--borda);border-radius:8px;background:#fff}
+tr.l{cursor:pointer}tr.l:hover td{background:#F4F8FA}
+.st{border-radius:10px;padding:1px 8px;font-size:11.5px;font-weight:600;white-space:nowrap;display:inline-block}
+.s-and{background:var(--azf);color:var(--azt)}.s-faz{background:var(--cin);color:var(--cint)}
+.s-pau{background:#fff;color:var(--cint);border:1px dashed #8D949B}.s-con{background:var(--fim);color:var(--fimt)}
+.s-atr{background:var(--lar);color:var(--lart)}
+.pb{display:inline-block;width:60px;height:6px;background:#E6E9EC;border-radius:3px;vertical-align:middle;overflow:hidden}
+.pb i{display:block;height:100%;background:var(--azul2)}
+.vazio{color:var(--t2);padding:14px;text-align:center}
+/* ficha */
+#ov{position:fixed;inset:0;background:rgba(20,40,55,.45);z-index:20;display:flex;align-items:flex-start;justify-content:center;overflow:auto;padding:20px 10px}
+.ficha{background:#fff;border-radius:10px;width:100%;max-width:860px;padding:18px 20px 24px;box-shadow:0 10px 30px rgba(0,0,0,.3)}
+.ficha h3{margin:0 0 6px;font-size:18px}
+.sec{margin:16px 0 6px;font-weight:700;color:var(--azul);border-bottom:1px solid #D5DCE1;padding-bottom:3px}
+.grade{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:6px 18px}
+.grade div span{display:block;color:#6B757D;font-size:11px;text-transform:uppercase;letter-spacing:.3px}
+.txt{white-space:pre-wrap;line-height:1.45}
+.ck{display:flex;gap:7px;padding:2px 0}
+.ck .b{width:15px;height:15px;border:1.5px solid #5A6570;border-radius:3px;flex:none;font-size:11px;line-height:12px;text-align:center}
+.fechar{float:right}
+.relcab{background:#fff;border:1px solid var(--borda);border-left:4px solid var(--azul);border-radius:8px;padding:10px 12px;margin-bottom:10px}
+.relp{padding:10px 12px}
+.relat{border-top:1px solid #E6E9EC;margin-top:8px;padding-top:8px}
+.rl{margin:4px 0 0 4px;font-size:13px}
+.obs{background:#F4F7F9;border-left:3px solid var(--azul2);padding:4px 8px;margin:3px 0 2px;border-radius:3px;white-space:pre-wrap}
+.relck{margin:6px 0 0 4px}
+@media print{
+ header,nav,.nao-imprime,#tlogin{display:none!important}
+ body,html{background:#fff}
+ main{padding:0;max-width:none}
+ .card,.tab,.kpi,.relcab{break-inside:avoid;box-shadow:none}
+ th{position:static}
+ @page{size:A4;margin:12mm}
+}
+@media (max-width:640px){
+ header .at{flex-basis:100%;order:3}
+ nav{top:70px}
+ .esconde-cel{display:none}
+ td,th{padding:6px}
+}
+</style>
+</head>
+<body>
+<div id="tlogin">
+ <div class="caixa">
+  <div class="logo"><div class="q">RL</div><div><b>RL Demandas</b><br><span class="info">Painel online · só leitura</span></div></div>
+  <label for="senha">Senha do painel</label>
+  <input id="senha" type="password" autocomplete="current-password" autofocus>
+  <button class="btn p" id="entrar">Entrar</button>
+  <div class="msg" id="msg"></div>
+  <div class="info" style="margin-top:10px">Os dados ficam criptografados. Sem a senha, ninguém consegue lê-los.</div>
+ </div>
+</div>
+<div id="app" class="oculto">
+ <header><span class="tit">RL Demandas</span><span class="at" id="atual"></span>
+  <button class="btn" id="bAtu" title="Buscar o retrato mais recente">↻ Atualizar</button><button class="btn" id="bSair">Sair</button></header>
+ <nav id="abas"></nav>
+ <main id="conteudo"></main>
+</div>
+<div id="ov" class="oculto" onclick="if(event.target===this)fecharFicha()"><div class="ficha" id="ficha"></div></div>
+<script>
+"use strict";
+// ---------------------------------------------------------------- dados
+const P = new URLSearchParams(location.search);
+function repoDaPagina(){
+  if(P.get("repo")) return P.get("repo");
+  const h = location.hostname.match(/^([^.]+)\.github\.io$/i);
+  const seg = location.pathname.split("/").filter(Boolean);
+  return h && seg.length ? h[1] + "/" + seg[0] : null;
+}
+async function baixarPacote(){
+  if(window.RETRATO_DEMO) return window.RETRATO_DEMO;
+  if(P.get("arquivo")) { const r = await fetch(P.get("arquivo") + "?t=" + Date.now(), {cache:"no-store"}); if(!r.ok) throw new Error("arquivo"); return await r.text(); }
+  const repo = repoDaPagina(); if(!repo) throw new Error("Não achei o repositório desta página.");
+  try {
+    const r = await fetch(`https://api.github.com/repos/${repo}/contents/retrato.json?ref=dados&t=${Date.now()}`,
+      {headers:{Accept:"application/vnd.github.raw+json"}, cache:"no-store"});
+    if(r.ok) return await r.text();
+  } catch(e) {}
+  const r2 = await fetch(`https://raw.githubusercontent.com/${repo}/dados/retrato.json?t=${Date.now()}`, {cache:"no-store"});
+  if(!r2.ok) throw new Error("Ainda não há retrato publicado (o transmissor já enviou?).");
+  return await r2.text();
+}
+const b64 = s => Uint8Array.from(atob(s), c => c.charCodeAt(0));
+async function abrirPacote(texto, senha){
+  const d = JSON.parse(texto);
+  const base = await crypto.subtle.importKey("raw", new TextEncoder().encode(senha), "PBKDF2", false, ["deriveKey"]);
+  const chave = await crypto.subtle.deriveKey({name:"PBKDF2", salt:b64(d.sal), iterations:d.iter, hash:"SHA-256"},
+    base, {name:"AES-GCM", length:256}, false, ["decrypt"]);
+  const gz = await crypto.subtle.decrypt({name:"AES-GCM", iv:b64(d.iv)}, chave, b64(d.dados));
+  const fluxo = new Blob([gz]).stream().pipeThrough(new DecompressionStream("gzip"));
+  return JSON.parse(await new Response(fluxo).text());
+}
+let D = null, SENHA = null, ABA = "painel";
+async function carregar(senha){
+  const texto = await baixarPacote();
+  try { D = await abrirPacote(texto, senha); }
+  catch(e) { throw new Error("Senha incorreta."); }
+  SENHA = senha; indexar();
+}
+// ---------------------------------------------------------------- utilidades
+const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const dia = s => { if(!s) return null; const [a,m,d] = String(s).slice(0,10).split("-").map(Number); return new Date(a, m-1, d); };
+const br = s => { const x = dia(s); return x ? x.toLocaleDateString("pt-BR",{day:"2-digit",month:"2-digit",year:"2-digit"}) : "—"; };
+const brh = s => s ? br(s) + " " + String(s).slice(11,16) : "—";
+const hm = m => { m = Math.round(m||0); return Math.floor(m/60) + "h" + String(m%60).padStart(2,"0"); };
+let HOJE, U = {}, OB = {}, CL = {}, DI = {}, SE = {}, A = {}, TOT = {}, EV = {}, PE = {}, RO = {}, VE = {}, HR = {};
+function indexar(){
+  HOJE = dia(D.hoje);
+  U = {}; D.usuarios.forEach(u => U[u.login] = u);
+  OB = {}; D.obras.forEach(o => OB[o.id] = o); CL = {}; D.clientes.forEach(c => CL[c.id] = c);
+  DI = {}; D.disciplinas.forEach(d => DI[d.id] = d); SE = {}; D.setores.forEach(s => SE[s.id] = s);
+  A = {}; D.atividades.forEach(a => A[a.id] = a);
+  const grupo = (lista, k) => { const o = {}; lista.forEach(x => (o[x[k]] = o[x[k]] || []).push(x)); return o; };
+  EV = grupo(D.eventos, "atividade_id"); PE = grupo(D.pedidos, "atividade_id"); RO = grupo(D.rodadas, "atividade_id");
+  VE = grupo(D.verificacoes, "atividade_id"); HR = grupo(D.horas, "atividade_id");
+  TOT = {}; D.horas_totais.forEach(t => { TOT[t.atividade_id] = (TOT[t.atividade_id]||0) + t.minutos; });
+}
+const nome = l => U[l] ? U[l].nome : (l || "—");
+const curto = l => nome(l).split(" ")[0];
+function atrasada(a){ return a.status !== "Concluída" && a.prazo && dia(a.prazo) < HOJE; }
+function situacao(a){
+  if(atrasada(a)) return ["Atrasada","s-atr"];
+  return {"Em andamento":["Em andamento","s-and"],"A fazer":["A fazer","s-faz"],"Pausada":["Pausada","s-pau"],"Concluída":["Concluída","s-con"]}[a.status] || [a.status||"—","s-faz"];
+}
+const chip = a => { const [t,c] = situacao(a); return `<span class="st ${c}">${t}</span>`; };
+function prog(a){ const c = a.checklist||[]; if(!c.length) return ""; const f = c.filter(x=>x.feito).length;
+  return `<span class="pb"><i style="width:${Math.round(100*f/c.length)}%"></i></span> <span class="info">${f}/${c.length}</span>`; }
+const discSigla = a => (DI[a.disciplina_id]||{}).sigla || "";
+const obraNome = id => (OB[id]||{}).nome || "—";
+const setorSigla = s => (SE[s]||{}).sigla || s || "—";
+function semana(d){ const x = new Date(d); const w = (x.getDay()+6)%7; x.setDate(x.getDate()-w); return x; }
+function noPeriodo(dt, ini, fim){ return dt >= ini && dt <= fim; }
+// ---------------------------------------------------------------- telas
+const ABAS = [["painel","Painel"],["ativ","Atividades"],["rel","Relatórios"],["horas","Horas"],["reun","Reuniões"],["prot","Protocolos"]];
+function telaApp(){
+  document.getElementById("tlogin").classList.add("oculto");
+  document.getElementById("app").classList.remove("oculto");
+  const g = new Date(D.gerado_em); const min = Math.round((Date.now() - g.getTime())/60000);
+  document.getElementById("atual").textContent = `Atualizado em ${g.toLocaleDateString("pt-BR")} ${g.toTimeString().slice(0,5)}` +
+    (min >= 0 ? ` (há ${min < 60 ? min + " min" : Math.round(min/60) + " h"})` : "") + ` · enviado por ${D.gerado_por||"?"}`;
+  document.getElementById("abas").innerHTML = ABAS.map(([k,t]) => `<button data-k="${k}" class="${k===ABA?"on":""}">${t}</button>`).join("");
+  document.querySelectorAll("#abas button").forEach(b => b.onclick = () => { ABA = b.dataset.k; telaApp(); });
+  ({painel:tPainel, ativ:tAtiv, rel:tRel, horas:tHoras, reun:tReun, prot:tProt})[ABA]();
+}
+const C = () => document.getElementById("conteudo");
+function linhaAtiv(a, extra=""){
+  return `<tr class="l" data-a="${a.id}"><td>${chip(a)}</td><td><b>${esc(a.titulo)}</b><br><span class="info">${esc(obraNome(a.obra_id))} · ${esc(discSigla(a))}</span></td>
+   <td>${esc(curto(a.responsavel))}</td><td class="esconde-cel">${esc(setorSigla(a.setor))}</td><td>${br(a.prazo)}${a.prazo_original && a.prazo_original!==a.prazo ? `<br><span class="info">orig. ${br(a.prazo_original)}</span>`:""}</td>
+   <td class="esconde-cel">${prog(a)}</td><td class="esconde-cel">${hm(TOT[a.id])}${a.horas_estimadas ? ` / ${a.horas_estimadas}h` : ""}</td>${extra}</tr>`;
+}
+function tabelaAtiv(lista){
+  if(!lista.length) return `<div class="vazio">Nenhuma atividade.</div>`;
+  return `<div class="tab"><table><thead><tr><th>Situação</th><th>Atividade</th><th>Resp.</th><th class="esconde-cel">Setor</th><th>Prazo</th><th class="esconde-cel">Checklist</th><th class="esconde-cel">Horas</th></tr></thead><tbody>${lista.map(a=>linhaAtiv(a)).join("")}</tbody></table></div>`;
+}
+function ligarLinhas(){ document.querySelectorAll("tr[data-a]").forEach(t => t.onclick = () => abrirFicha(t.dataset.a)); }
+function tPainel(){
+  const at = D.atividades, abertas = at.filter(a => a.status !== "Concluída");
+  const atr = abertas.filter(atrasada), sete = new Date(HOJE); sete.setDate(sete.getDate()+7);
+  const prox = abertas.filter(a => !atrasada(a) && a.prazo && dia(a.prazo) <= sete).sort((x,y)=>dia(x.prazo)-dia(y.prazo));
+  const ini7 = new Date(HOJE); ini7.setDate(ini7.getDate()-7);
+  const conc7 = at.filter(a => a.status==="Concluída" && a.concluida_em && dia(a.concluida_em) >= ini7);
+  const sem = semana(HOJE), horasSem = D.horas.filter(h => dia(h.data) >= sem).reduce((s,h)=>s+h.minutos,0);
+  const pend = D.pedidos.filter(p => p.status === "Pendente");
+  let h = `<div class="kpis">
+    <div class="kpi"><b>${abertas.filter(a=>a.status==="Em andamento").length}</b><span>em andamento</span></div>
+    <div class="kpi al"><b>${atr.length}</b><span>atrasadas</span></div>
+    <div class="kpi"><b>${prox.length}</b><span>vencem em 7 dias</span></div>
+    <div class="kpi"><b>${conc7.length}</b><span>concluídas nos últimos 7 dias</span></div>
+    <div class="kpi"><b>${hm(horasSem)}</b><span>horas lançadas nesta semana</span></div>
+    <div class="kpi"><b>${pend.length}</b><span>pedidos pendentes</span></div></div>`;
+  // por setor
+  const setores = D.setores.filter(s => s.ativo !== false).sort((a,b)=>(a.ordem||0)-(b.ordem||0));
+  h += `<h2>Por setor</h2><div class="tab"><table><thead><tr><th>Setor</th><th>Em andamento</th><th>Atrasadas</th><th>A fazer</th><th>Concluídas (7 dias)</th><th>Horas na semana</th></tr></thead><tbody>` +
+    setores.map(s => { const da = at.filter(a=>a.setor===s.id);
+      const hs = D.horas.filter(x => dia(x.data) >= sem && A[x.atividade_id] && A[x.atividade_id].setor===s.id).reduce((t,x)=>t+x.minutos,0);
+      return `<tr><td><b>${esc(s.sigla)}</b> <span class="info">${esc(s.nome||"")}</span></td><td>${da.filter(a=>a.status==="Em andamento"&&!atrasada(a)).length}</td>
+      <td>${da.filter(atrasada).length}</td><td>${da.filter(a=>a.status==="A fazer"&&!atrasada(a)).length}</td><td>${da.filter(a=>conc7.includes(a)).length}</td><td>${hm(hs)}</td></tr>`; }).join("") + `</tbody></table></div>`;
+  h += `<h2>Atrasadas (${atr.length})</h2>` + tabelaAtiv(atr.sort((x,y)=>dia(x.prazo)-dia(y.prazo)));
+  h += `<h2>Vencem nos próximos 7 dias (${prox.length})</h2>` + tabelaAtiv(prox);
+  if(pend.length) h += `<h2>Pedidos pendentes (${pend.length})</h2><div class="tab"><table><thead><tr><th>Atividade</th><th>Pedido</th><th>Quem</th><th>Quando</th></tr></thead><tbody>` +
+    pend.map(p => `<tr class="l" data-a="${p.atividade_id}"><td>${esc((A[p.atividade_id]||{}).titulo)}</td><td>${p.data_para ? "Término " + br(p.data_de) + " → " + br(p.data_para) : esc(p.tipo||"")}<br><span class="info">${esc(p.detalhe||"")}</span></td><td>${esc(curto(p.solicitante))}</td><td>${brh(p.criado_em)}</td></tr>`).join("") + `</tbody></table></div>`;
+  C().innerHTML = h; ligarLinhas();
+}
+let FA = {setor:"", sit:"abertas", resp:"", obra:"", busca:""};
+function tAtiv(){
+  const opt = (v, t, sel) => `<option value="${esc(v)}" ${v===sel?"selected":""}>${esc(t)}</option>`;
+  const resp = [...new Set(D.atividades.map(a=>a.responsavel))].filter(Boolean).sort((a,b)=>nome(a).localeCompare(nome(b)));
+  const obras = [...new Set(D.atividades.map(a=>a.obra_id))].filter(Boolean).sort((a,b)=>obraNome(a).localeCompare(obraNome(b)));
+  C().innerHTML = `<div class="filtros">
+    <select id="fs">${opt("","Todos os setores",FA.setor)}${D.setores.map(s=>opt(s.id,s.sigla+" · "+(s.nome||""),FA.setor)).join("")}</select>
+    <select id="fsit">${[["abertas","Não concluídas"],["Em andamento","Em andamento"],["A fazer","A fazer"],["Pausada","Pausadas"],["atr","Atrasadas"],["Concluída","Concluídas"],["","Todas"]].map(([v,t])=>opt(v,t,FA.sit)).join("")}</select>
+    <select id="fr">${opt("","Todos os responsáveis",FA.resp)}${resp.map(l=>opt(l,nome(l),FA.resp)).join("")}</select>
+    <select id="fo">${opt("","Todas as obras",FA.obra)}${obras.map(o=>opt(o,obraNome(o),FA.obra)).join("")}</select>
+    <input id="fb" placeholder="Buscar título, obra, descrição…" value="${esc(FA.busca)}"></div><div id="lista"></div>`;
+  const ligar = (id, k, ev="onchange") => document.getElementById(id)[ev] = e => { FA[k] = e.target.value; listar(); };
+  ligar("fs","setor"); ligar("fsit","sit"); ligar("fr","resp"); ligar("fo","obra"); ligar("fb","busca","oninput");
+  listar();
+}
+function listar(){
+  const b = FA.busca.toLowerCase();
+  let L = D.atividades.filter(a => (!FA.setor || a.setor===FA.setor) && (!FA.resp || a.responsavel===FA.resp) && (!FA.obra || a.obra_id===FA.obra)
+    && (FA.sit==="" || (FA.sit==="abertas" ? a.status!=="Concluída" : FA.sit==="atr" ? atrasada(a) : a.status===FA.sit))
+    && (!b || (a.titulo+" "+obraNome(a.obra_id)+" "+(a.descricao||"")+" "+discSigla(a)).toLowerCase().includes(b)));
+  L.sort((x,y) => (atrasada(y)-atrasada(x)) || ((dia(x.prazo)||0)-(dia(y.prazo)||0)));
+  document.getElementById("lista").innerHTML = `<div class="info" style="margin-bottom:6px">${L.length} atividade(s)</div>` + tabelaAtiv(L.slice(0,500)) +
+    (L.length > 500 ? `<div class="info">Mostrando as 500 primeiras. Use os filtros.</div>` : "");
+  ligarLinhas();
+}
+function abrirFicha(id){
+  const a = A[id]; if(!a) return;
+  const ev = (EV[id]||[]).slice().sort((x,y)=>String(x.quando).localeCompare(String(y.quando)));
+  const pe = PE[id]||[], ro = RO[id]||[], ve = VE[id]||[], hr = (HR[id]||[]).slice().sort((x,y)=>String(y.data).localeCompare(String(x.data)));
+  const porPessoa = {}; D.horas_totais.filter(t=>t.atividade_id===id).forEach(t => porPessoa[t.login] = (porPessoa[t.login]||0) + t.minutos);
+  const ob = OB[a.obra_id]||{}, di = DI[a.disciplina_id]||{};
+  const nomeEv = {criacao:"Criação",solicitacao:"Pedido de alteração",aprovacao:"Pedido aprovado",recusa:"Pedido recusado",reprogramacao:"Reprogramação",correcao:"Correção de data",conclusao:"Conclusão",pausa:"Pausa",retomada:"Retomada",reabertura:"Reabertura"};
+  let h = `<button class="btn fechar" onclick="fecharFicha()">✕ Fechar</button><h3>${esc(a.titulo)}</h3>${chip(a)} <span class="st s-faz">${esc(di.sigla||"")} ${esc(di.nome_curto||"")}</span> ${a.prioridade?`<span class="st s-faz">Prioridade ${esc(a.prioridade)}</span>`:""}
+   <div class="sec">Dados</div><div class="grade">
+   <div><span>Obra</span>${esc(ob.nome||"—")}</div><div><span>Cliente</span>${esc((CL[ob.cliente_id]||{}).nome||"—")}</div><div><span>Setor</span>${esc(setorSigla(a.setor))}</div>
+   <div><span>Responsável</span>${esc(nome(a.responsavel))}</div><div><span>Categoria</span>${esc(a.categoria||"—")}</div><div><span>Etapa</span>${esc(a.etapa||"—")}</div>
+   <div><span>Início</span>${br(a.data_inicio)}</div><div><span>Prazo</span>${br(a.prazo)}${a.prazo_original && a.prazo_original!==a.prazo?` <span class="info">(original ${br(a.prazo_original)})</span>`:""}</div><div><span>Concluída em</span>${br(a.concluida_em)}</div>
+   <div><span>Horas</span>${hm(TOT[id])}${a.horas_estimadas?` de ${a.horas_estimadas}h estimadas`:""}</div><div><span>Área</span>${a.area?esc(a.area)+" m²":"—"}</div><div><span>Criada por</span>${esc(curto(a.criada_por))} · ${br(a.criada_em)}</div></div>`;
+  if(a.descricao) h += `<div class="sec">Descrição</div><div class="txt">${esc(a.descricao)}</div>`;
+  if(a.observacoes) h += `<div class="sec">Observações</div><div class="txt">${esc(a.observacoes)}</div>`;
+  if((a.checklist||[]).length) h += `<div class="sec">Checklist ${prog(a)}</div>` + a.checklist.map(c => `<div class="ck"><span class="b">${c.feito?"✓":""}</span>${esc(c.texto)}</div>`).join("");
+  if(pe.length) h += `<div class="sec">Pedidos</div><div class="tab"><table><tr><th>Data</th><th>Pedido</th><th>Motivo</th><th>Decisão</th></tr>` +
+    pe.map(p => `<tr><td>${brh(p.criado_em)}</td><td>${p.data_para?br(p.data_de)+" → "+br(p.data_para):esc(p.tipo||"")}<br><span class="info">${esc(curto(p.solicitante))}</span></td><td>${esc(p.motivo||"")}<br><span class="info">${esc(p.detalhe||"")}</span></td><td>${esc(p.status||"")}${p.decidido_por?" · "+esc(curto(p.decidido_por)):""}<br><span class="info">${esc(p.resposta||"")}</span></td></tr>`).join("") + `</table></div>`;
+  if(ev.length) h += `<div class="sec">Histórico</div><div class="tab"><table><tr><th>Quando</th><th>Quem</th><th>O quê</th></tr>` +
+    ev.map(e => `<tr><td>${brh(e.quando)}</td><td>${esc(curto(e.por))}</td><td>${esc(nomeEv[e.tipo]||e.tipo)}${e.fim_para?` · término ${e.fim_de?br(e.fim_de)+" → ":""}${br(e.fim_para)}${e.dias?` (${e.dias>0?"+":""}${e.dias} dias)`:""}`:""}${e.motivo?`<br><span class="info">${esc(e.motivo)}${e.detalhe?" · "+esc(e.detalhe):""}</span>`:(e.detalhe?`<br><span class="info">${esc(e.detalhe)}</span>`:"")}</td></tr>`).join("") + `</table></div>`;
+  if(Object.keys(porPessoa).length) h += `<div class="sec">Horas · ${hm(TOT[id])}</div><div class="tab"><table><tr><th>Pessoa</th><th>Total</th></tr>` +
+    Object.entries(porPessoa).sort((x,y)=>y[1]-x[1]).map(([l,m]) => `<tr><td>${esc(nome(l))}</td><td>${hm(m)}</td></tr>`).join("") + `</table></div>`;
+  if(hr.length) h += `<div class="info" style="margin:8px 0 4px">Lançamentos recentes (últimos ${D.dias_horas_detalhe} dias)</div><div class="tab"><table><tr><th>Data</th><th>Pessoa</th><th>Horário</th><th>Duração</th><th class="esconde-cel">Obs.</th></tr>` +
+    hr.slice(0,60).map(x => `<tr><td>${br(x.data)}</td><td>${esc(curto(x.login))}</td><td>${esc(x.inicio||"")}${x.fim?"–"+esc(x.fim):""}</td><td>${hm(x.minutos)}</td><td class="esconde-cel">${esc(x.obs)}</td></tr>`).join("") + `</table></div>`;
+  if(ve.length || ro.length || a.verificacao){
+    h += `<div class="sec">Qualidade</div><div class="grade"><div><span>Verificação</span>${esc(a.verificacao||"—")}</div><div><span>Revisão</span>${esc(a.revisao||"—")}</div><div><span>Retrabalho</span>${a.retrabalho?"Sim":"Não"}</div></div>`;
+    if(ro.length) h += `<div class="tab" style="margin-top:6px"><table><tr><th>Órgão</th><th>Protocolo</th><th>Entrada</th><th>Retorno</th><th>Resultado</th><th>Exig.</th></tr>` +
+      ro.map(r => `<tr><td>${esc(r.orgao)}</td><td>${esc(r.protocolo||"")}</td><td>${br(r.entrada)}</td><td>${br(r.retorno)}</td><td>${esc(r.resultado||"")}</td><td>${esc(r.exigencias??"")}</td></tr>`).join("") + `</table></div>`;
+  }
+  document.getElementById("ficha").innerHTML = h;
+  document.getElementById("ov").classList.remove("oculto"); document.getElementById("ov").scrollTop = 0;
+}
+function fecharFicha(){ document.getElementById("ov").classList.add("oculto"); }
+let FH = "sem";
+function tHoras(){
+  const per = {sem:"Esta semana", ant:"Semana passada", mes:"Este mês", mant:"Mês passado", d30:"Últimos 30 dias"};
+  const s = semana(HOJE), ini = {}, fim = {};
+  ini.sem = s; fim.sem = HOJE;
+  ini.ant = new Date(s); ini.ant.setDate(s.getDate()-7); fim.ant = new Date(s); fim.ant.setDate(s.getDate()-1);
+  ini.mes = new Date(HOJE.getFullYear(), HOJE.getMonth(), 1); fim.mes = HOJE;
+  ini.mant = new Date(HOJE.getFullYear(), HOJE.getMonth()-1, 1); fim.mant = new Date(HOJE.getFullYear(), HOJE.getMonth(), 0);
+  ini.d30 = new Date(HOJE); ini.d30.setDate(HOJE.getDate()-29); fim.d30 = HOJE;
+  const H = D.horas.filter(h => noPeriodo(dia(h.data), ini[FH], fim[FH]));
+  const pp = {}, po = {};
+  H.forEach(h => { pp[h.login] = (pp[h.login]||0) + h.minutos; const o = (A[h.atividade_id]||{}).obra_id || "?"; po[o] = (po[o]||0) + h.minutos; });
+  const tot = H.reduce((t,h)=>t+h.minutos,0);
+  C().innerHTML = `<div class="filtros"><select id="fh">${Object.entries(per).map(([k,t])=>`<option value="${k}" ${k===FH?"selected":""}>${t}</option>`).join("")}</select>
+   <span class="info" style="align-self:center">${ini[FH].toLocaleDateString("pt-BR")} a ${fim[FH].toLocaleDateString("pt-BR")} · total ${hm(tot)}</span></div>
+   <h2>Por pessoa</h2><div class="tab"><table><tr><th>Pessoa</th><th>Setor</th><th>Horas</th></tr>${Object.entries(pp).sort((a,b)=>b[1]-a[1]).map(([l,m])=>`<tr><td>${esc(nome(l))}</td><td>${esc(setorSigla((U[l]||{}).setor))}</td><td>${hm(m)}</td></tr>`).join("") || `<tr><td colspan="3" class="vazio">Sem lançamentos no período.</td></tr>`}</table></div>
+   <h2>Por obra</h2><div class="tab"><table><tr><th>Obra</th><th>Horas</th></tr>${Object.entries(po).sort((a,b)=>b[1]-a[1]).map(([o,m])=>`<tr><td>${esc(obraNome(o))}</td><td>${hm(m)}</td></tr>`).join("") || `<tr><td colspan="2" class="vazio">—</td></tr>`}</table></div>`;
+  document.getElementById("fh").onchange = e => { FH = e.target.value; tHoras(); };
+}
+function tReun(){
+  const R = D.reunioes.slice().sort((a,b)=>String(b.data).localeCompare(String(a.data)));
+  const prox = R.filter(r => dia(r.data) >= HOJE).reverse(), pass = R.filter(r => dia(r.data) < HOJE).slice(0,30);
+  const card = r => { const ps = D.participantes.filter(p=>p.reuniao_id===r.id), en = D.encaminhamentos.filter(e=>e.reuniao_id===r.id);
+    return `<div class="card"><b>${esc(r.titulo||"Reunião")}</b><br>${br(r.data)} · ${esc(r.hora_ini||"")}${r.hora_fim?"–"+esc(r.hora_fim):""} <span class="info">${esc(r.formato||"")}</span>
+     ${r.assuntos?`<div class="info">Assuntos: ${esc(r.assuntos)}</div>`:""}${ps.length?`<div class="info">Participantes: ${ps.map(p=>esc(curto(p.login))+(p.presenca==="vou"?" ✓":p.presenca==="nao"?" ✕":"")).join(", ")}</div>`:""}
+     ${r.pauta?`<div class="sec" style="font-size:13px">Pauta</div><div class="txt">${esc(r.pauta)}</div>`:""}${r.decisoes?`<div class="sec" style="font-size:13px">Decisões</div><div class="txt">${esc(r.decisoes)}</div>`:""}
+     ${en.length?`<div class="sec" style="font-size:13px">Encaminhamentos</div>`+en.map(e=>`<div>• ${esc(e.texto)} <span class="info">${esc(curto(e.quem))}${e.prazo?" · até "+br(e.prazo):""}</span></div>`).join(""):""}</div>`; };
+  C().innerHTML = `<h2>Próximas (${prox.length})</h2>${prox.map(card).join("") || `<div class="vazio">Nenhuma reunião marcada.</div>`}<h2>Recentes</h2>${pass.map(card).join("") || `<div class="vazio">—</div>`}`;
+}
+// ---------------------------------------------------------------- relatórios (diário e semanal)
+let FR = {tipo:"dia", dia:"", semana:"", setor:""};
+const iso = d => d.getFullYear()+"-"+String(d.getMonth()+1).padStart(2,"0")+"-"+String(d.getDate()).padStart(2,"0");
+const DSEM = ["Dom","Seg","Ter","Qua","Qui","Sex","Sáb"];
+function tRel(){
+  if(!FR.dia){ const o = new Date(HOJE); FR.dia = iso(o); }
+  if(!FR.semana){ FR.semana = iso(semana(HOJE)); }
+  const semanas = []; for(let k=0;k<12;k++){ const s = semana(HOJE); s.setDate(s.getDate()-7*k); semanas.push(s); }
+  C().innerHTML = `<div class="filtros nao-imprime">
+     <select id="rt"><option value="dia" ${FR.tipo==="dia"?"selected":""}>Relatório diário</option><option value="sem" ${FR.tipo==="sem"?"selected":""}>Relatório semanal</option></select>
+     ${FR.tipo==="dia" ? `<input type="date" id="rd" value="${FR.dia}" max="${iso(HOJE)}" style="flex:0 0 auto">`
+       : `<select id="rs">${semanas.map(s=>{ const f=new Date(s); f.setDate(f.getDate()+6); return `<option value="${iso(s)}" ${iso(s)===FR.semana?"selected":""}>${s.toLocaleDateString("pt-BR")} a ${f.toLocaleDateString("pt-BR")}</option>`; }).join("")}</select>`}
+     <select id="rse"><option value="">Todos os setores</option>${D.setores.map(s=>`<option value="${s.id}" ${s.id===FR.setor?"selected":""}>${esc(s.sigla)} · ${esc(s.nome||"")}</option>`).join("")}</select>
+     <button class="btn p" onclick="window.print()">🖨 Imprimir / Salvar PDF</button></div><div id="rel"></div>`;
+  document.getElementById("rt").onchange = e => { FR.tipo = e.target.value; tRel(); };
+  if(document.getElementById("rd")) document.getElementById("rd").onchange = e => { FR.dia = e.target.value; tRel(); };
+  if(document.getElementById("rs")) document.getElementById("rs").onchange = e => { FR.semana = e.target.value; tRel(); };
+  document.getElementById("rse").onchange = e => { FR.setor = e.target.value; tRel(); };
+  document.getElementById("rel").innerHTML = FR.tipo === "dia" ? relDia() : relSemana();
+  ligarLinhas();
+}
+const doSetor = a => !FR.setor || (a && a.setor === FR.setor);
+const naData = (s, ini, fim) => { const d = dia(s); return d && d >= ini && d <= fim; };
+function cabRel(titulo, periodo){
+  return `<div class="relcab"><div class="logo" style="margin:0"><div class="q" style="width:32px;height:32px;font-size:13px">RL</div>
+   <div><b>${titulo}</b><br><span class="info">${periodo}${FR.setor?" · setor "+esc(setorSigla(FR.setor)):" · todos os setores"} · dados de ${new Date(D.gerado_em).toLocaleDateString("pt-BR")} ${new Date(D.gerado_em).toTimeString().slice(0,5)}</span></div></div></div>`;
+}
+function eventosPeriodo(ini, fim){
+  return D.eventos.filter(e => naData(e.quando, ini, fim) && doSetor(A[e.atividade_id]));
+}
+function blocoEventos(evs){
+  const nomeEv = {solicitacao:"Pedido de alteração",aprovacao:"Pedido aprovado",recusa:"Pedido recusado",reprogramacao:"Reprogramação",correcao:"Correção de data",conclusao:"Conclusão",criacao:"Criada",reabertura:"Reaberta"};
+  const ev = evs.filter(e => nomeEv[e.tipo]).sort((x,y)=>String(x.quando).localeCompare(String(y.quando)));
+  if(!ev.length) return `<div class="info">Nenhum.</div>`;
+  return `<div class="tab"><table><tr><th>Quando</th><th>Atividade</th><th>O quê</th><th>Quem</th></tr>` + ev.map(e => { const a = A[e.atividade_id]||{};
+    return `<tr class="l" data-a="${e.atividade_id}"><td>${brh(e.quando)}</td><td>${esc(a.titulo||"")}<br><span class="info">${esc(obraNome(a.obra_id))}</span></td>
+    <td>${nomeEv[e.tipo]}${e.fim_para?` · término ${e.fim_de?br(e.fim_de)+" → ":""}${br(e.fim_para)}${e.dias?` (${e.dias>0?"+":""}${e.dias} dias)`:""}`:""}${e.motivo||e.detalhe?`<br><span class="info">${[e.motivo,e.detalhe].filter(Boolean).map(esc).join(" · ")}</span>`:""}</td><td>${esc(curto(e.por))}</td></tr>`; }).join("") + `</table></div>`;
+}
+function relDia(){
+  const d0 = dia(FR.dia), H = D.horas.filter(h => h.data && String(h.data).slice(0,10) === FR.dia && doSetor(A[h.atividade_id]));
+  const tot = H.reduce((t,h)=>t+h.minutos,0), pessoas = {};
+  H.forEach(h => ((pessoas[h.login] = pessoas[h.login] || {})[h.atividade_id] = (pessoas[h.login][h.atividade_id] || [])).push(h));
+  const conc = D.atividades.filter(a => a.concluida_em && String(a.concluida_em).slice(0,10) === FR.dia && doSetor(a));
+  let h = cabRel("Relatório diário", d0.toLocaleDateString("pt-BR",{weekday:"long",day:"2-digit",month:"2-digit",year:"numeric"}));
+  h += `<div class="kpis"><div class="kpi"><b>${hm(tot)}</b><span>horas lançadas</span></div><div class="kpi"><b>${Object.keys(pessoas).length}</b><span>pessoas com lançamento</span></div>
+        <div class="kpi"><b>${conc.length}</b><span>atividades concluídas</span></div></div>`;
+  h += `<h2>Por pessoa</h2>`;
+  const ordem = Object.keys(pessoas).sort((a,b)=>nome(a).localeCompare(nome(b)));
+  if(!ordem.length) h += `<div class="vazio">Nenhum lançamento de horas neste dia.</div>`;
+  ordem.forEach(l => {
+    const ativsP = pessoas[l], totP = Object.values(ativsP).flat().reduce((t,x)=>t+x.minutos,0);
+    h += `<div class="card relp"><div style="display:flex;justify-content:space-between;gap:8px"><b>${esc(nome(l))}</b><b>${hm(totP)}</b></div>`;
+    Object.entries(ativsP).forEach(([aid, regs]) => { const a = A[aid] || {titulo:"(atividade não encontrada)"};
+      const ck = a.checklist || [], feitos = ck.filter(c=>c.feito).length;
+      h += `<div class="relat"><div class="l" data-a="${aid}" style="cursor:pointer"><b>${esc(a.titulo)}</b> ${a.id?chip(a):""}<br><span class="info">${esc(obraNome(a.obra_id))} · ${esc(discSigla(a))} · prazo ${br(a.prazo)}</span></div>
+        ${regs.sort((x,y)=>String(x.inicio).localeCompare(String(y.inicio))).map(r => `<div class="rl">⏱ ${esc(r.inicio||"")}${r.fim?"–"+esc(r.fim):""} · <b>${hm(r.minutos)}</b>${r.obs?`<div class="obs">“${esc(r.obs)}”</div>`:`<span class="info"> · sem observação</span>`}</div>`).join("")}
+        ${ck.length ? `<div class="relck"><span class="info">Checklist (situação atual): ${feitos} de ${ck.length}</span>${ck.map(c=>`<div class="ck"><span class="b">${c.feito?"✓":""}</span>${esc(c.texto)}</div>`).join("")}</div>` : ""}
+        ${a.observacoes ? `<div class="info" style="margin-top:4px">Observações da atividade: ${esc(a.observacoes)}</div>` : ""}</div>`; });
+    h += `</div>`;
+  });
+  h += `<h2>Concluídas no dia (${conc.length})</h2>` + tabelaAtiv(conc);
+  h += `<h2>Pedidos e alterações de datas no dia</h2>` + blocoEventos(eventosPeriodo(d0, d0).filter(e=>e.tipo!=="conclusao"));
+  h += `<div class="info" style="margin-top:10px">O checklist mostra como está agora (o RL Demandas não guarda o dia em que cada item foi marcado).</div>`;
+  return h;
+}
+function relSemana(){
+  const ini = dia(FR.semana), fim = new Date(ini); fim.setDate(fim.getDate()+6);
+  const H = D.horas.filter(h => naData(h.data, ini, fim) && doSetor(A[h.atividade_id]));
+  const tot = H.reduce((t,h)=>t+h.minutos,0);
+  const conc = D.atividades.filter(a => naData(a.concluida_em, ini, fim) && doSetor(a));
+  const corte = fim < HOJE ? fim : HOJE;
+  const atr = D.atividades.filter(a => doSetor(a) && a.prazo && dia(a.prazo) < corte && (a.status !== "Concluída" || dia(a.concluida_em) > corte));
+  const evs = eventosPeriodo(ini, fim), rep = evs.filter(e => e.tipo === "reprogramacao");
+  const reun = D.reunioes.filter(r => naData(r.data, ini, fim));
+  // horas por pessoa x dia
+  const dias = [...Array(7)].map((_,k)=>{ const d = new Date(ini); d.setDate(d.getDate()+k); return d; });
+  const pp = {}; H.forEach(h => { const k = (dia(h.data).getDay()+6)%7; (pp[h.login] = pp[h.login] || Array(7).fill(0))[k] += h.minutos; });
+  const po = {}; H.forEach(h => { const o = (A[h.atividade_id]||{}).obra_id || "?"; po[o] = (po[o]||0) + h.minutos; });
+  let h = cabRel("Relatório semanal", `${ini.toLocaleDateString("pt-BR")} a ${fim.toLocaleDateString("pt-BR")}`);
+  h += `<div class="kpis"><div class="kpi"><b>${hm(tot)}</b><span>horas lançadas</span></div><div class="kpi"><b>${conc.length}</b><span>concluídas</span></div>
+    <div class="kpi al"><b>${atr.length}</b><span>atrasadas no fim da semana</span></div><div class="kpi"><b>${rep.length}</b><span>reprogramações</span></div>
+    <div class="kpi"><b>${reun.length}</b><span>reuniões</span></div></div>`;
+  h += `<h2>Horas por pessoa</h2><div class="tab"><table><tr><th>Pessoa</th>${dias.map(d=>`<th class="esconde-cel">${DSEM[d.getDay()]} ${String(d.getDate()).padStart(2,"0")}</th>`).join("")}<th>Total</th></tr>` +
+    (Object.entries(pp).sort((a,b)=>nome(a[0]).localeCompare(nome(b[0]))).map(([l,v]) => `<tr><td>${esc(nome(l))}</td>${v.map(m=>`<td class="esconde-cel">${m?hm(m):"—"}</td>`).join("")}<td><b>${hm(v.reduce((a,b)=>a+b,0))}</b></td></tr>`).join("")
+     || `<tr><td colspan="9" class="vazio">Sem lançamentos.</td></tr>`) + `</table></div>`;
+  h += `<h2>Horas por obra</h2><div class="tab"><table><tr><th>Obra</th><th>Horas</th></tr>${Object.entries(po).sort((a,b)=>b[1]-a[1]).map(([o,m])=>`<tr><td>${esc(obraNome(o))}</td><td>${hm(m)}</td></tr>`).join("") || `<tr><td colspan="2" class="vazio">—</td></tr>`}</table></div>`;
+  h += `<h2>Concluídas na semana (${conc.length})</h2>` + tabelaAtiv(conc);
+  h += `<h2>Atrasadas no fim da semana (${atr.length})</h2>` + tabelaAtiv(atr);
+  h += `<h2>Reprogramações e pedidos</h2>` + blocoEventos(evs.filter(e => ["reprogramacao","solicitacao","aprovacao","recusa","correcao"].includes(e.tipo)));
+  if(reun.length) h += `<h2>Reuniões (${reun.length})</h2>` + reun.map(r => `<div class="card"><b>${esc(r.titulo||"Reunião")}</b> · ${br(r.data)} ${esc(r.hora_ini||"")}${r.decisoes?`<div class="txt info">${esc(r.decisoes)}</div>`:""}</div>`).join("");
+  return h;
+}
+
+function tProt(){
+  const R = D.rodadas.slice().sort((a,b)=>String(b.entrada).localeCompare(String(a.entrada)));
+  C().innerHTML = `<div class="info" style="margin-bottom:6px">${R.length} registro(s) de protocolo nos órgãos</div>` + (R.length ? `<div class="tab"><table><thead><tr><th>Órgão</th><th>Protocolo</th><th>Atividade</th><th>Entrada</th><th>Retorno</th><th>Resultado</th><th class="esconde-cel">Exig.</th></tr></thead><tbody>` +
+    R.map(r => { const a = A[r.atividade_id]||{}; const dias = !r.retorno && r.entrada ? Math.round((HOJE-dia(r.entrada))/864e5) : null;
+      return `<tr class="l" data-a="${r.atividade_id}"><td>${esc(r.orgao)}</td><td>${esc(r.protocolo||"")}</td><td>${esc(a.titulo||"")}<br><span class="info">${esc(obraNome(a.obra_id))}</span></td><td>${br(r.entrada)}</td><td>${r.retorno?br(r.retorno):`<span class="info">aguardando${dias!==null?" · há "+dias+" dias":""}</span>`}</td><td>${esc(r.resultado||"")}</td><td class="esconde-cel">${esc(r.exigencias??"")}</td></tr>`; }).join("") + `</tbody></table></div>` : `<div class="vazio">Nenhum protocolo registrado.</div>`);
+  ligarLinhas();
+}
+// ---------------------------------------------------------------- eventos
+async function entrar(){
+  const s = document.getElementById("senha").value; const m = document.getElementById("msg");
+  if(!s){ m.textContent = "Digite a senha."; return; }
+  m.textContent = "Abrindo…";
+  try { await carregar(s); try{ sessionStorage.setItem("rlp", s); }catch(e){} m.textContent = ""; telaApp(); }
+  catch(e){ m.textContent = e.message || "Não foi possível abrir."; }
+}
+document.getElementById("entrar").onclick = entrar;
+document.getElementById("senha").onkeydown = e => { if(e.key === "Enter") entrar(); };
+document.getElementById("bSair").onclick = () => { try{ sessionStorage.removeItem("rlp"); }catch(e){} location.reload(); };
+document.getElementById("bAtu").onclick = async () => { const b = document.getElementById("bAtu"); b.textContent = "…";
+  try { await carregar(SENHA); telaApp(); } catch(e) { alert(e.message); } b.textContent = "↻ Atualizar"; };
+document.addEventListener("keydown", e => { if(e.key === "Escape") fecharFicha(); });
+(async () => { let s = null; try{ s = sessionStorage.getItem("rlp"); }catch(e){}
+  if(s){ document.getElementById("senha").value = s; entrar(); } })();
+</script>
+</body>
+</html>
