@@ -71,6 +71,9 @@ tr.l{cursor:pointer}tr.l:hover td{background:#F4F8FA}
 .ck{display:flex;gap:7px;padding:2px 0}
 .ck .b{width:15px;height:15px;border:1.5px solid #5A6570;border-radius:3px;flex:none;font-size:11px;line-height:12px;text-align:center}
 .fechar{float:right}
+.fbar{position:relative;margin-bottom:10px}
+.pset{position:absolute;z-index:10;background:#fff;border:1px solid var(--borda);border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:10px 12px;min-width:260px;max-width:92vw}
+.pset label{display:flex;gap:8px;align-items:center;padding:6px 2px;cursor:pointer}
 .relcab{background:#fff;border:1px solid var(--borda);border-left:4px solid var(--azul);border-radius:8px;padding:10px 12px;margin-bottom:10px}
 .relp{padding:10px 12px}
 .relat{border-top:1px solid #E6E9EC;margin-top:8px;padding-top:8px}
@@ -149,7 +152,7 @@ async function carregar(senha){
   const texto = await baixarPacote();
   try { D = await abrirPacote(texto, senha); }
   catch(e) { throw new Error("Senha incorreta."); }
-  SENHA = senha; indexar();
+  SENHA = senha; indexar(); if(!SEL) iniciarFiltro();
 }
 // ---------------------------------------------------------------- utilidades
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -168,6 +171,48 @@ function indexar(){
   EV = grupo(D.eventos, "atividade_id"); PE = grupo(D.pedidos, "atividade_id"); RO = grupo(D.rodadas, "atividade_id");
   VE = grupo(D.verificacoes, "atividade_id"); HR = grupo(D.horas, "atividade_id");
   TOT = {}; D.horas_totais.forEach(t => { TOT[t.atividade_id] = (TOT[t.atividade_id]||0) + t.minutos; });
+}
+// ---------------------------------------------------------------- filtro global de setores
+let SEL = null;                                           // Set de ids de setor escolhidos
+function setoresAtivos(){ return D.setores.filter(s => s.ativo !== false).sort((a,b)=>(a.ordem||0)-(b.ordem||0)); }
+function setorPadrao(){
+  const s = D.setores.find(x => x.id === "INS") || D.setores.find(x => /instala/i.test(x.nome||""));
+  return s ? [s.id] : setoresAtivos().map(x => x.id);
+}
+function iniciarFiltro(){
+  let salvo = null; try { salvo = JSON.parse(localStorage.getItem("rl_setores") || "null"); } catch(e) {}
+  const validos = new Set(D.setores.map(s => s.id));
+  const lista = Array.isArray(salvo) ? salvo.filter(x => validos.has(x)) : [];
+  SEL = new Set(lista.length ? lista : setorPadrao());
+}
+function guardarFiltro(){ try { localStorage.setItem("rl_setores", JSON.stringify([...SEL])); } catch(e) {} }
+const noFiltro = setor => SEL.has(setor);
+const ativNoFiltro = a => !!a && SEL.has(a.setor);
+const visiveis = () => D.atividades.filter(a => SEL.has(a.setor));
+function textoFiltro(){
+  const at = setoresAtivos();
+  if(at.every(s => SEL.has(s.id))) return "Todos os setores";
+  const n = [...SEL].map(id => (SE[id]||{}).nome || setorSigla(id));
+  return n.length <= 2 ? n.join(" + ") : n.length + " setores";
+}
+function barraFiltro(){
+  const at = setoresAtivos();
+  return `<div class="fbar nao-imprime"><button class="btn" id="bSet">🏢 Setores: <b>${esc(textoFiltro())}</b> ▾</button>
+   <div id="pSet" class="pset oculto">
+    <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:6px"><button class="btn" data-acao="todos">Todos</button><button class="btn" data-acao="padrao">Só Instalações</button></div>
+    ${at.map(s => `<label><input type="checkbox" value="${s.id}" ${SEL.has(s.id)?"checked":""}> <b>${esc(s.sigla)}</b> ${esc(s.nome||"")}</label>`).join("")}
+    <div style="text-align:right;margin-top:6px"><button class="btn p" id="okSet">Aplicar</button></div></div></div>`;
+}
+function ligarFiltro(){
+  const b = document.getElementById("bSet"), p = document.getElementById("pSet");
+  b.onclick = () => p.classList.toggle("oculto");
+  p.querySelectorAll("[data-acao]").forEach(x => x.onclick = () => {
+    const marcar = x.dataset.acao === "todos" ? setoresAtivos().map(s=>s.id) : setorPadrao();
+    p.querySelectorAll("input[type=checkbox]").forEach(c => c.checked = marcar.includes(c.value)); });
+  document.getElementById("okSet").onclick = () => {
+    const esc_ = [...p.querySelectorAll("input:checked")].map(c => c.value);
+    if(!esc_.length){ alert("Escolha pelo menos um setor."); return; }
+    SEL = new Set(esc_); guardarFiltro(); telaApp(); };
 }
 const nome = l => U[l] ? U[l].nome : (l || "—");
 const curto = l => nome(l).split(" ")[0];
@@ -195,6 +240,7 @@ function telaApp(){
   document.getElementById("abas").innerHTML = ABAS.map(([k,t]) => `<button data-k="${k}" class="${k===ABA?"on":""}">${t}</button>`).join("");
   document.querySelectorAll("#abas button").forEach(b => b.onclick = () => { ABA = b.dataset.k; telaApp(); });
   ({painel:tPainel, ativ:tAtiv, rel:tRel, horas:tHoras, reun:tReun, prot:tProt})[ABA]();
+  C().insertAdjacentHTML("afterbegin", barraFiltro()); ligarFiltro();
 }
 const C = () => document.getElementById("conteudo");
 function linhaAtiv(a, extra=""){
@@ -208,13 +254,13 @@ function tabelaAtiv(lista){
 }
 function ligarLinhas(){ document.querySelectorAll("tr[data-a]").forEach(t => t.onclick = () => abrirFicha(t.dataset.a)); }
 function tPainel(){
-  const at = D.atividades, abertas = at.filter(a => a.status !== "Concluída");
+  const at = visiveis(), abertas = at.filter(a => a.status !== "Concluída");
   const atr = abertas.filter(atrasada), sete = new Date(HOJE); sete.setDate(sete.getDate()+7);
   const prox = abertas.filter(a => !atrasada(a) && a.prazo && dia(a.prazo) <= sete).sort((x,y)=>dia(x.prazo)-dia(y.prazo));
   const ini7 = new Date(HOJE); ini7.setDate(ini7.getDate()-7);
   const conc7 = at.filter(a => a.status==="Concluída" && a.concluida_em && dia(a.concluida_em) >= ini7);
-  const sem = semana(HOJE), horasSem = D.horas.filter(h => dia(h.data) >= sem).reduce((s,h)=>s+h.minutos,0);
-  const pend = D.pedidos.filter(p => p.status === "Pendente");
+  const sem = semana(HOJE), horasSem = D.horas.filter(h => dia(h.data) >= sem && ativNoFiltro(A[h.atividade_id])).reduce((s,h)=>s+h.minutos,0);
+  const pend = D.pedidos.filter(p => p.status === "Pendente" && ativNoFiltro(A[p.atividade_id]));
   let h = `<div class="kpis">
     <div class="kpi"><b>${abertas.filter(a=>a.status==="Em andamento").length}</b><span>em andamento</span></div>
     <div class="kpi al"><b>${atr.length}</b><span>atrasadas</span></div>
@@ -223,7 +269,7 @@ function tPainel(){
     <div class="kpi"><b>${hm(horasSem)}</b><span>horas lançadas nesta semana</span></div>
     <div class="kpi"><b>${pend.length}</b><span>pedidos pendentes</span></div></div>`;
   // por setor
-  const setores = D.setores.filter(s => s.ativo !== false).sort((a,b)=>(a.ordem||0)-(b.ordem||0));
+  const setores = setoresAtivos().filter(s => SEL.has(s.id));
   h += `<h2>Por setor</h2><div class="tab"><table><thead><tr><th>Setor</th><th>Em andamento</th><th>Atrasadas</th><th>A fazer</th><th>Concluídas (7 dias)</th><th>Horas na semana</th></tr></thead><tbody>` +
     setores.map(s => { const da = at.filter(a=>a.setor===s.id);
       const hs = D.horas.filter(x => dia(x.data) >= sem && A[x.atividade_id] && A[x.atividade_id].setor===s.id).reduce((t,x)=>t+x.minutos,0);
@@ -238,21 +284,20 @@ function tPainel(){
 let FA = {setor:"", sit:"abertas", resp:"", obra:"", busca:""};
 function tAtiv(){
   const opt = (v, t, sel) => `<option value="${esc(v)}" ${v===sel?"selected":""}>${esc(t)}</option>`;
-  const resp = [...new Set(D.atividades.map(a=>a.responsavel))].filter(Boolean).sort((a,b)=>nome(a).localeCompare(nome(b)));
-  const obras = [...new Set(D.atividades.map(a=>a.obra_id))].filter(Boolean).sort((a,b)=>obraNome(a).localeCompare(obraNome(b)));
+  const resp = [...new Set(visiveis().map(a=>a.responsavel))].filter(Boolean).sort((a,b)=>nome(a).localeCompare(nome(b)));
+  const obras = [...new Set(visiveis().map(a=>a.obra_id))].filter(Boolean).sort((a,b)=>obraNome(a).localeCompare(obraNome(b)));
   C().innerHTML = `<div class="filtros">
-    <select id="fs">${opt("","Todos os setores",FA.setor)}${D.setores.map(s=>opt(s.id,s.sigla+" · "+(s.nome||""),FA.setor)).join("")}</select>
     <select id="fsit">${[["abertas","Não concluídas"],["Em andamento","Em andamento"],["A fazer","A fazer"],["Pausada","Pausadas"],["atr","Atrasadas"],["Concluída","Concluídas"],["","Todas"]].map(([v,t])=>opt(v,t,FA.sit)).join("")}</select>
     <select id="fr">${opt("","Todos os responsáveis",FA.resp)}${resp.map(l=>opt(l,nome(l),FA.resp)).join("")}</select>
     <select id="fo">${opt("","Todas as obras",FA.obra)}${obras.map(o=>opt(o,obraNome(o),FA.obra)).join("")}</select>
     <input id="fb" placeholder="Buscar título, obra, descrição…" value="${esc(FA.busca)}"></div><div id="lista"></div>`;
   const ligar = (id, k, ev="onchange") => document.getElementById(id)[ev] = e => { FA[k] = e.target.value; listar(); };
-  ligar("fs","setor"); ligar("fsit","sit"); ligar("fr","resp"); ligar("fo","obra"); ligar("fb","busca","oninput");
+  ligar("fsit","sit"); ligar("fr","resp"); ligar("fo","obra"); ligar("fb","busca","oninput");
   listar();
 }
 function listar(){
   const b = FA.busca.toLowerCase();
-  let L = D.atividades.filter(a => (!FA.setor || a.setor===FA.setor) && (!FA.resp || a.responsavel===FA.resp) && (!FA.obra || a.obra_id===FA.obra)
+  let L = visiveis().filter(a => (!FA.resp || a.responsavel===FA.resp) && (!FA.obra || a.obra_id===FA.obra)
     && (FA.sit==="" || (FA.sit==="abertas" ? a.status!=="Concluída" : FA.sit==="atr" ? atrasada(a) : a.status===FA.sit))
     && (!b || (a.titulo+" "+obraNome(a.obra_id)+" "+(a.descricao||"")+" "+discSigla(a)).toLowerCase().includes(b)));
   L.sort((x,y) => (atrasada(y)-atrasada(x)) || ((dia(x.prazo)||0)-(dia(y.prazo)||0)));
@@ -302,7 +347,7 @@ function tHoras(){
   ini.mes = new Date(HOJE.getFullYear(), HOJE.getMonth(), 1); fim.mes = HOJE;
   ini.mant = new Date(HOJE.getFullYear(), HOJE.getMonth()-1, 1); fim.mant = new Date(HOJE.getFullYear(), HOJE.getMonth(), 0);
   ini.d30 = new Date(HOJE); ini.d30.setDate(HOJE.getDate()-29); fim.d30 = HOJE;
-  const H = D.horas.filter(h => noPeriodo(dia(h.data), ini[FH], fim[FH]));
+  const H = D.horas.filter(h => noPeriodo(dia(h.data), ini[FH], fim[FH]) && ativNoFiltro(A[h.atividade_id]));
   const pp = {}, po = {};
   H.forEach(h => { pp[h.login] = (pp[h.login]||0) + h.minutos; const o = (A[h.atividade_id]||{}).obra_id || "?"; po[o] = (po[o]||0) + h.minutos; });
   const tot = H.reduce((t,h)=>t+h.minutos,0);
@@ -313,7 +358,9 @@ function tHoras(){
   document.getElementById("fh").onchange = e => { FH = e.target.value; tHoras(); };
 }
 function tReun(){
-  const R = D.reunioes.slice().sort((a,b)=>String(b.data).localeCompare(String(a.data)));
+  const setoresReun = r => { try { const v = JSON.parse(r.setores || "[]"); return Array.isArray(v) ? v : []; } catch(e) { return []; } };
+  const R = D.reunioes.filter(r => { const v = setoresReun(r); return !v.length || v.some(noFiltro); })
+    .sort((a,b)=>String(b.data).localeCompare(String(a.data)));
   const prox = R.filter(r => dia(r.data) >= HOJE).reverse(), pass = R.filter(r => dia(r.data) < HOJE).slice(0,30);
   const card = r => { const ps = D.participantes.filter(p=>p.reuniao_id===r.id), en = D.encaminhamentos.filter(e=>e.reuniao_id===r.id);
     return `<div class="card"><b>${esc(r.titulo||"Reunião")}</b><br>${br(r.data)} · ${esc(r.hora_ini||"")}${r.hora_fim?"–"+esc(r.hora_fim):""} <span class="info">${esc(r.formato||"")}</span>
@@ -334,20 +381,18 @@ function tRel(){
      <select id="rt"><option value="dia" ${FR.tipo==="dia"?"selected":""}>Relatório diário</option><option value="sem" ${FR.tipo==="sem"?"selected":""}>Relatório semanal</option></select>
      ${FR.tipo==="dia" ? `<input type="date" id="rd" value="${FR.dia}" max="${iso(HOJE)}" style="flex:0 0 auto">`
        : `<select id="rs">${semanas.map(s=>{ const f=new Date(s); f.setDate(f.getDate()+6); return `<option value="${iso(s)}" ${iso(s)===FR.semana?"selected":""}>${s.toLocaleDateString("pt-BR")} a ${f.toLocaleDateString("pt-BR")}</option>`; }).join("")}</select>`}
-     <select id="rse"><option value="">Todos os setores</option>${D.setores.map(s=>`<option value="${s.id}" ${s.id===FR.setor?"selected":""}>${esc(s.sigla)} · ${esc(s.nome||"")}</option>`).join("")}</select>
      <button class="btn p" onclick="window.print()">🖨 Imprimir / Salvar PDF</button></div><div id="rel"></div>`;
   document.getElementById("rt").onchange = e => { FR.tipo = e.target.value; tRel(); };
   if(document.getElementById("rd")) document.getElementById("rd").onchange = e => { FR.dia = e.target.value; tRel(); };
   if(document.getElementById("rs")) document.getElementById("rs").onchange = e => { FR.semana = e.target.value; tRel(); };
-  document.getElementById("rse").onchange = e => { FR.setor = e.target.value; tRel(); };
   document.getElementById("rel").innerHTML = FR.tipo === "dia" ? relDia() : relSemana();
   ligarLinhas();
 }
-const doSetor = a => !FR.setor || (a && a.setor === FR.setor);
+const doSetor = a => ativNoFiltro(a);
 const naData = (s, ini, fim) => { const d = dia(s); return d && d >= ini && d <= fim; };
 function cabRel(titulo, periodo){
   return `<div class="relcab"><div class="logo" style="margin:0"><div class="q" style="width:32px;height:32px;font-size:13px">RL</div>
-   <div><b>${titulo}</b><br><span class="info">${periodo}${FR.setor?" · setor "+esc(setorSigla(FR.setor)):" · todos os setores"} · dados de ${new Date(D.gerado_em).toLocaleDateString("pt-BR")} ${new Date(D.gerado_em).toTimeString().slice(0,5)}</span></div></div></div>`;
+   <div><b>${titulo}</b><br><span class="info">${periodo}${" · " + esc(textoFiltro())} · dados de ${new Date(D.gerado_em).toLocaleDateString("pt-BR")} ${new Date(D.gerado_em).toTimeString().slice(0,5)}</span></div></div></div>`;
 }
 function eventosPeriodo(ini, fim){
   return D.eventos.filter(e => naData(e.quando, ini, fim) && doSetor(A[e.atividade_id]));
@@ -395,7 +440,7 @@ function relSemana(){
   const corte = fim < HOJE ? fim : HOJE;
   const atr = D.atividades.filter(a => doSetor(a) && a.prazo && dia(a.prazo) < corte && (a.status !== "Concluída" || dia(a.concluida_em) > corte));
   const evs = eventosPeriodo(ini, fim), rep = evs.filter(e => e.tipo === "reprogramacao");
-  const reun = D.reunioes.filter(r => naData(r.data, ini, fim));
+  const reun = D.reunioes.filter(r => naData(r.data, ini, fim) && (() => { try { const v = JSON.parse(r.setores||"[]"); return !Array.isArray(v) || !v.length || v.some(noFiltro); } catch(e) { return true; } })());
   // horas por pessoa x dia
   const dias = [...Array(7)].map((_,k)=>{ const d = new Date(ini); d.setDate(d.getDate()+k); return d; });
   const pp = {}; H.forEach(h => { const k = (dia(h.data).getDay()+6)%7; (pp[h.login] = pp[h.login] || Array(7).fill(0))[k] += h.minutos; });
@@ -416,7 +461,7 @@ function relSemana(){
 }
 
 function tProt(){
-  const R = D.rodadas.slice().sort((a,b)=>String(b.entrada).localeCompare(String(a.entrada)));
+  const R = D.rodadas.filter(r => ativNoFiltro(A[r.atividade_id])).sort((a,b)=>String(b.entrada).localeCompare(String(a.entrada)));
   C().innerHTML = `<div class="info" style="margin-bottom:6px">${R.length} registro(s) de protocolo nos órgãos</div>` + (R.length ? `<div class="tab"><table><thead><tr><th>Órgão</th><th>Protocolo</th><th>Atividade</th><th>Entrada</th><th>Retorno</th><th>Resultado</th><th class="esconde-cel">Exig.</th></tr></thead><tbody>` +
     R.map(r => { const a = A[r.atividade_id]||{}; const dias = !r.retorno && r.entrada ? Math.round((HOJE-dia(r.entrada))/864e5) : null;
       return `<tr class="l" data-a="${r.atividade_id}"><td>${esc(r.orgao)}</td><td>${esc(r.protocolo||"")}</td><td>${esc(a.titulo||"")}<br><span class="info">${esc(obraNome(a.obra_id))}</span></td><td>${br(r.entrada)}</td><td>${r.retorno?br(r.retorno):`<span class="info">aguardando${dias!==null?" · há "+dias+" dias":""}</span>`}</td><td>${esc(r.resultado||"")}</td><td class="esconde-cel">${esc(r.exigencias??"")}</td></tr>`; }).join("") + `</tbody></table></div>` : `<div class="vazio">Nenhum protocolo registrado.</div>`);
