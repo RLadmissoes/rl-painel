@@ -5,6 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
 <title>RL Demandas · Painel</title>
+<link rel="manifest" href="manifest.json">
+<meta name="theme-color" content="#005A8A">
+<link rel="icon" type="image/png" sizes="192x192" href="icone-192.png">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="RL Demandas">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
 <style>
 :root{--azul:#005A8A;--azul2:#62B2C2;--azf:#DDEFF3;--azt:#0B4F66;--fundo:#F4F7F9;--borda:#C3CAD0;--texto:#22303A;--t2:#5A6570;--lar:#FCE3CC;--lart:#8A3D00;--cin:#ECEEF1;--cint:#4E5660;--fim:#D9E2F5;--fimt:#1F3B73}
 *{box-sizing:border-box}
@@ -428,6 +436,7 @@ document.getElementById("bSair").onclick = () => { try{ sessionStorage.removeIte
 document.getElementById("bAtu").onclick = async () => { const b = document.getElementById("bAtu"); b.textContent = "…";
   try { await carregar(SENHA); telaApp(); } catch(e) { alert(e.message); } b.textContent = "↻ Atualizar"; };
 document.addEventListener("keydown", e => { if(e.key === "Escape") fecharFicha(); });
+if('serviceWorker' in navigator && location.protocol === 'https:') navigator.serviceWorker.register('sw.js').catch(()=>{});
 (async () => { let s = null; try{ s = sessionStorage.getItem("rlp"); }catch(e){}
   if(s){ document.getElementById("senha").value = s; entrar(); } })();
 </script>
