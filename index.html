@@ -174,14 +174,15 @@ h2{margin:10px 0 6px}
 /* ================= relatórios semanal e mensal (modelo aprovado 22/11/2026) ================= */
 #rel.r2{background:#fff;border:1px solid var(--borda);border-radius:8px;padding:18px 22px;max-width:900px;margin:0 auto;line-height:1.45}
 #rel.r2 *{font-family:Arial,Helvetica,sans-serif!important}
-#rel.r2 .r2capa{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10mm 0 14mm;border-bottom:1px dashed #C3CAD0;margin-bottom:8px}
-#rel.r2 .r2capa img{width:62mm;max-width:70%}
-#rel.r2 .r2capa .t1{font-size:20pt;font-weight:700;margin-top:18mm}
-#rel.r2 .r2capa .t2{font-size:16pt;font-weight:700;margin:6px 0}
-#rel.r2 .r2capa .t3{font-size:12pt}
-#rel.r2 .r2capa .setor{margin-top:22mm;font-size:13pt;font-weight:700}
-#rel.r2 .r2capa .pes{font-size:11pt;margin-top:4px}
-#rel.r2 .r2capa .mes{margin-top:18mm;font-weight:700}
+#rel.r2 .r2capa{position:relative;width:100%;max-width:620px;margin:0 auto 14px;aspect-ratio:210/297;background:#FFFFFF no-repeat 0 0/100% 100%;container-type:inline-size;box-shadow:0 1px 6px rgba(0,0,0,.18)}
+#rel.r2 .r2capa .ctit{position:absolute;left:8%;right:8%;top:18%;text-align:center}
+#rel.r2 .r2capa .t1{font-size:4.6cqw;font-weight:700;line-height:1.15}
+#rel.r2 .r2capa .t2{font-size:3.4cqw;font-weight:700;margin-top:1.5cqw}
+#rel.r2 .r2capa .t3{font-size:2.2cqw;font-weight:700;margin-top:1cqw}
+#rel.r2 .r2capa .csetor{position:absolute;right:9%;left:30%;top:66%;text-align:right}
+#rel.r2 .r2capa .setor{font-size:3.4cqw;font-weight:700}
+#rel.r2 .r2capa .pes{font-size:1.9cqw;margin-top:.6cqw}
+#rel.r2 .r2capa .mes{position:absolute;left:0;right:0;top:83%;text-align:center;font-size:2.7cqw;font-weight:700}
 #rel.r2 h1{font-size:13pt;margin:16px 0 7px;text-transform:uppercase;color:#000;break-after:avoid}
 #rel.r2 h2{font-size:11pt;margin:10px 0 5px;color:#000;break-after:avoid}
 #rel.r2 p{margin:0 0 8px;text-align:justify;font-size:11pt}
@@ -211,8 +212,7 @@ h2{margin:10px 0 6px}
 #rel.r2 .fig svg{display:block;width:100%;height:auto}
 #rel.r2 .leg{font-size:8.5pt;text-align:center;font-style:italic;margin-bottom:8px}
 #rel.r2 .fonte{font-size:8pt;border-top:1px solid #C3CAD0;padding-top:4px;margin-top:8px}
-#rel.r2 .ass{margin-top:22px;text-align:center;font-size:10pt;break-inside:avoid}
-#rel.r2 .ass .linha{width:70mm;border-top:1px solid #000;margin:26px auto 4px}
+#rel.r2 .ass{margin-top:28px;text-align:right;font-size:11pt;line-height:1.5;break-inside:avoid}
 #rel.r2 .vaz{color:#5A6570;font-style:italic;font-size:10pt}
 /* textos editáveis */
 #rel.r2 .ed{position:relative;border:1px dashed #4C9BD6;border-radius:4px;padding:8px 8px 2px;margin:8px 0 9px;background:#FBFDFF}
@@ -254,13 +254,18 @@ h2{margin:10px 0 6px}
 #rel.r2 .so-imp{display:none}
 @media (max-width:640px){#rel.r2{padding:10px}#rel.r2 .r2cards{grid-template-columns:repeat(2,1fr)}}
 @media print{
- #rel.r2{border:0;padding:0;max-width:none;margin:0}
+ html,body,#app,main{background:transparent!important}
+ #rel.r2{border:0;padding:0;max-width:none;margin:0;background:transparent}
+ #rel.r2 table,#rel.r2 .fig,#rel.r2 .fig svg rect[width='520']{background:transparent}
  #rel.r2 .ctl,#rel.r2 .inserir,#rel.r2 .maislinha,#rel.r2 .tirar,#rel.r2 .metas,#rel.r2 .nao-imprime{display:none!important}
  #rel.r2 .ed,#rel.r2 .pp{border:0;background:none;padding:0;margin:0 0 8px}
  #rel.r2 td[contenteditable],#rel.r2 td[data-ed].editado{background:none;box-shadow:none}
  #rel.r2 .motivo:empty::before{content:""}
- #rel.r2 .r2capa{page:r2capa;height:262mm;border:0;margin:0;padding:12mm 0 0;break-after:page}
- #rel.r2 .r2capa .t1{margin-top:30mm}#rel.r2 .r2capa .setor{margin-top:35mm}#rel.r2 .r2capa .mes{margin-top:auto;margin-bottom:8mm}
+ #rel.r2 .r2capa{page:r2capa;width:190mm;max-width:none;height:276mm;aspect-ratio:auto;background:none!important;box-shadow:none;margin:0;break-after:page}
+ #rel.r2 .r2capa .ctit{left:5mm;right:5mm;top:42mm}
+ #rel.r2 .r2capa .t1{font-size:26pt}#rel.r2 .r2capa .t2{font-size:20pt;margin-top:3mm}#rel.r2 .r2capa .t3{font-size:13pt;margin-top:2mm}
+ #rel.r2 .r2capa .csetor{right:12mm;left:50mm;top:186mm}#rel.r2 .r2capa .setor{font-size:20pt}#rel.r2 .r2capa .pes{font-size:11pt;margin-top:1mm}
+ #rel.r2 .r2capa .mes{top:236mm;font-size:16pt}
  #rel.r2 .r2corpo{page:r2}
  #rel.r2 .r2anexo{margin:0}
  #rel.r2 .apag{page:r2pais;break-before:page;border:0;padding:0;margin:0;overflow:visible}
@@ -1042,6 +1047,7 @@ function classe(a){
 // ---- feriados (as horas nesses dias contam como adicionais)
 const FERIADOS = ["2026-11-02","2026-11-15","2026-11-20","2027-11-20","2026-12-25","2027-01-01","2027-02-08","2027-02-09","2027-03-26","2027-04-21","2027-05-01","2027-05-27","2027-09-07","2027-10-12","2027-11-02","2027-11-15","2027-12-25"];
 const INICIO_REG = new Date(2026, 10, 9);          // S46: início do registro no RL Demandas
+const TIMBRADO = {capa: "timbrado_capa.jpg", folha: "timbrado_folha.jpg", paisagem: "timbrado_paisagem.jpg"};   // papel timbrado do setor (arquivos no repositório)
 const ASSINATURA = ["Eng.º Jonathas Sousa Santana", "Coordenador do Setor de Instalações Civis"];
 const ENDERECO = "Rua Gavião, nº 289, Jóquei Clube · CEP 69.313-028 · Boa Vista – RR";
 const somaD = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
@@ -1218,15 +1224,15 @@ const F = {
 
 // ---------------------------------------------------------------- peças comuns
 function capaR2(t1, t2, t3, mesAno, colab){
-  return `<section class="r2capa"><img src="${LOGO}" alt="Ribeiro Lopes"><div class="t1">${t1}</div><div class="t2">${t2}</div><div class="t3">${t3}</div>
-   <div class="setor">${esc(nomeSetorCapa())}</div><div class="pes">Coordenador: ${esc(ASSINATURA[0].replace("Eng.º ",""))}</div>
-   <div class="pes" contenteditable="true" data-edx="colab">${lerLS(chaveR2("colab"), null) ?? esc("Colaboradores: " + lista(colab))}</div><div class="mes">${mesAno}</div></section>`;
+  return `<section class="r2capa" style="background-image:url('${TIMBRADO.capa}')"><div class="ctit"><div class="t1">${t1}</div><div class="t2">${t2}</div><div class="t3">${t3}</div></div>
+   <div class="csetor"><div class="setor">${esc(nomeSetorCapa())}</div><div class="pes">Coordenador: ${esc(ASSINATURA[0].replace("Eng.º ",""))}</div>
+   <div class="pes" contenteditable="true" data-edx="colab">${lerLS(chaveR2("colab"), null) ?? esc("Colaboradores: " + lista(colab))}</div></div><div class="mes">${mesAno}</div></section>`;
 }
 function nomeSetorCapa(){ const n = [...SEL].map(id => (SE[id]||{}).nome || id);
   if(SEL.size === 1 && (SEL.has("INS") || /instala/i.test(n[0]))) return "SETOR DE INSTALAÇÕES CIVIS";
   return (n.length === 1 ? "SETOR DE " : "SETORES: ") + n.join(", ").toUpperCase(); }
 const fonteAss = (txt) => `<div class="fonte">Fonte: RL Demandas, dados de ${dmy(new Date(D.gerado_em))} ${new Date(D.gerado_em).toTimeString().slice(0,5)}. Registro de atividades no RL Demandas a partir de 09/11/2026. ${txt}</div>
-  <div class="ass"><div class="linha"></div>${ASSINATURA[0]}<br>${ASSINATURA[1]}</div>`;
+  <div class="ass"><b>${ASSINATURA[0]}</b><br>${ASSINATURA[1]}<br>Departamento de Engenharia<br>Ribeiro Lopes Consultoria e Serviços</div>`;
 const DEFINICOES = "Entrega de projeto = projeto, modelagem ou detalhamento concluído; memoriais, plotagens, links, requerimentos e viabilidades são atividades de apoio; rotinas administrativas e reuniões entram como coordenação. Horas da semana: até 40 h por pessoa, de segunda a sexta; horas adicionais = sábados, domingos, feriados e horas de quem apoia o setor eventualmente.";
 function comp(atual, ant, melhorMaior, fmt = v => v, semReg){
   if(semReg) return `<em class="sr">sem registro</em>`;
@@ -1489,14 +1495,14 @@ function anexoR2(semanas, comResp, titulo){
   const W = {at: 88, sit: 34, pr: 16}, wDias = 277 - W.at - W.sit - W.pr, larg = [1,1,1,1,1,0.45,0.45], u = wDias / larg.reduce((a,b)=>a+b,0);
   const blocos = semanas.map(s => ({s, L: somaD(s, 6) < INICIO_REG ? null : linhasSemana(s)}));
   // empacotar semanas em páginas (uma semana não é partida; semanas leves dividem a folha)
-  const MAXL = 21, paginas = []; let atual = [], n = 0;
+  const MAXL = 18, paginas = []; let atual = [], n = 0;
   blocos.forEach(b => { const r = 1 + Math.max(1, b.L ? b.L.length : 1);
     if(atual.length && n + r > MAXL){ paginas.push(atual); atual = []; n = 0; } atual.push(b); n += r; });
   if(atual.length) paginas.push(atual);
   const leg = `<div class="gleg2">Barras = início → prazo:<i style="background:#1F4E89"></i>concluída<i style="background:#4C9BD6"></i>em andamento<i style="background:#D5D9DE"></i>a fazer<i style="background:repeating-linear-gradient(135deg,#F28E2B 0 3px,#FFFFFF 3px 6px)"></i>atraso (prazo → conclusão ou hoje) · fim de semana em cinza</div>`;
   return paginas.map(pg => {
     const nl = pg.reduce((t, b) => t + 1 + Math.max(1, b.L ? b.L.length : 1), 0);
-    const alt = Math.max(6.2, Math.min(22, 150 / nl)), fs = alt >= 15 ? 11 : alt >= 10 ? 9.5 : alt >= 8 ? 8.5 : 7, fs2 = alt >= 8 ? Math.min(8, fs - 1) : 6, hb = Math.min(8, alt * 0.5);
+    const alt = Math.max(6.2, Math.min(20, 126 / nl)), fs = alt >= 15 ? 11 : alt >= 10 ? 9.5 : alt >= 8 ? 8.5 : 7, fs2 = alt >= 8 ? Math.min(8, fs - 1) : 6, hb = Math.min(8, alt * 0.5);
     let corpo = "";
     pg.forEach(b => {
       const dias = [...Array(7)].map((_, k) => somaD(b.s, k));
@@ -1546,17 +1552,29 @@ async function logoParaImpressao(){
   } catch(e) { LOGO_SVG = ""; }
   return LOGO_SVG;
 }
+const FUNDOS = {};
+async function fundoSvg(url, w, h){   // imagem de página inteira embrulhada num SVG com tamanho em mm (o Chrome usa o tamanho do SVG)
+  if(FUNDOS[url]) return FUNDOS[url];
+  try { let dados = url;
+    if(!url.startsWith("data:")){ const bl = await (await fetch(url)).blob(); dados = await new Promise(ok => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.readAsDataURL(bl); }); }
+    const s = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="${w}mm" height="${h}mm" viewBox="0 0 ${w*10} ${h*10}"><image width="${w*10}" height="${h*10}" preserveAspectRatio="none" xlink:href="${dados}"/></svg>`;
+    FUNDOS[url] = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(s)));
+  } catch(e) { FUNDOS[url] = ""; }
+  return FUNDOS[url];
+}
 async function estiloPaginaR2(r){
-  const logo = await logoParaImpressao(), q = s => '"' + s.replace(/"/g, "'") + '"';
+  const [fc, ff, fp] = await Promise.all([fundoSvg(TIMBRADO.capa, 210, 297), fundoSvg(TIMBRADO.folha, 210, 297), fundoSvg(TIMBRADO.paisagem, 297, 210)]);
+  const q = s => '"' + s.replace(/"/g, "'") + '"', canto = (u, w, h) => u ? `@top-left-corner{content:url(${u});width:${w}mm;height:${h}mm}` : "";
+  const num = `@top-right{content:${q(r.rod + " · página ")} counter(page);font:8pt Arial;color:#5A6570}`;
+  // o Chrome só desenha imagens de margem já carregadas: deixar uma cópia invisível na página
+  let pre = document.getElementById("r2pre"); if(!pre){ pre = document.createElement("div"); pre.id = "r2pre"; pre.setAttribute("aria-hidden", "true");
+    pre.style.cssText = "position:absolute;left:-9999px;top:0;width:2px;height:2px;overflow:hidden"; document.body.appendChild(pre); }
+  pre.innerHTML = [fc, ff, fp].filter(Boolean).map(u => `<img src="${u}" alt="" style="width:2px;height:2px">`).join("");
   let st = document.getElementById("r2page"); if(!st){ st = document.createElement("style"); st.id = "r2page"; document.head.appendChild(st); }
-  const rodTxt = `font:7.5pt Arial;color:#5A6570;border-top:1px solid #C3CAD0;vertical-align:top;padding-top:1.5mm`;
-  st.textContent = `@page r2capa{size:A4;margin:14mm 16mm 14mm}
-   @page r2{size:A4;margin:26mm 16mm 18mm;
-     @top-left{content:${logo ? `url(${logo})` : '""'};vertical-align:bottom;padding-bottom:1.5mm;border-bottom:2px solid #005A8A}
-     @top-right{content:${q(r.cab)};font:9pt Arial;color:#5A6570;vertical-align:bottom;padding-bottom:2.5mm;border-bottom:2px solid #005A8A}
-     @bottom-left{content:${q(ENDERECO)};${rodTxt}} @bottom-right{content:${q(r.rod + " · página ")} counter(page);${rodTxt}}}
-   @page r2pais{size:A4 landscape;margin:9mm 10mm 12mm;
-     @bottom-left{content:${q(ENDERECO)};${rodTxt}} @bottom-right{content:${q(r.rod + " · página ")} counter(page);${rodTxt}}}`;
+  // o papel timbrado entra como imagem de página inteira no canto da margem (fica atrás do texto)
+  st.textContent = `@page r2capa{size:A4;margin:10mm;${canto(fc, 10, 10)}}
+   @page r2{size:A4;margin:35mm 30mm 24mm 30mm;${canto(ff, 30, 35)}${num}}
+   @page r2pais{size:A4 landscape;margin:30mm 12mm 18mm 12mm;${canto(fp, 12, 30)}${num}}`;
 }
 function ligarR2(){
   const el = document.getElementById("rel");
