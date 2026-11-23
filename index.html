@@ -137,7 +137,7 @@ h2{margin:10px 0 6px}
 .relcab{background:#fff;border:1px solid var(--borda);border-left:4px solid var(--azul);border-radius:8px;padding:10px 12px;margin-bottom:10px}
 .relcab .logo-rl{height:54px;width:auto;margin-right:6px}
 /* relatórios: Arial 12, texto preto */
-#rel *{font-family:Arial,Helvetica,sans-serif!important;color:#000!important}
+#rel:not(.r2) *{font-family:Arial,Helvetica,sans-serif!important;color:#000!important}
 #rel td,#rel th,#rel p,#rel li,#rel .info,#rel .card,#rel .manual .txtp,#rel .manual textarea,#rel .relcab span{font-size:12pt}
 #rel h2,#rel .manual h3{font-size:14pt}
 #rel .relcab b{font-size:15pt}
@@ -170,6 +170,101 @@ h2{margin:10px 0 6px}
  nav{top:70px}
  .esconde-cel{display:none}
  td,th{padding:6px}
+}
+/* ================= relatórios semanal e mensal (modelo aprovado 22/11/2026) ================= */
+#rel.r2{background:#fff;border:1px solid var(--borda);border-radius:8px;padding:18px 22px;max-width:900px;margin:0 auto;line-height:1.45}
+#rel.r2 *{font-family:Arial,Helvetica,sans-serif!important}
+#rel.r2 .r2capa{display:flex;flex-direction:column;align-items:center;text-align:center;padding:10mm 0 14mm;border-bottom:1px dashed #C3CAD0;margin-bottom:8px}
+#rel.r2 .r2capa img{width:62mm;max-width:70%}
+#rel.r2 .r2capa .t1{font-size:20pt;font-weight:700;margin-top:18mm}
+#rel.r2 .r2capa .t2{font-size:16pt;font-weight:700;margin:6px 0}
+#rel.r2 .r2capa .t3{font-size:12pt}
+#rel.r2 .r2capa .setor{margin-top:22mm;font-size:13pt;font-weight:700}
+#rel.r2 .r2capa .pes{font-size:11pt;margin-top:4px}
+#rel.r2 .r2capa .mes{margin-top:18mm;font-weight:700}
+#rel.r2 h1{font-size:13pt;margin:16px 0 7px;text-transform:uppercase;color:#000;break-after:avoid}
+#rel.r2 h2{font-size:11pt;margin:10px 0 5px;color:#000;break-after:avoid}
+#rel.r2 p{margin:0 0 8px;text-align:justify;font-size:11pt}
+#rel.r2 .r2cards{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid #C3CAD0;margin:10px 0;break-inside:avoid}
+#rel.r2 .r2card{padding:7px 5px;text-align:center;border-right:1px solid #E1E5E8;border-bottom:1px solid #E1E5E8;background:#F7FAFC}
+#rel.r2 .r2card:nth-child(4n){border-right:0}
+#rel.r2 .r2card b{display:block;font-size:19pt;color:#005A8A;line-height:1.1}
+#rel.r2 .r2card .l{font-size:8.5pt;font-weight:700;display:block}
+#rel.r2 .r2card .c{font-size:7.5pt;color:#5A6570;display:block}
+#rel.r2 .r2card .c em{font-style:normal;font-weight:700;color:#1F4E89}
+#rel.r2 .r2card .c em.pior{color:#8A3D00}#rel.r2 .r2card .c em.sr{color:#5A6570;font-weight:400}
+#rel.r2 table.t{width:100%;border-collapse:collapse;font-size:9pt;margin:5px 0 9px}
+#rel.r2 table.t th{background:#005A8A;color:#fff;text-align:left;padding:4px 5px;font-size:9pt;position:static}
+#rel.r2 table.t td{padding:3px 5px;border-bottom:1px solid #DDE3E7;vertical-align:top;font-size:9pt}
+#rel.r2 table.t tr{break-inside:avoid}
+#rel.r2 table.t tr.g td{background:#EEF3F7;font-weight:700;color:#005A8A}
+#rel.r2 table.t td.n,#rel.r2 table.t th.n{text-align:right;white-space:nowrap}
+#rel.r2 table.t td.cinza{color:#5A6570}
+#rel.r2 .tag{display:inline-block;border-radius:8px;padding:0 6px;font-size:8pt;font-weight:700;white-space:nowrap}
+#rel.r2 .tag.ok{background:#D3DCEA;color:#1F3B73}#rel.r2 .tag.atr{background:#FCE3CC;color:#8A3D00}
+#rel.r2 .tag.and{background:#DBEBF8;color:#0B3D66}#rel.r2 .tag.faz{background:#ECEEF1;color:#4E5660}
+#rel.r2 .sobre{color:#8A3D00;font-weight:700}
+#rel.r2 .niv{font-weight:700;text-align:center;font-size:8pt}
+#rel.r2 .niv.crit{background:#F28E2B}#rel.r2 .niv.alto{background:#FCE3CC;color:#8A3D00}
+#rel.r2 .niv.medio{background:#DBEBF8;color:#0B3D66}#rel.r2 .niv.baixo{background:#ECEEF1;color:#4E5660}
+#rel.r2 .fig{border:1px solid #E1E5E8;padding:5px;margin:6px 0 2px;break-inside:avoid}
+#rel.r2 .fig svg{display:block;width:100%;height:auto}
+#rel.r2 .leg{font-size:8.5pt;text-align:center;font-style:italic;margin-bottom:8px}
+#rel.r2 .fonte{font-size:8pt;border-top:1px solid #C3CAD0;padding-top:4px;margin-top:8px}
+#rel.r2 .ass{margin-top:22px;text-align:center;font-size:10pt;break-inside:avoid}
+#rel.r2 .ass .linha{width:70mm;border-top:1px solid #000;margin:26px auto 4px}
+#rel.r2 .vaz{color:#5A6570;font-style:italic;font-size:10pt}
+/* textos editáveis */
+#rel.r2 .ed{position:relative;border:1px dashed #4C9BD6;border-radius:4px;padding:8px 8px 2px;margin:8px 0 9px;background:#FBFDFF}
+#rel.r2 .ctl{position:absolute;top:-10px;right:6px;display:flex;gap:4px;z-index:2}
+#rel.r2 .ctl span,#rel.r2 .ctl button{font-family:'Segoe UI',Arial,sans-serif!important;font-size:10px;border-radius:8px;padding:1px 7px;border:1px solid #4C9BD6;background:#fff;color:#0B3D66;cursor:pointer;white-space:nowrap}
+#rel.r2 .ctl span.edit{border-color:#E07B1F;color:#8A3D00;background:#FFF6EE}
+#rel.r2 [contenteditable]{outline:none}
+#rel.r2 [contenteditable]:focus{background:#fff;box-shadow:inset 0 0 0 1px #4C9BD6}
+#rel.r2 td[contenteditable]{background:#FBFDFF}
+#rel.r2 td[data-ed].editado{background:#FFF6EE}
+#rel.r2 .motivo:empty::before{content:"clique para informar o motivo";color:#9AA3AB;font-style:italic}
+#rel.r2 .inserir{position:relative;margin:2px 0 6px}
+#rel.r2 .inserir>button,#rel.r2 .maislinha{font-family:'Segoe UI',Arial,sans-serif!important;font-size:12px;border:1px solid #4C9BD6;background:#fff;color:#005A8A;border-radius:6px;padding:3px 10px;cursor:pointer}
+#rel.r2 .menu{position:absolute;z-index:15;background:#fff;border:1px solid #C3CAD0;border-radius:8px;box-shadow:0 8px 24px rgba(0,0,0,.18);padding:6px;min-width:260px;max-height:60vh;overflow:auto}
+#rel.r2 .menu div{padding:5px 8px;border-radius:5px;cursor:pointer;font-size:12.5px}
+#rel.r2 .menu div:hover{background:#EEF3F7}
+#rel.r2 .menu div.usado{color:#9AA3AB}
+#rel.r2 .pp{position:relative;border:1px dashed #4C9BD6;border-radius:4px;padding:8px 8px 2px;margin:12px 0 6px;background:#FBFDFF}
+#rel.r2 .pp p{margin:0 0 4px}
+#rel.r2 .tirar{border:0;background:none;color:#8A3D00;cursor:pointer;font-size:12px;padding:0 3px}
+#rel.r2 .metas{border:1px solid #C3CAD0;border-radius:6px;padding:6px 10px;margin:6px 0 12px;background:#F7FAFC;font-size:12.5px}
+#rel.r2 .metas label{display:inline-flex;gap:4px;align-items:center;cursor:pointer}
+#rel.r2 .pgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:4px 14px;margin-top:6px}
+#rel.r2 .pgrid>div{display:flex;gap:6px;align-items:center}
+#rel.r2 .pgrid .pn{flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#rel.r2 .pgrid select{padding:2px 4px;border:1px solid #C3CAD0;border-radius:5px;font-size:12px}
+/* anexo */
+#rel.r2 .r2anexo{margin-top:16px}
+#rel.r2 .apag{border:1px solid #C3CAD0;padding:8px;margin:10px 0;overflow-x:auto;background:#fff}
+#rel.r2 .apag .atit{font-size:12pt;font-weight:700;margin-bottom:2px}
+#rel.r2 .gleg2{font-size:8pt;color:#22303A;margin:2px 0 4px}
+#rel.r2 .gleg2 i{display:inline-block;width:16px;height:8px;border:1px solid #22303A;vertical-align:middle;margin:0 3px 0 8px}
+#rel.r2 table.tgantt{border-collapse:collapse;table-layout:fixed;width:100%;min-width:900px;border:1px solid #C3CAD0}
+#rel.r2 table.tgantt th{background:#ECEEF1;font-size:8pt;padding:2px 4px;border-bottom:1px solid #C3CAD0;text-align:left;color:#000}
+#rel.r2 table.tgantt td{border-bottom:1px solid #EEF1F3;vertical-align:middle;padding:0 4px;overflow:hidden}
+#rel.r2 table.tgantt td.d{padding:0;border-left:1px solid #E1E5E8}
+#rel.r2 table.tgantt tr.gb td{background:#F7F9FA;color:#005A8A;font-weight:700}
+#rel.r2 table.tgantt tr.gb td.d{color:#22303A;font-weight:400;text-align:center}
+#rel.r2 .so-imp{display:none}
+@media (max-width:640px){#rel.r2{padding:10px}#rel.r2 .r2cards{grid-template-columns:repeat(2,1fr)}}
+@media print{
+ #rel.r2{border:0;padding:0;max-width:none;margin:0}
+ #rel.r2 .ctl,#rel.r2 .inserir,#rel.r2 .maislinha,#rel.r2 .tirar,#rel.r2 .metas,#rel.r2 .nao-imprime{display:none!important}
+ #rel.r2 .ed,#rel.r2 .pp{border:0;background:none;padding:0;margin:0 0 8px}
+ #rel.r2 td[contenteditable],#rel.r2 td[data-ed].editado{background:none;box-shadow:none}
+ #rel.r2 .motivo:empty::before{content:""}
+ #rel.r2 .r2capa{page:r2capa;height:262mm;border:0;margin:0;padding:12mm 0 0;break-after:page}
+ #rel.r2 .r2capa .t1{margin-top:30mm}#rel.r2 .r2capa .setor{margin-top:35mm}#rel.r2 .r2capa .mes{margin-top:auto;margin-bottom:8mm}
+ #rel.r2 .r2corpo{page:r2}
+ #rel.r2 .r2anexo{margin:0}
+ #rel.r2 .apag{page:r2pais;break-before:page;border:0;padding:0;margin:0;overflow:visible}
+ #rel.r2 table.tgantt{min-width:0}
 }
 </style>
 </head>
@@ -329,7 +424,7 @@ function telaApp(){
   document.getElementById("abas").innerHTML = ABAS.map(([k,t]) => `<button data-k="${k}" class="${k===ABA?"on":""}">${t}</button>`).join("");
   document.querySelectorAll("#abas button").forEach(b => b.onclick = () => { ABA = b.dataset.k; telaApp(); });
   ({painel:tPainel, ativ:tAtiv, gantt:tGantt, rel:tRel, horas:tHoras, reun:tReun, prot:tProt})[ABA]();
-  C().insertAdjacentHTML("afterbegin", barraFiltro()); ligarFiltro();
+  if(!document.getElementById("bSet")){ C().insertAdjacentHTML("afterbegin", barraFiltro()); ligarFiltro(); }
   if(ABA==="painel") ligarPorPessoa();
 }
 const C = () => document.getElementById("conteudo");
@@ -487,14 +582,16 @@ function tRel(){
        : FR.tipo==="mes" ? `<select id="rm">${meses.map(v=>`<option value="${v}" ${v===FR.mes?"selected":""}>${MESES[+v.slice(5)-1]} ${v.slice(0,4)}</option>`).join("")}</select>`
        : FR.tipo==="obra" ? `<select id="rob">${obrasRel.map(o=>`<option value="${esc(o)}" ${o===FR.obra?"selected":""}>${esc(obraNome(o))}</option>`).join("")}</select>`
        : `<select id="rs">${semanas.map(s=>{ const f=new Date(s); f.setDate(f.getDate()+6); return `<option value="${iso(s)}" ${iso(s)===FR.semana?"selected":""}>${s.toLocaleDateString("pt-BR")} a ${f.toLocaleDateString("pt-BR")}</option>`; }).join("")}</select>`}
-     <button class="btn p" onclick="exportarRel('pdf')">🖨 Imprimir / Salvar PDF</button><button class="btn" onclick="exportarRel('word')">⬇ Word</button>
+     <button class="btn p" onclick="exportarRel('pdf')">🖨 Imprimir / Salvar PDF</button><button class="btn" onclick="exportarRel('word')">⬇ Word</button>${FR.tipo==="sem"||FR.tipo==="mes" ? `<button class="btn" onclick="exportarTextos()" title="Salvar num arquivo os textos editados e a biblioteca de parágrafos">⤓ Exportar textos</button><button class="btn" onclick="importarTextos()" title="Trazer os textos de outro aparelho">⤒ Importar textos</button>` : ""}
      <label class="chk"><input type="checkbox" id="anx" ${ANEXO?"checked":""}> 📎 Anexar cronograma</label></div><div id="rel"></div>`;
+  C().insertAdjacentHTML("afterbegin", barraFiltro()); ligarFiltro();
   document.getElementById("rt").onchange = e => { FR.tipo = e.target.value; tRel(); };
   if(document.getElementById("rd")) document.getElementById("rd").onchange = e => { FR.dia = e.target.value; tRel(); };
   if(document.getElementById("rs")) document.getElementById("rs").onchange = e => { FR.semana = e.target.value; tRel(); };
   if(document.getElementById("rm")) document.getElementById("rm").onchange = e => { FR.mes = e.target.value; tRel(); };
   if(document.getElementById("rob")) document.getElementById("rob").onchange = e => { FR.obra = e.target.value; tRel(); };
   document.getElementById("anx").onchange = e => { ANEXO = e.target.checked; try { localStorage.setItem("rl_anexo", ANEXO ? "1" : "0"); } catch(x) {} tRel(); };
+  if(FR.tipo === "sem" || FR.tipo === "mes"){ relR2(); if(!ANEXO){ const x = document.querySelector("#rel .r2anexo"); if(x) x.remove(); } return; }
   const corpo = {dia:relDia, sem:relSemana, mes:relMes, obra:relObra}[FR.tipo]();
   let anexo = "";
   if(ANEXO){
@@ -532,6 +629,7 @@ function camposFaltando(){ return [...document.querySelectorAll(".manual textare
 function marcarIncompleto(){ const r = document.getElementById("rel"), f = camposFaltando().length > 0;
   if(r) r.classList.toggle("incompleto", f); if(!f) document.querySelectorAll(".aviso-rel").forEach(x => x.remove()); }
 function exportarRel(tipo){
+  if(FR.tipo === "sem" || FR.tipo === "mes"){ if(tipo === "word") baixarWordR2().catch(e => alert("Não consegui gerar o Word: " + e.message)); else window.print(); return; }
   const falta = camposFaltando();
   document.querySelectorAll(".aviso-rel").forEach(x => x.remove());
   if(falta.length){
@@ -925,6 +1023,675 @@ function tProt(){
       return `<tr class="l" data-a="${r.atividade_id}"><td>${esc(r.orgao)}</td><td>${esc(r.protocolo||"")}</td><td>${esc(a.titulo||"")}<br><span class="info">${esc(obraNome(a.obra_id))}</span></td><td>${br(r.entrada)}</td><td>${r.retorno?br(r.retorno):`<span class="info">aguardando${dias!==null?" · há "+dias+" dias":""}</span>`}</td><td>${esc(r.resultado||"")}</td><td class="esconde-cel">${esc(r.exigencias??"")}</td></tr>`; }).join("") + `</tbody></table></div>` : `<div class="vazio">Nenhum protocolo registrado.</div>`);
   ligarLinhas();
 }
+// ================================================================ RELATÓRIOS SEMANAL E MENSAL (modelo aprovado em 22/11/2026)
+// ---- REGRA DE CLASSIFICAÇÃO: único lugar para ajustar. Resultado: "P" projeto · "A" apoio · "C" coordenação
+const CLASSIF = {
+  coordDisc: ["ADM","GER","FIN","REU"],            // disciplinas de coordenação
+  coordCat:  /reuni/i,                             // categorias de coordenação
+  apoioDisc: ["TEC","AOR"],                       // disciplinas de apoio (COMP, ORÇ e POR contam como projeto)
+  apoioCat:  /tarefa/i,                            // categorias de apoio
+  apoioTit:  /memorial|plotag|link|requerimento|viabilidade/i   // palavras no título que fazem ser apoio
+};
+function classe(a){
+  if(!a) return "P";
+  const s = discSigla(a), c = a.categoria || "";
+  if(CLASSIF.coordDisc.includes(s) || CLASSIF.coordCat.test(c)) return "C";
+  if(CLASSIF.apoioDisc.includes(s) || CLASSIF.apoioCat.test(c) || CLASSIF.apoioTit.test(a.titulo || "")) return "A";
+  return "P";
+}
+// ---- feriados (as horas nesses dias contam como adicionais)
+const FERIADOS = ["2026-11-02","2026-11-15","2026-11-20","2027-11-20","2026-12-25","2027-01-01","2027-02-08","2027-02-09","2027-03-26","2027-04-21","2027-05-01","2027-05-27","2027-09-07","2027-10-12","2027-11-02","2027-11-15","2027-12-25"];
+const INICIO_REG = new Date(2026, 10, 9);          // S46: início do registro no RL Demandas
+const ASSINATURA = ["Eng.º Jonathas Sousa Santana", "Coordenador do Setor de Instalações Civis"];
+const ENDERECO = "Rua Gavião, nº 289, Jóquei Clube · CEP 69.313-028 · Boa Vista – RR";
+const somaD = (d, n) => new Date(d.getFullYear(), d.getMonth(), d.getDate() + n);
+const ehAdic = d => d.getDay() === 0 || d.getDay() === 6 || FERIADOS.includes(iso(d));
+const dm = d => String(d.getDate()).padStart(2,"0") + "/" + String(d.getMonth()+1).padStart(2,"0");
+const dmy = d => d.toLocaleDateString("pt-BR");
+function semISO(d){ const t = new Date(Date.UTC(d.getFullYear(), d.getMonth(), d.getDate())); const w = (t.getUTCDay()+6)%7;
+  t.setUTCDate(t.getUTCDate() - w + 3); const y = new Date(Date.UTC(t.getUTCFullYear(), 0, 4));
+  return 1 + Math.round(((t - y) / 864e5 - 3 + ((y.getUTCDay()+6)%7)) / 7); }
+const hh = m => hm(m);                              // "38h59"
+const hInt = m => Math.round((m||0)/60) + "h";
+const plural = (n, s, p) => n + " " + (n === 1 ? s : (p || s + "s"));
+const lista = L => L.length <= 1 ? (L[0]||"") : L.slice(0,-1).join(", ") + " e " + L[L.length-1];
+const pnome = l => nome(l).split(" ")[0];
+const NOMES_D = ["domingo","segunda","terça","quarta","quinta","sexta","sábado"], DS3 = ["dom","seg","ter","qua","qui","sex","sáb"];
+const obraCurta = id => obraNome(id);
+function discNome(a){ const d = DI[a.disciplina_id]; return d ? (d.nome_curto || d.sigla) : "—"; }
+const concl = a => a.concluida_em ? dia(a.concluida_em) : null;
+const atrasoDias = a => { const c = concl(a), p = dia(a.prazo); return c && p ? Math.round((c - p) / 864e5) : 0; };
+function coordenadores(){ return D.usuarios.filter(u => SEL.has(u.setor) && /coorden/i.test(u.cargo || "") && !foraR2(u.login)).map(u => u.login); }
+// ---- pessoas do relatório (guardado no aparelho, por setor): fixo = entra na meta · eventual = horas contam como adicionais · fora = não entra
+const chavePessoas = () => "rl_r2_pessoas_" + [...(SEL||[])].sort().join(",");
+function tipoPessoa(l){ const p = lerLS(chavePessoas(), {})[l]; if(p) return p; const u = U[l]; return u && SEL.has(u.setor) ? "fixo" : "eventual"; }
+const foraR2 = l => tipoPessoa(l) === "fora";
+const eventualR2 = l => tipoPessoa(l) === "eventual";
+const visR2 = () => visiveis().filter(a => !foraR2(a.responsavel));
+function candidatosR2(ini, fim){ return [...new Set([...D.usuarios.filter(u => u.ativo !== false && SEL.has(u.setor)).map(u => u.login),
+  ...D.horas.filter(h => naData(h.data, ini, fim) && ativNoFiltro(A[h.atividade_id])).map(h => h.login)])].filter(Boolean).sort((a, b) => nome(a).localeCompare(nome(b))); }
+function painelPessoas(cands, ferias){
+  const op = (l, v, t) => `<option value="${v}" ${tipoPessoa(l) === v ? "selected" : ""}>${t}</option>`;
+  return `<div class="metas nao-imprime"><b>Pessoas do relatório</b> <span style="color:#5A6570">(fica guardado neste aparelho · <b>Fixo</b> = entra na meta de 40 h · <b>Eventual</b> = as horas contam como adicionais · <b>Fora</b> = atividades e horas não entram${ferias ? " · marque as férias/ausências da semana" : ""})</span>
+   <div class="pgrid">` + cands.map(l => `<div><span class="pn">${esc(nome(l))}</span><select class="cpes" data-l="${esc(l)}">${op(l,"fixo","Fixo")}${op(l,"eventual","Eventual")}${op(l,"fora","Fora")}</select>`
+     + (ferias ? `<label><input type="checkbox" class="cfer" value="${esc(l)}" ${ferias.includes(l) ? "checked" : ""} ${tipoPessoa(l) !== "fixo" ? "disabled" : ""}> férias</label>` : "") + `</div>`).join("") + `</div></div>`;
+}
+
+// ---------------------------------------------------------------- números de uma semana (ini = segunda)
+function metSem(ini){
+  const fim = somaD(ini, 6), lim = fim < HOJE ? fim : HOJE;
+  const at = visR2(), P = at.filter(a => classe(a) === "P"), Ap = at.filter(a => classe(a) === "A");
+  const ent = P.filter(a => naData(a.concluida_em, ini, fim));
+  const apo = Ap.filter(a => naData(a.concluida_em, ini, fim));
+  const metas = P.filter(a => naData(a.prazo, ini, fim));
+  const noPrazo = a => a.concluida_em && concl(a) <= dia(a.prazo);
+  const fechou = a => a.concluida_em && concl(a) <= lim;
+  const venc = at.filter(a => classe(a) !== "C" && a.prazo && dia(a.prazo) < lim && !fechou(a));
+  const novas = at.filter(a => classe(a) !== "C" && naData(a.criada_em, ini, fim));
+  const carteira = P.filter(a => (!a.criada_em || dia(a.criada_em) <= lim) && !fechou(a));
+  const futuras = P.filter(a => a.prazo && dia(a.prazo) > fim && a.status === "Em andamento");
+  // horas
+  const H = horasPeriodo(ini, fim), pes = {}, porDia = Array(7).fill(0), porDiaU = Array(7).fill(0), porDiaA = Array(7).fill(0), porClasse = {P:0, A:0, C:0};
+  H.forEach(h => { const d = dia(h.data), k = Math.round((d - ini) / 864e5);
+    const p = pes[h.login] = pes[h.login] || {util:0, adic:0, dias:Array(7).fill(0), ativ:{}};
+    if(ehAdic(d) || eventualR2(h.login)){ p.adic += h.minutos; porDiaA[k] += h.minutos; } else { p.util += h.minutos; porDiaU[k] += h.minutos; }
+    p.dias[k] += h.minutos; p.ativ[h.atividade_id] = (p.ativ[h.atividade_id]||0) + h.minutos;
+    porDia[k] += h.minutos; porClasse[classe(A[h.atividade_id])] += h.minutos; });
+  let util = 0, adic = 0;
+  Object.values(pes).forEach(p => { p.utilCap = Math.min(40*60, p.util); util += p.utilCap; adic += p.adic; });
+  return {ini, fim, lim, n: semISO(ini), semReg: fim < INICIO_REG, ent, apo, metas, metasOk: metas.filter(noPrazo), entOk: ent.filter(noPrazo),
+          venc, novas, carteira, futuras, H, pes, porDia, porDiaU, porDiaA, porClasse, util, adic};
+}
+function horasPeriodo(ini, fim){ return D.horas.filter(h => naData(h.data, ini, fim) && ativNoFiltro(A[h.atividade_id]) && !foraR2(h.login)); }
+// semanas (segunda) do registro até a semana dada, no máximo n
+function semanasAte(ini, n){ const L = []; for(let s = new Date(ini); s >= semana(INICIO_REG) && L.length < n; s = somaD(s, -7)) L.unshift(new Date(s)); return L; }
+
+// ---------------------------------------------------------------- guardar no aparelho
+function chaveR2(id){ const per = FR.tipo === "sem" ? FR.semana : FR.mes;
+  return "rl_r2_" + FR.tipo + "_" + per + "_" + [...(SEL||[])].sort().join(",") + "|" + id; }
+const lerLS = (k, padrao) => { try { const v = localStorage.getItem(k); return v === null ? padrao : JSON.parse(v); } catch(e) { return padrao; } };
+const gravarLS = (k, v) => { try { if(v === null) localStorage.removeItem(k); else localStorage.setItem(k, JSON.stringify(v)); } catch(e) {} };
+// texto automático editável
+const AUTO = {};
+function blocoEd(id, autoHtml){
+  AUTO[id] = autoHtml; const salvo = lerLS(chaveR2("ed:" + id), null);
+  return `<div class="ed" data-id="${id}"><div class="ctl nao-imprime"><span class="${salvo !== null ? "edit" : ""}">${salvo !== null ? "✎ editado" : "texto automático"}</span><button class="rest">↺ restaurar</button></div><div contenteditable="true" class="corpo">${salvo !== null ? salvo : autoHtml}</div></div>`;
+}
+const pars = t => t.split("\n\n").map(x => "<p>" + x.replace(/\n/g, "<br>") + "</p>").join("");
+// célula editável (o padrão é o texto automático; o editado fica guardado)
+function celEd(id, padrao, extra = ""){ const s = lerLS(chaveR2("td:" + id), null);
+  return `<td contenteditable="true" data-ed="${esc(id)}" class="${s !== null ? "editado" : ""} ${extra}">${s !== null ? s : padrao}</td>`; }
+
+// ---------------------------------------------------------------- biblioteca de parágrafos-padrão
+const BIB_INICIAL = [
+ {t:"Demandas em paralelo", x:"<b>Demandas em paralelo.</b> A equipe atendeu, no mesmo período, {obras_periodo}. Cada frente exige mobilização própria — leitura da documentação, compatibilização com a arquitetura e emissão —, o que reduz as horas disponíveis para a frente principal."},
+ {t:"Dedicação adicional da equipe", x:"<b>Dedicação adicional da equipe.</b> Para cumprir as datas, a equipe trabalhou {horas_adicionais} em fins de semana{dia_maior_adicional}. O ritmo é necessário em fechamentos, mas não é sustentável como rotina sem impacto na qualidade técnica."},
+ {t:"Horas acima da estimativa", x:"<b>Horas acima da estimativa.</b> {acima_estimativa}, o que indica a necessidade de revisar as estimativas dessas disciplinas para projetos de porte semelhante."},
+ {t:"Férias ou ausências na equipe", x:"<b>Férias na equipe.</b> Um projetista esteve em férias no período, e as disciplinas sob sua responsabilidade foram concluídas no fechamento, o que explica parte dos atrasos."},
+ {t:"Alterações de arquitetura", x:"<b>Alterações de arquitetura após o início das disciplinas.</b> Mudanças recebidas depois do início ou da entrega parcial exigiram revisar disciplinas já desenvolvidas e readequar datas."},
+ {t:"Prazo curto de fechamento", x:"<b>Prazo reduzido para a etapa de fechamento.</b> A emissão de um pacote multidisciplinar exige, após os projetos, memoriais, especificação, conferência do link e assinaturas — etapas dependentes que precisaram ser feitas em poucos dias."},
+ {t:"Interfaces externas", x:"<b>Dependência de interfaces externas.</b> Protocolos junto aos órgãos e arquivos de outros setores dependem de prazos de terceiros, o que alonga o encerramento das frentes."},
+ {t:"Atendimento pós-entrega", x:"<b>Atendimento pós-entrega.</b> Solicitações do cliente após a emissão mantêm parte da equipe dedicada à frente já entregue."},
+ {t:"Início do registro no RL Demandas", x:"<b>Início do registro no RL Demandas.</b> Desde 09/11 as atividades e as horas passaram a ser lançadas no RL Demandas, o que dá base objetiva para medir prazos, horas por disciplina e o índice de horas por 1.000 m², e para calibrar as estimativas dos próximos projetos."},
+ {t:"Capacidade da equipe", x:"<b>Capacidade da equipe.</b> Recomenda-se avaliar a capacidade da equipe antes de assumir novas frentes com prazo curto e formalizar com a gerência a reprogramação de itens de menor urgência."}
+];
+const PARS_INICIAIS = {sem:[0,1,2,3], mes:[8,0,1,2]};
+const lerBib = () => lerLS("rl_bib", null) || BIB_INICIAL.map(x => ({...x}));
+const gravarBib = b => gravarLS("rl_bib", b);
+let VARS = {};
+const preencher = x => x.replace(/\{(\w+)\}/g, (m, k) => VARS[k] !== undefined ? VARS[k] : m);
+
+// ---------------------------------------------------------------- gráficos (SVG sem biblioteca)
+const AZ = "#1F4E89", AZ2 = "#4C9BD6", LA = "#F28E2B", LA2 = "#E07B1F", CI = "#AEB6BF", CI2 = "#D5D9DE", TXC = "#22303A";
+const tx = (x, y, s, o = {}) => `<text x="${x}" y="${y}" font-family="Arial" font-size="${o.fs||10}" ${o.a?`text-anchor="${o.a}"`:""} ${o.b?'font-weight="700"':""} fill="${o.c||"#000000"}">${s}</text>`;
+function tetoBonito(v){ if(v <= 0) return 1; const e = Math.pow(10, Math.floor(Math.log10(v))); for(const m of [1,1.2,1.5,2,2.5,3,4,5,6,8,10]) if(m*e >= v) return m*e; return 10*e; }
+const fmtN = v => (Math.round(v*10)/10).toLocaleString("pt-BR");
+const grade = (X0, Y0, W, H, max, n = 4) => { let s = ""; for(let k=0;k<=n;k++){ const v = max*k/n, y = Y0 - H*k/n;
+  s += `<line x1="${X0}" x2="${X0+W}" y1="${y}" y2="${y}" stroke="#E6E9EC"/>` + tx(X0-5, y+3, fmtN(v), {fs:9, a:"end", c:"#5A6570"}); } return s; };
+const legenda = (itens, y, x0 = 40) => { let x = x0, s = ""; itens.forEach(([cor, t, tipo]) => {
+  s += tipo === "l" ? `<line x1="${x}" x2="${x+18}" y1="${y-3}" y2="${y-3}" stroke="${cor}" stroke-width="2.5" ${cor===LA?'stroke-dasharray="5 3"':""}/>`
+     : tipo === "h" ? `<rect x="${x}" y="${y-9}" width="12" height="10" fill="url(#hach)" stroke="${TXC}"/>`
+     : `<rect x="${x}" y="${y-9}" width="12" height="10" fill="${cor}" stroke="${TXC}"/>`;
+  s += tx(x + (tipo === "l" ? 22 : 16), y, t, {fs:10}); x += 26 + t.length*5.6; }); return s; };
+const DEFS = `<defs><pattern id="hach" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="#FFFFFF"/><rect width="3" height="6" fill="${LA}"/></pattern></defs>`;
+const svg = (h, c, w = 520) => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 ${w} ${h}" width="${w}" height="${h}">${DEFS}<rect width="${w}" height="${h}" fill="#FFFFFF"/>${c}</svg>`;
+const semDados = (msg) => svg(60, tx(260, 34, msg || "sem registro no RL Demandas", {fs:11, a:"middle", c:"#5A6570"}));
+let NFIG = 0;
+const figura = (svgTxt, legendaTxt) => `<div class="fig">${svgTxt}</div><div class="leg">Figura ${++NFIG} – ${legendaTxt}</div>`;
+function gColunas(cats, series, cores, o = {}){
+  const vals = series.flat().filter(v => v != null), max = o.max || tetoBonito(Math.max(1, ...vals) * 1.15);
+  const h = o.h || 215, X0 = 40, Y0 = h - 40, W = 460, H = Y0 - 25, gw = W / cats.length, larg = o.larg || 0.6, bw = gw * larg / series.length;
+  let s = grade(X0, Y0, W, H, max, 4);
+  cats.forEach((c, i) => { series.forEach((sr, j) => { const v = sr[i]; if(v == null) return;
+      const x = X0 + i*gw + gw*(1-larg)/2 + j*bw, hh_ = H*v/max;
+      s += `<rect x="${x}" y="${Y0-hh_}" width="${bw}" height="${hh_}" fill="${cores[j]}" stroke="${TXC}"/>` + tx(x+bw/2, Y0-hh_-3, o.lab ? o.lab(v) : fmtN(v), {fs:9.5, a:"middle", b:1}); });
+    s += tx(X0 + i*gw + gw/2, Y0 + 13, c, {fs: cats.length > 9 ? 8 : 9.5, a:"middle"}); });
+  return {s, h};
+}
+const F = {
+  // entregas por semana
+  g1: (cats, v) => { if(!cats.length) return semDados(); const r = gColunas(cats, [v], [AZ], {h:200, larg:0.45}); return svg(r.h, r.s + legenda([[AZ,"Entregas de projeto"]], r.h-5)); },
+  // no prazo × com atraso por semana (barra 100%)
+  g2: (L) => { L = L.filter(x => x[1] + x[2] > 0 || x[3]); if(!L.length) return semDados("sem entregas de projeto no período");
+    let s = "", y = 14; L.forEach(([n, a, b, sr]) => { const tot = a + b, w = 400;
+      s += tx(46, y+15, n, {fs:10.5, a:"end", b:1});
+      if(!tot){ s += tx(55, y+15, sr ? "sem registro" : "sem entregas", {fs:9.5, c:"#5A6570"}); y += 32; return; }
+      s += `<rect x="55" y="${y}" width="${w*a/tot}" height="22" fill="${AZ}" stroke="${TXC}"/><rect x="${55+w*a/tot}" y="${y}" width="${w*b/tot}" height="22" fill="url(#hach)" stroke="${TXC}"/>`;
+      if(a) s += tx(55 + w*a/tot/2, y+15, `${a} no prazo`, {fs:9.5, a:"middle", c:"#FFFFFF", b:1});
+      if(b) s += tx(55 + w*a/tot + w*b/tot/2, y+15, `${b} com atraso`, {fs:9.5, a:"middle", b:1});
+      s += tx(462, y+15, Math.round(100*a/tot) + "%", {fs:10, b:1}); y += 32; });
+    return svg(y + 22, s + legenda([[AZ,"No prazo"],[LA,"Com atraso","h"]], y + 14)); },
+  // curva planejado × realizado (acumulado por dia)
+  g3: (rot, p, r, fds) => { const max = tetoBonito(Math.max(2, ...p, ...r) * 1.1), X0 = 45, Y0 = 185, W = 440, H = 155, dx = W / 6;
+    let s = `<rect x="${X0+5*dx-dx/2}" y="${Y0-H}" width="${dx*1.5}" height="${H}" fill="#F4F6F8"/>` + grade(X0, Y0, W, H, max, 5);
+    const ln = (v, cor, tr, o) => `<polyline points="${v.map((y,i) => `${X0+i*dx},${Y0-H*y/max}`).join(" ")}" fill="none" stroke="${cor}" stroke-width="2.5" ${tr?'stroke-dasharray="6 4"':""}/>`
+      + v.map((y,i) => `<circle cx="${X0+i*dx}" cy="${Y0-H*y/max}" r="4" fill="${cor}" stroke="${TXC}"/>` + tx(X0+i*dx, Y0-H*y/max + ((y >= o[i] && !(tr && y === o[i])) || y === 0 ? -8 : 15), y, {fs:9, a:"middle", b:1, c: tr ? "#8A3D00" : AZ})).join("");
+    s += ln(p, LA, 1, r) + ln(r, AZ, 0, p); rot.forEach((x,i) => s += tx(X0+i*dx, Y0+16, x, {fs:9, a:"middle"}));
+    return svg(222, s + legenda([[LA,"Planejado (prazo)","l"],[AZ,"Realizado (concluído)","l"]], 217)); },
+  // horas por 1.000 m²
+  g4: (L) => { if(!L.length) return semDados("sem horas lançadas em obras com área cadastrada"); const max = Math.max(...L.map(x => x[1])) * 1.15 || 1, X0 = 140, W = 300;
+    let y = 8, s = ""; L.forEach(([n, v]) => { const w = W*v/max; s += tx(X0-6, y+11, esc(n), {fs:10, a:"end"}) + `<rect x="${X0}" y="${y}" width="${Math.max(0.5,w)}" height="15" fill="${AZ}" stroke="${TXC}"/>` + tx(X0+w+5, y+12, fmtN(v) + " h", {fs:10, b:1}); y += 24; });
+    return svg(y + 22, s + tx(X0, y + 14, "Horas lançadas desde 09/11 ÷ área construída × 1.000 (obras com poucas horas ainda distorcem)", {fs:9, c:"#5A6570"})); },
+  // estimado × realizado por disciplina
+  g6: (L) => { if(!L.length) return semDados("sem entregas de projeto no período"); const X0 = 105, W = 320, max = Math.max(1, ...L.map(x => Math.max(x[1], x[2]))) * 1.12;
+    let y = 6, s = ""; L.forEach(([n, e, r]) => { const acima = e && r > e;
+      s += tx(X0-6, y+17, esc(n), {fs:10, a:"end"}) + `<rect x="${X0}" y="${y}" width="${Math.max(0.5,W*e/max)}" height="11" fill="${CI2}" stroke="${TXC}"/>` + tx(X0+W*e/max+4, y+9, fmtN(e) + " h", {fs:8.5, c:"#5A6570"})
+         + `<rect x="${X0}" y="${y+13}" width="${Math.max(0.5,W*r/max)}" height="11" fill="${acima?LA:AZ}" stroke="${TXC}"/>` + tx(X0+W*r/max+4, y+22, Math.round(r) + " h" + (e ? " · " + Math.round(100*r/e) + "%" : ""), {fs:8.5, b:1, c: acima ? "#8A3D00" : AZ}); y += 30; });
+    return svg(y + 20, s + legenda([[CI2,"Estimado"],[AZ,"Realizado"],[LA,"Acima do estimado"]], y + 14, 105)); },
+  // horas por dia da semana
+  g7: (rot, util, adic) => { const r = gColunas(rot, [util, adic], [AZ, LA], {h:215, larg:0.5, lab: v => Math.round(v) + " h"}); return svg(215, r.s + legenda([[AZ,"Segunda a sexta (até 40 h por pessoa)"],[LA,"Adicional (fim de semana, feriado, eventual)"]], 210)); },
+  // distribuição das horas (barra 100%)
+  g8: (L) => { L = L.filter(x => x[0] > 0); const tot = L.reduce((a,b) => a + b[0], 0); if(!tot) return semDados("sem horas lançadas no período");
+    const w = 440; let x = 40, s = ""; L.forEach(([v, cor, n], i) => { const ww = w*v/tot;
+      s += `<rect x="${x}" y="8" width="${ww}" height="32" fill="${cor}" stroke="${TXC}"/>` + (ww > 26 ? tx(x+ww/2, 29, Math.round(100*v/tot) + "%", {fs:11, a:"middle", b:1, c: cor === AZ ? "#FFFFFF" : "#000000"}) : "")
+         + tx(Math.min(Math.max(x+ww/2, 60), 470), ww < 90 ? (i % 2 ? 68 : 56) : 56, `${n} · ${Math.round(v)} h`, {fs:9.5, a:"middle"}); x += ww; });
+    return svg(76, s); },
+  // matriz obra × disciplina
+  g10: (obras, discs, m) => { if(!obras.length) return semDados("sem entregas de projeto no período"); const cw = Math.min(48, 360 / Math.max(1, discs.length));
+    let s = ""; discs.forEach((d, j) => s += tx(150 + j*cw + (cw-6)/2, 16, esc(d), {fs:9.5, a:"middle", b:1}));
+    obras.forEach((o, i) => { s += tx(140, 44 + i*34, esc(o), {fs:10, a:"end"});
+      discs.forEach((d, j) => { const v = (m[o]||{})[d] || 0;
+        s += `<rect x="${150+j*cw}" y="${24+i*34}" width="${cw-6}" height="28" fill="${v>=2?AZ:v===1?AZ2:"#F4F6F8"}" stroke="${v?TXC:"#E1E5E8"}"/>` + (v ? tx(150 + j*cw + (cw-6)/2, 43 + i*34, v, {fs:11, a:"middle", b:1, c: v>=2 ? "#FFFFFF" : "#000000"}) : ""); }); });
+    const y = 34 + obras.length*34;
+    return svg(y + 16, s + `<rect x="150" y="${y}" width="12" height="10" fill="${AZ2}" stroke="${TXC}"/>` + tx(166, y+9, "1 entrega", {fs:9.5}) + `<rect x="230" y="${y}" width="12" height="10" fill="${AZ}" stroke="${TXC}"/>` + tx(246, y+9, "2 ou mais", {fs:9.5})); }
+};
+
+// ---------------------------------------------------------------- peças comuns
+function capaR2(t1, t2, t3, mesAno, colab){
+  return `<section class="r2capa"><img src="${LOGO}" alt="Ribeiro Lopes"><div class="t1">${t1}</div><div class="t2">${t2}</div><div class="t3">${t3}</div>
+   <div class="setor">${esc(nomeSetorCapa())}</div><div class="pes">Coordenador: ${esc(ASSINATURA[0].replace("Eng.º ",""))}</div>
+   <div class="pes" contenteditable="true" data-edx="colab">${lerLS(chaveR2("colab"), null) ?? esc("Colaboradores: " + lista(colab))}</div><div class="mes">${mesAno}</div></section>`;
+}
+function nomeSetorCapa(){ const n = [...SEL].map(id => (SE[id]||{}).nome || id);
+  if(SEL.size === 1 && (SEL.has("INS") || /instala/i.test(n[0]))) return "SETOR DE INSTALAÇÕES CIVIS";
+  return (n.length === 1 ? "SETOR DE " : "SETORES: ") + n.join(", ").toUpperCase(); }
+const fonteAss = (txt) => `<div class="fonte">Fonte: RL Demandas, dados de ${dmy(new Date(D.gerado_em))} ${new Date(D.gerado_em).toTimeString().slice(0,5)}. Registro de atividades no RL Demandas a partir de 09/11/2026. ${txt}</div>
+  <div class="ass"><div class="linha"></div>${ASSINATURA[0]}<br>${ASSINATURA[1]}</div>`;
+const DEFINICOES = "Entrega de projeto = projeto, modelagem ou detalhamento concluído; memoriais, plotagens, links, requerimentos e viabilidades são atividades de apoio; rotinas administrativas e reuniões entram como coordenação. Horas da semana: até 40 h por pessoa, de segunda a sexta; horas adicionais = sábados, domingos, feriados e horas de quem apoia o setor eventualmente.";
+function comp(atual, ant, melhorMaior, fmt = v => v, semReg){
+  if(semReg) return `<em class="sr">sem registro</em>`;
+  const cls = atual === ant ? "" : ((atual > ant) === melhorMaior ? "" : "pior");
+  return `<em class="${cls}">${fmt(ant)}</em>`;
+}
+const card = (v, l, c) => `<div class="r2card"><b>${v}</b><span class="l">${l}</span><span class="c">${c}</span></div>`;
+function paragrafosBloco(){ return `<div class="inserir nao-imprime"><button class="abrir">＋ Inserir parágrafo-padrão ▾</button></div><div class="paras"></div>`; }
+function niveis(ref){
+  const at = visR2().filter(a => classe(a) !== "C" && a.prazo && !(a.concluida_em && concl(a) <= ref));
+  const L = [];
+  at.forEach(a => { const d = Math.round((dia(a.prazo) - ref) / 864e5);
+    const nv = d < 0 ? "crit" : d <= 3 ? "alto" : d <= 7 ? "medio" : d <= 15 ? "baixo" : null; if(nv) L.push({a, d, nv}); });
+  const ordem = {crit:0, alto:1, medio:2, baixo:3}, grupos = {};
+  L.forEach(x => { const k = x.nv + "|" + (x.a.obra_id||"") + "|" + x.a.prazo; (grupos[k] = grupos[k] || []).push(x); });
+  return Object.entries(grupos).map(([k, g]) => ({k, nv: g[0].nv, d: g[0].d, obra: obraNome(g[0].a.obra_id), prazo: dia(g[0].a.prazo),
+    titulos: g.map(x => x.a.titulo), resp: [...new Set(g.map(x => pnome(x.a.responsavel)))]}))
+    .sort((x, y) => ordem[x.nv] - ordem[y.nv] || x.prazo - y.prazo);
+}
+const NIVTXT = {crit:"CRÍTICO", alto:"ALTO", medio:"MÉDIO", baixo:"BAIXO"};
+function tabelaPontos(ref, comResp){
+  const ocultos = new Set(lerLS(chaveR2("pontos_ocultos"), [])), extras = lerLS(chaveR2("pontos_extras"), []);
+  const linhas = niveis(ref).filter(p => !ocultos.has(p.k)).map(p => {
+    const enc = p.nv === "crit" ? "Cobrar a conclusão e definir nova data" : "Concluir " + (p.titulos.length > 1 ? "as atividades" : "a atividade");
+    return `<tr data-k="${esc(p.k)}"><td class="niv ${p.nv}">${NIVTXT[p.nv]}</td>${celEd("pt_p_" + p.k, esc(p.obra + " – " + lista(p.titulos)))}${celEd("pt_e_" + p.k, enc)}${comResp ? celEd("pt_r_" + p.k, esc(lista(p.resp))) : ""}<td>${dm(p.prazo)}<button class="tirar nao-imprime" title="Tirar esta linha">✕</button></td></tr>`; });
+  extras.forEach((x, i) => linhas.push(`<tr data-x="${i}"><td class="niv ${x.nv||"medio"}" contenteditable="true" data-ex="${i}:nvt">${esc(x.nvt||"MÉDIO")}</td><td contenteditable="true" data-ex="${i}:p">${x.p||""}</td><td contenteditable="true" data-ex="${i}:e">${x.e||""}</td>${comResp ? `<td contenteditable="true" data-ex="${i}:r">${x.r||""}</td>` : ""}<td><span contenteditable="true" data-ex="${i}:z">${x.z||""}</span><button class="tirar nao-imprime" title="Tirar esta linha">✕</button></td></tr>`));
+  return `<table class="t pontos"><thead><tr><th style="width:56px">Nível</th><th>Ponto de atenção</th><th>Encaminhamento</th>${comResp ? "<th>Resp.</th>" : ""}<th>Prazo</th></tr></thead><tbody>${linhas.join("") || `<tr><td colspan="5" class="cinza">Nenhum item vence nos próximos 15 dias.</td></tr>`}</tbody></table>
+   <button class="maislinha nao-imprime">＋ incluir linha</button> <span class="info nao-imprime" style="font-size:11px">Crítico = vencido · Alto = até 3 dias · Médio = até 7 dias · Baixo = até 15 dias</span>`;
+}
+function textoMetas(ini, fim){
+  const L = visR2().filter(a => classe(a) !== "C" && naData(a.prazo, ini, fim) && a.status !== "Concluída");
+  if(!L.length) return "• Sem atividades com prazo no período seguinte cadastradas no RL Demandas.";
+  const g = {}; L.forEach(a => (g[obraNome(a.obra_id)] = g[obraNome(a.obra_id)] || []).push(a));
+  return Object.entries(g).map(([o, as]) => { const p = Math.max(...as.map(a => dia(a.prazo)));
+    return `• ${o}: concluir ${lista(as.map(a => a.titulo.charAt(0).toLowerCase() + a.titulo.slice(1)))} até ${dm(new Date(p))}.`; }).join("\n");
+}
+function estPorDisc(ents){ const m = {}; ents.forEach(a => { const n = discNome(a); const x = m[n] = m[n] || [n, 0, 0]; x[1] += +a.horas_estimadas || 0; x[2] += (TOT[a.id]||0) / 60; });
+  return Object.values(m).sort((a, b) => b[2] - a[2]); }
+function acimaTxt(L){ const ac = L.filter(x => x[1] && x[2] > x[1]).sort((a,b) => b[2]/b[1] - a[2]/a[1]);
+  if(!ac.length) return "Nenhuma disciplina passou da estimativa de horas no período";
+  const it = ac.map((x, i) => `${x[0].toLowerCase()} (${Math.round(100*x[2]/x[1])}%${i ? "" : " da estimativa"})`);
+  return (ac.length === 1 ? "A disciplina de " : "As disciplinas de ") + lista(it) + (ac.length === 1 ? " passou do previsto" : " passaram do previsto"); }
+function situacaoAtiv(a, ref){
+  if(a.concluida_em){ const n = atrasoDias(a);
+    return `<span class="tag ok">Concluída ${dm(concl(a))}</span> ` + (n > 0 ? `<span class="tag atr">+${plural(n,"dia")}</span>` : `<span style="font-size:8pt">no prazo</span>`); }
+  if(dia(a.prazo) < ref) return `<span class="tag atr">Vencida</span>`;
+  return a.status === "Em andamento" ? `<span class="tag and">Em andamento</span>` : `<span class="tag faz">${esc(a.status || "A fazer")}</span>`;
+}
+
+// ---------------------------------------------------------------- RELATÓRIO SEMANAL
+function relSemanal2(){
+  NFIG = 0;
+  const ini = dia(FR.semana), M = metSem(ini), Mp = metSem(somaD(ini, -7)), N = M.n;
+  const fim = M.fim, ref = M.lim;
+  // pessoas na meta (sem dado de férias no retrato: escolhidas na tela, guardadas no aparelho)
+  const coord = coordenadores();
+  const todos = candidatosR2(ini, fim), candidatos = todos.filter(l => !foraR2(l));
+  const fixos = candidatos.filter(l => tipoPessoa(l) === "fixo");
+  const ferias = lerLS(chaveR2("ferias"), null) || fixos.filter(l => !(M.pes[l] && M.pes[l].util > 0));
+  const naMeta = fixos.filter(l => !ferias.includes(l));
+  const metaH = 40 * naMeta.length;
+  const projetistas = candidatos.filter(l => !coord.includes(l));
+  const ativosRecentes = projetistas.filter(l => D.horas.some(h => h.login === l && dia(h.data) >= somaD(ini, -28) && dia(h.data) <= fim));
+  const C = `Relatório semanal · Semana ${N} · ${dm(ini)} a ${dmy(fim)}`;
+  // variáveis dos parágrafos
+  const obrasSem = [...new Set([...M.ent, ...M.apo].map(a => obraNome(a.obra_id)))];
+  const dmaior = M.porDia.map((v, k) => [v, k]).filter(x => ehAdic(somaD(ini, x[1]))).sort((a, b) => b[0] - a[0])[0];
+  const est = estPorDisc(M.ent);
+  VARS = {obras_periodo: lista(obrasSem) || "as frentes em andamento", horas_adicionais: hh(M.adic),
+          dia_maior_adicional: dmaior && dmaior[0] ? `, principalmente no ${NOMES_D[somaD(ini, dmaior[1]).getDay()]} (${dm(somaD(ini, dmaior[1]))})` : "",
+          acima_estimativa: acimaTxt(est)};
+  // ---------- textos automáticos
+  const destaque = (() => { const g = {}; M.ent.forEach(a => (g[obraNome(a.obra_id)] = g[obraNome(a.obra_id)] || []).push(discNome(a).toLowerCase()));
+    return lista(Object.entries(g).sort((a,b) => b[1].length - a[1].length).map(([o, d]) => `${o} (${lista([...new Set(d)])})`)); })();
+  const atrs = M.metas.filter(a => a.concluida_em && atrasoDias(a) > 0).map(atrasoDias);
+  const abertasMeta = M.metas.filter(a => !a.concluida_em || concl(a) > ref);
+  const obraAtr = (() => { const g = {}; M.metas.filter(a => a.concluida_em && atrasoDias(a) > 0).forEach(a => g[obraNome(a.obra_id)] = (g[obraNome(a.obra_id)]||0) + 1);
+    const e = Object.entries(g).sort((a,b) => b[1]-a[1]); return e.length && e[0][1] >= 2 ? `, concentrado em ${e[0][0]}` : ""; })();
+  const tiposApoio = [...new Set(M.apo.map(a => { const m = (a.titulo.match(CLASSIF.apoioTit)||[discNome(a)])[0].toLowerCase(); return m.startsWith("plotag") ? "plotagem" : m; }))];
+  const resumo = `A Semana ${N} registrou ${plural(M.ent.length, "entrega")} de projeto` + (Mp.semReg ? "" : `, frente a ${Mp.ent.length} na Semana ${Mp.n}`) + (M.ent.length ? `, com destaque para ${destaque}` : "") + ".\n\n"
+    + (M.metas.length ? `Das ${plural(M.metas.length, "entrega")} de projeto com prazo na semana, ${M.metas.length - abertasMeta.length === M.metas.length ? "todas foram concluídas" : `${M.metas.length - abertasMeta.length} foram concluídas`}: ${M.metasOk.length} no prazo` + (atrs.length ? ` e ${atrs.length} com atraso de ${Math.min(...atrs)} a ${Math.max(...atrs)} dias${obraAtr}` : "") + (abertasMeta.length ? `; ${plural(abertasMeta.length, "segue", "seguem")} em aberto` : "") + ". " : "Não havia entregas de projeto com prazo na semana. ")
+    + (M.venc.length ? `A semana fechou com ${plural(M.venc.length, "item vencido", "itens vencidos")}.` : "A semana fechou sem itens vencidos.")
+    + (M.apo.length ? ` A equipe realizou ainda ${plural(M.apo.length, "atividade")} de apoio (${lista(tiposApoio)})` : "") + (M.adic ? `${M.apo.length ? " e registrou" : " A equipe registrou"} ${hh(M.adic)} adicionais no fim de semana.` : (M.apo.length ? "." : ""));
+  // curva
+  const rot = [...Array(7)].map((_, k) => { const d = somaD(ini, k); return DS3[d.getDay()] + " " + String(d.getDate()).padStart(2,"0"); });
+  const pl = [...Array(7)].map((_, k) => M.metas.filter(a => dia(a.prazo) <= somaD(ini, k)).length);
+  const re = [...Array(7)].map((_, k) => M.ent.filter(a => concl(a) <= somaD(ini, k)).length);
+  const abaixo = pl.map((p, k) => re[k] < p ? k : -1).filter(k => k >= 0);
+  const pct = (a, b) => b ? Math.round(100*a/b) : 0;
+  const leitura = (abaixo.length ? `A curva da semana mostra que as entregas ficaram abaixo do planejado de ${NOMES_D[somaD(ini, abaixo[0]).getDay()]} a ${NOMES_D[somaD(ini, abaixo[abaixo.length-1]).getDay()]}` + (re[6] >= pl[6] ? ` e alcançaram o total no ${NOMES_D[fim.getDay()]} (${dm(fim)}).` : `, fechando com ${re[6]} de ${pl[6]}.`) : `A curva da semana mostra as entregas acompanhando o planejado ao longo dos dias, com ${re[6]} concluídas para ${pl[6]} previstas.`)
+    + (Mp.semReg ? "" : ` A parcela das entregas no prazo foi de ${pct(M.entOk.length, M.ent.length)}% na Semana ${N}, frente a ${pct(Mp.entOk.length, Mp.ent.length)}% na Semana ${Mp.n}.`);
+  const hCoord = coord.reduce((t, l) => t + (M.pes[l] ? M.pes[l].util + M.pes[l].adic : 0), 0);
+  const titCoord = [...new Set(M.H.filter(h => classe(A[h.atividade_id]) === "C").map(h => (A[h.atividade_id]||{}).titulo).filter(Boolean))];
+  const coordTxt = `Na semana, a coordenação acompanhou ${obrasSem.length ? "as frentes de " + lista(obrasSem) : "as frentes em andamento"}, conferiu as entregas e organizou o planejamento das próximas semanas, além das rotinas administrativas do setor` + (titCoord.length ? ` (${lista(titCoord.map(t => t.charAt(0).toLowerCase() + t.slice(1)))})` : "") + ".";
+  const fut = M.futuras;
+  const peTxt = `Foram consideradas metas da semana as ${plural(M.metas.length, "entrega")} de projeto com prazo entre ${dm(ini)} e ${dm(fim)}; ` + (fut.length ? `${plural(fut.length, "atividade")} com prazo em semanas seguintes ${fut.length === 1 ? "estava" : "estavam"} em andamento.` : "não havia atividades com prazo em semanas seguintes em andamento.")
+    + (M.metas.length ? (abertasMeta.length ? ` Ficaram ${plural(abertasMeta.length, "meta")} em aberto.` : ` Todas as metas foram cumpridas: ${M.metasOk.length} no prazo` + (atrs.length ? ` e ${atrs.length} com atraso de ${Math.min(...atrs)} a ${Math.max(...atrs)} dias${obraAtr}.` : ".")) : "");
+  // ---------- montar
+  let h = capaR2("RELATÓRIO SEMANAL DE ATIVIDADES", `SEMANA ${N}`, `PERÍODO DE ${dmy(ini)} A ${dmy(fim)}`, (MESES[fim.getMonth()] + "/" + fim.getFullYear()).toUpperCase(), ativosRecentes.filter(l => tipoPessoa(l) === "fixo").map(pnome));
+  h += `<section class="r2corpo">`;
+  h += painelPessoas(todos, ferias);
+  h += `<h1>1. Resumo executivo</h1>` + blocoEd("resumo", pars(resumo));
+  h += `<div class="r2cards">`
+    + card(M.ent.length, "Entregas de projeto", `na semana (S${Mp.n}: ${comp(M.ent.length, Mp.ent.length, true, v => v, Mp.semReg)})`)
+    + card(`${M.metasOk.length}/${M.metas.length}`, "No prazo", `metas da semana (S${Mp.n}: ${comp(pct(M.metasOk.length, M.metas.length), pct(Mp.metasOk.length, Mp.metas.length), true, () => `${Mp.metasOk.length}/${Mp.metas.length}`, Mp.semReg)})`)
+    + card(M.apo.length, "Atividades de apoio", `memorial, plotagem, link, requerimento (S${Mp.n}: ${comp(M.apo.length, Mp.apo.length, true, v => v, Mp.semReg)})`)
+    + card(M.venc.length, "Itens vencidos", `no fechamento (S${Mp.n}: ${comp(M.venc.length, Mp.venc.length, false, v => v, Mp.semReg)})`)
+    + card(M.novas.length, "Novas demandas", `recebidas na semana (S${Mp.n}: ${comp(M.novas.length, Mp.novas.length, true, v => v, Mp.semReg)})`)
+    + card(M.carteira.length, "Carteira ativa", `projetos abertos no fechamento (S${Mp.n}: ${Mp.semReg ? '<em class="sr">sem registro</em>' : `<em class="sr">${Mp.carteira.length}</em>`})`)
+    + card(hInt(M.util), "Horas na semana", `de ${metaH} h · ${naMeta.length} ${naMeta.length === 1 ? "pessoa" : "pessoas"} × 40 h`)
+    + card(hh(M.adic), "Horas adicionais", `${Object.keys(M.pes).some(eventualR2) ? "fim de semana, feriado e apoio eventual" : "sábado, domingo e feriado"} (S${Mp.n}: ${comp(M.adic, Mp.adic, false, hh, Mp.semReg)})`) + `</div>`;
+  const sems = semanasAte(ini, 12).map(s => metSem(s));
+  h += `<h1>2. Indicadores</h1>` + figura(F.g2(sems.map(m => [`S${m.n}`, m.entOk.length, m.ent.length - m.entOk.length, m.semReg])), `Entregas de projeto no prazo e com atraso, por semana (fonte: RL Demandas, a partir da S46).`);
+  h += figura(F.g3(rot, pl, re), "Curva planejado × realizado da semana: entregas de projeto acumuladas pelo prazo e pela conclusão.");
+  h += blocoEd("leitura", pars(leitura));
+  // 3. entregas
+  const porObra = {}; M.ent.forEach(a => (porObra[obraNome(a.obra_id)] = porObra[obraNome(a.obra_id)] || []).push(a));
+  h += `<h1>3. Entregas da semana</h1><h2>3.1 Projetos</h2>`;
+  h += M.ent.length ? `<table class="t"><thead><tr><th>Atividade</th><th>Disc.</th><th>Resp.</th><th>Prazo</th><th>Situação</th><th class="n">Horas / estimadas</th></tr></thead><tbody>`
+    + Object.entries(porObra).sort((a,b) => b[1].length - a[1].length).map(([o, L]) => `<tr class="g"><td colspan="6">${esc(o)} · ${plural(L.length, "entrega")} de projeto</td></tr>` + L.sort((x,y) => dia(x.prazo) - dia(y.prazo)).map(a => {
+        const r = TOT[a.id] || 0, e = +a.horas_estimadas || 0, pc = e ? Math.round(100*r/60/e) : null;
+        return `<tr><td>${esc(a.titulo)}</td><td>${esc(discSigla(a) || "—")}</td><td>${esc(pnome(a.responsavel))}</td><td>${dm(dia(a.prazo))}</td><td>${situacaoAtiv(a, ref)}</td><td class="n ${pc > 100 ? "sobre" : ""}">${hh(r)} / ${e ? fmtN(e) + "h · " + pc + "%" : "—"}</td></tr>`; }).join("")).join("") + `</tbody></table>`
+    : `<p class="vaz">Nenhuma entrega de projeto concluída na semana.</p>`;
+  h += figura(F.g6(est), "Horas estimadas × realizadas por disciplina nas entregas da semana.");
+  h += `<h2>3.2 Atividades de apoio</h2>` + (M.apo.length ? `<table class="t"><thead><tr><th>Obra</th><th>Atividade</th><th>Resp.</th><th>Concluída</th></tr></thead><tbody>` + M.apo.sort((x,y) => concl(x) - concl(y)).map(a => `<tr><td>${esc(obraNome(a.obra_id))}</td><td>${esc(a.titulo)}</td><td>${esc(pnome(a.responsavel))}</td><td>${dm(concl(a))}</td></tr>`).join("") + `</tbody></table>` : `<p class="vaz">Nenhuma atividade de apoio concluída na semana.</p>`);
+  // 4. equipe
+  h += `<h1>4. Equipe</h1>` + figura(F.g8([[M.porClasse.P/60, AZ, "Projeto"], [M.porClasse.A/60, AZ2, "Apoio"], [M.porClasse.C/60, CI, "Coordenação"]]), "Distribuição das horas da semana entre projeto, apoio e coordenação.");
+  h += `<h2>4.1 Coordenação do setor</h2><table class="t"><thead><tr><th>Coordenação</th><th class="n">Seg–sex</th><th class="n">Sáb–dom</th></tr></thead><tbody>`
+    + (coord.length ? coord.map(l => { const p = M.pes[l] || {util:0, adic:0}; return `<tr><td>Gestão, coordenação e rotinas administrativas (${esc(pnome(l))})</td><td class="n">${hh(Math.min(2400, p.util))} de 40h</td><td class="n">${hh(p.adic)}</td></tr>`; }).join("") : `<tr><td colspan="3" class="cinza">Nenhum usuário com cargo de coordenador no setor.</td></tr>`) + `</tbody></table>`;
+  h += blocoEd("coord", pars(coordTxt));
+  h += `<h2>4.2 Alocação dos projetistas</h2><table class="t"><thead><tr><th>Colaborador</th><th>Atuação na semana</th><th class="n">Seg–sex</th><th class="n">Sáb–dom</th><th class="n">Projetos</th></tr></thead><tbody>`
+    + ativosRecentes.concat(projetistas.filter(l => M.pes[l] && !ativosRecentes.includes(l))).sort((a,b) => (M.pes[b]?.util||0) - (M.pes[a]?.util||0)).map(l => {
+        const p = M.pes[l], ev = tipoPessoa(l) === "eventual", fer = !ev && !naMeta.includes(l), nEnt = M.ent.filter(a => a.responsavel === l).length;
+        const g = {}; if(p) Object.entries(p.ativ).sort((a,b) => b[1]-a[1]).forEach(([id]) => { const a = A[id]; if(!a || classe(a) === "C") return; const o = obraNome(a.obra_id); (g[o] = g[o] || []).push(a.titulo.charAt(0).toLowerCase() + a.titulo.slice(1)); });
+        const atu = fer && !(p && p.util) ? "Férias / ausente na semana" : (Object.entries(g).map(([o, t]) => `${o}: ${lista([...new Set(t)].slice(0,4))}`).join("; ") || "—");
+        return `<tr><td><b>${esc(pnome(l))}</b>${ev ? '<br><span style="font-size:8pt;color:#5A6570">apoio eventual</span>' : ""}</td>${celEd("atu_" + l, esc(atu))}<td class="n">${fer && !(p && p.util) ? "férias" : ev ? "—" : hh(p ? Math.min(2400, p.util) : 0)}</td><td class="n">${p && p.adic ? hh(p.adic) : "—"}</td><td class="n">${nEnt}</td></tr>`; }).join("") + `</tbody></table>`;
+  h += figura(F.g7(rot, M.porDiaU.map((v, k) => ehAdic(somaD(ini, k)) ? null : v/60), M.porDiaA.map((v, k) => v || ehAdic(somaD(ini, k)) ? v/60 : null)), "Horas do setor por dia da semana; sábado, domingo, feriado e apoio eventual contam como horas adicionais.");
+  // 5. planejado × executado
+  const pg = {}; M.metas.forEach(a => (pg[obraNome(a.obra_id)] = pg[obraNome(a.obra_id)] || []).push(a));
+  h += `<h1>5. Planejado × executado</h1><table class="t"><thead><tr><th>Meta da semana</th><th>Resultado</th><th>Avaliação</th></tr></thead><tbody>`
+    + Object.entries(pg).map(([o, L]) => { const feitas = L.filter(a => a.concluida_em && concl(a) <= ref), ok = feitas.filter(a => atrasoDias(a) <= 0), at = feitas.filter(a => atrasoDias(a) > 0).map(atrasoDias);
+        const pz = L.map(a => dia(a.prazo)).sort((a,b) => a-b), per = +pz[0] === +pz[pz.length-1] ? `(${dm(pz[0])})` : `com prazo de ${dm(pz[0])} a ${dm(pz[pz.length-1])}`;
+        const meta = L.length === 1 ? `${o} – ${L[0].titulo.charAt(0).toLowerCase() + L[0].titulo.slice(1)} ${per}` : `${o} – ${L.length} entregas de projeto ${per}`;
+        const res = L.length === 1 ? (feitas.length ? `Concluído em ${dm(concl(L[0]))}` : "Em aberto (vencido)") : `${feitas.length} de ${L.length} concluídas; ${ok.length} no prazo`;
+        const av = feitas.length < L.length ? `Pendente: ${L.length - feitas.length} em aberto` : at.length ? `Concluído com atraso de ${Math.min(...at) === Math.max(...at) ? plural(at[0], "dia") : Math.min(...at) + " a " + Math.max(...at) + " dias"}` : "Concluído no prazo";
+        return `<tr><td>${esc(meta)}</td><td>${res}</td>${celEd("av_" + o, av)}</tr>`; }).join("")
+    + (fut.length ? Object.entries(fut.reduce((g, a) => ((g[obraNome(a.obra_id)] = g[obraNome(a.obra_id)] || []).push(a), g), {})).map(([o, L]) => `<tr><td>${esc(o)} – ${esc(lista(L.map(a => a.titulo)))} (prazo ${dm(dia(L[0].prazo))})</td><td>em andamento — ok</td>${celEd("avf_" + o, "Prazo em semana seguinte")}</tr>`).join("")
+       : `<tr><td class="cinza">Atividades com prazo em semanas seguintes</td><td class="cinza">nenhuma em andamento</td><td class="cinza">—</td></tr>`) + `</tbody></table>`;
+  h += blocoEd("pe", pars(peTxt));
+  h += `<h1>6. Dificuldades e justificativas</h1>` + paragrafosBloco();
+  h += `<h1>7. Pontos de atenção e encaminhamentos</h1>` + tabelaPontos(ref, true);
+  h += `<h2>Metas para a Semana ${semISO(somaD(ini, 7))}</h2>` + blocoEd("metas", pars(textoMetas(somaD(ini, 7), somaD(ini, 13))));
+  // 8. horas adicionais
+  const fdsDias = [...Array(7)].map((_, k) => somaD(ini, k)).filter(ehAdic);
+  h += `<div style="break-inside:avoid"><h1>8. Horas adicionais (fim de semana, feriado e apoio eventual)</h1><table class="t"><thead><tr><th>Data</th><th>Equipe</th><th>Frente</th><th class="n">Horas</th></tr></thead><tbody>`
+    + fdsDias.map(d => { const Hd = M.H.filter(x => String(x.data).slice(0,10) === iso(d)); if(!Hd.length) return "";
+        const eq = [...new Set(Hd.map(x => pnome(x.login)))].sort(), go = {}; Hd.forEach(x => { const a = A[x.atividade_id]; if(!a) return; const o = classe(a) === "C" ? "Coordenação" : obraNome(a.obra_id); (go[o] = go[o] || new Set()).add(classe(a) === "C" ? "rotinas" : discNome(a).toLowerCase()); });
+        return `<tr><td>${dm(d)} – ${NOMES_D[d.getDay()]}${FERIADOS.includes(iso(d)) ? " (feriado)" : ""}</td><td>${esc(lista(eq))}</td>${celEd("fr_" + iso(d), esc(Object.entries(go).map(([o, s]) => `${o}: ${lista([...s])}`).join("; ")))}<td class="n">${hh(Hd.reduce((t,x) => t + x.minutos, 0))}</td></tr>`; }).join("")
+    + Object.entries(M.pes).filter(([l]) => eventualR2(l)).map(([l, p]) => { const m_ = p.dias.reduce((t, v, k) => t + (ehAdic(somaD(ini, k)) ? 0 : v), 0); if(!m_) return "";
+        const o = [...new Set(Object.keys(p.ativ).map(id => A[id] ? (classe(A[id]) === "C" ? "Coordenação" : obraNome(A[id].obra_id)) : "").filter(Boolean))];
+        return `<tr><td>Segunda a sexta – apoio eventual</td><td>${esc(pnome(l))}</td>${celEd("fr_ev_" + l, esc(lista(o)))}<td class="n">${hh(m_)}</td></tr>`; }).join("")
+    + `<tr class="g"><td>Semana ${N}</td><td></td><td></td><td class="n">${hh(M.adic)}</td></tr><tr><td>Semana ${Mp.n} (referência)</td><td></td><td></td><td class="n">${Mp.semReg ? "sem registro" : hh(Mp.adic)}</td></tr></tbody></table></div>`;
+  h += fonteAss(DEFINICOES);
+  h += `</section>`;
+  h += `<section class="r2anexo">` + anexoR2([ini], true, `Relatório semanal · Semana ${N} · Anexo`) + `</section>`;
+  return {html: h, cab: C, rod: `Relatório semanal S${N}`, tipo: "sem"};
+}
+
+// ---------------------------------------------------------------- RELATÓRIO MENSAL
+function relMensal2(){
+  NFIG = 0;
+  const [ano, m] = FR.mes.split("-").map(Number), ini = new Date(ano, m-1, 1), fim = new Date(ano, m, 0), ref = fim < HOJE ? fim : HOJE;
+  const at = visR2(), P = at.filter(a => classe(a) === "P"), Ap = at.filter(a => classe(a) === "A");
+  const ent = P.filter(a => naData(a.concluida_em, ini, fim)), apo = Ap.filter(a => naData(a.concluida_em, ini, fim));
+  const okOrig = ent.filter(a => concl(a) <= dia(a.prazo_original || a.prazo));
+  const atrasadas = ent.filter(a => atrasoDias(a) > 0), atrMed = atrasadas.length ? atrasadas.reduce((t, a) => t + atrasoDias(a), 0) / atrasadas.length : 0;
+  const H = horasPeriodo(ini, fim);
+  // seg–sex com teto de 40 h por pessoa por semana
+  const porSemPes = {}; let adic = 0; const porClasse = {P:0, A:0, C:0};
+  H.forEach(h => { const d = dia(h.data); porClasse[classe(A[h.atividade_id])] += h.minutos;
+    if(ehAdic(d) || eventualR2(h.login)) { adic += h.minutos; return; } const k = iso(semana(d)) + "|" + h.login; porSemPes[k] = (porSemPes[k]||0) + h.minutos; });
+  const util = Object.values(porSemPes).reduce((t, v) => t + Math.min(2400, v), 0);
+  // obras
+  const desdeReg = D.horas.filter(h => dia(h.data) >= INICIO_REG && dia(h.data) <= fim && ativNoFiltro(A[h.atividade_id]) && !foraR2(h.login));
+  const hObra = {}; desdeReg.forEach(h => { const o = (A[h.atividade_id]||{}).obra_id; if(o) hObra[o] = (hObra[o]||0) + h.minutos; });
+  const hMesObra = {}; H.forEach(h => { const o = (A[h.atividade_id]||{}).obra_id; if(o) hMesObra[o] = (hMesObra[o]||0) + h.minutos; });
+  const obrasPan = [...new Set([...Object.keys(hMesObra), ...ent.map(a => a.obra_id)])].filter(Boolean).sort((a, b) => (hMesObra[b]||0) - (hMesObra[a]||0));
+  const idx = o => { const ar = +(OB[o]||{}).area_construida || 0; return ar ? (hObra[o]||0) / 60 / ar * 1000 : null; };
+  const principal = obrasPan[0];
+  const segunda = obrasPan.slice(1).find(o => idx(o) != null && ent.some(a => a.obra_id === o));
+  const obrasEnt = [...new Set(ent.map(a => a.obra_id))];
+  const semMes = []; for(let s = semana(ini); s <= fim; s = somaD(s, 7)) semMes.push(new Date(s));
+  const semDados_ = semMes.filter(s => somaD(s, 6) >= INICIO_REG && s <= HOJE);
+  const C = `Relatório mensal · ${MESES[m-1]} de ${ano}`;
+  const est = estPorDisc(ent);
+  VARS = {obras_periodo: lista(obrasEnt.map(obraNome)) || "as frentes em andamento", horas_adicionais: hh(adic), dia_maior_adicional: "", acima_estimativa: acimaTxt(est)};
+  // textos
+  const destaque = (() => { const g = {}; ent.forEach(a => g[obraNome(a.obra_id)] = (g[obraNome(a.obra_id)]||0) + 1); return Object.entries(g).sort((a,b) => b[1]-a[1]).map(x => x[0]); })();
+  const atrObras = [...new Set(atrasadas.map(a => obraNome(a.obra_id)))];
+  const resumo = `${MESES[m-1].charAt(0).toUpperCase() + MESES[m-1].slice(1)} teve como principais entregas os projetos de ${lista(destaque) || "—"}. ` + (ini < INICIO_REG ? `Desde o início do registro no RL Demandas (09/11) foram` : `No mês foram`) + ` ${plural(ent.length, "entrega")} de projeto, ${okOrig.length} no prazo original, e ${plural(apo.length, "atividade")} de apoio.`
+    + `\n\n` + (atrasadas.length ? `Os atrasos, de ${Math.min(...atrasadas.map(atrasoDias))} a ${plural(Math.max(...atrasadas.map(atrasoDias)), "dia")}, concentraram-se em ${lista(atrObras)} e estão detalhados na seção 4. ` : "Não houve entregas com atraso no mês. ")
+    + (principal && idx(principal) != null ? `O índice de produção ficou em ${fmtN(idx(principal))} h por 1.000 m² em ${obraNome(principal)}` + (segunda ? ` e em ${fmtN(idx(segunda))} h por 1.000 m² em ${obraNome(segunda)}` : "") + ". " : "")
+    + `As horas adicionais de fim de semana somaram ${hh(adic)}.`;
+  const titCoord = [...new Set(H.filter(h => classe(A[h.atividade_id]) === "C").map(h => (A[h.atividade_id]||{}).titulo).filter(Boolean))];
+  const coordTxt = `No mês, a coordenação conduziu o planejamento e o acompanhamento das frentes de ${lista(obrasPan.map(obraNome)) || "—"}, a conferência das entregas e a preparação das frentes do mês seguinte, além das rotinas administrativas do setor` + (titCoord.length ? ` (${lista(titCoord.map(t => t.charAt(0).toLowerCase() + t.slice(1)))})` : "") + ".";
+  const prox0 = new Date(ano, m, 1), prox1 = new Date(ano, m+1, 0);
+  // montar
+  let h = capaR2("RELATÓRIO MENSAL DE ATIVIDADES", `${MESES[m-1].toUpperCase()} DE ${ano}`, `PERÍODO DE ${dmy(ini)} A ${dmy(fim)}` + (fim > HOJE ? ` · dados até ${dm(HOJE)}` : ""), (MESES[(m) % 12] + "/" + (m === 12 ? ano+1 : ano)).toUpperCase(),
+    [...new Set(H.map(x => x.login))].filter(l => !coordenadores().includes(l) && tipoPessoa(l) === "fixo").map(pnome));
+  h += `<section class="r2corpo">` + painelPessoas(candidatosR2(ini, fim), null) + `<h1>1. Resumo executivo do mês</h1>` + blocoEd("resumo", pars(resumo));
+  h += `<div class="r2cards">`
+    + card(ent.length, "Entregas de projeto", ini < INICIO_REG ? "desde 09/11" : "no mês")
+    + card((ent.length ? Math.round(100*okOrig.length/ent.length) : 0) + "%", "No prazo original", `${okOrig.length} de ${plural(ent.length, "entrega")}`)
+    + card(fmtN(atrMed) + " d", "Atraso médio", `das ${plural(atrasadas.length, "entrega atrasada", "entregas atrasadas")}`)
+    + card(principal && idx(principal) != null ? fmtN(idx(principal)) + " h" : "—", "Por 1.000 m²", principal ? esc(obraNome(principal)) + (segunda ? ` (${esc(obraNome(segunda))}: ${fmtN(idx(segunda))} h)` : "") : "—")
+    + card(obrasEnt.length, "Obras com entregas", esc(obrasEnt.map(obraNome).join(", ")) || "—")
+    + card(apo.length, "Atividades de apoio", "memorial, plotagem, link…")
+    + card(hInt(util), "Horas seg–sex", `até 40 h por pessoa por semana`)
+    + card(hh(adic), "Horas adicionais", "fins de semana, feriados e apoio eventual") + `</div>`;
+  const sm = semDados_.map(s => metSem(s));
+  h += `<h1>2. Indicadores</h1>` + figura(F.g1(sm.map(x => "S" + x.n), sm.map(x => x.ent.length)), "Entregas de projeto por semana (a partir da S46; cresce sozinho).");
+  h += figura(F.g2(sm.map(x => [`S${x.n}`, x.entOk.length, x.ent.length - x.entOk.length, x.semReg])), "Entregas de projeto no prazo e com atraso, por semana.");
+  h += figura(F.g8([[porClasse.P/60, AZ, "Projeto"], [porClasse.A/60, AZ2, "Apoio"], [porClasse.C/60, CI, "Coordenação"]]), "Distribuição das horas do mês entre projeto, apoio e coordenação.");
+  // 3. panorama
+  h += `<h1>3. Panorama das obras</h1><table class="t"><thead><tr><th>Obra</th><th>Uso</th><th class="n">Área (m²)</th><th class="n">Horas</th><th class="n">h / 1.000 m²</th><th class="n">Entregas</th><th class="n">No prazo</th><th>Situação</th></tr></thead><tbody>`
+    + obrasPan.map(o => { const ob = OB[o] || {}, e = ent.filter(a => a.obra_id === o), ok = e.filter(a => atrasoDias(a) <= 0).length;
+        const abertas = P.filter(a => a.obra_id === o && !(a.concluida_em && concl(a) <= ref)).length;
+        const sit = abertas ? `<span class="tag and">Em andamento</span>` : e.length ? `<span class="tag ok">Entregue</span>` : `<span class="tag faz">Sem pendência</span>`;
+        return `<tr><td>${esc(ob.nome || o)}</td><td>${esc(ob.uso || "—")}</td><td class="n">${ob.area_construida ? Math.round(ob.area_construida).toLocaleString("pt-BR") : "—"}</td><td class="n">${fmtN((hMesObra[o]||0)/60)}</td><td class="n">${idx(o) != null ? fmtN(idx(o)) : "—"}</td><td class="n">${e.length}</td><td class="n">${e.length ? ok : "—"}</td><td>${sit}</td></tr>`; }).join("") + `</tbody></table>`;
+  h += figura(F.g4(obrasPan.filter(o => idx(o) != null).map(o => [obraNome(o), idx(o)])), "Produção: horas por 1.000 m² de área construída, por obra.");
+  const mo = {}, ds = []; ent.forEach(a => { const o = obraNome(a.obra_id), d = discSigla(a) || "—"; (mo[o] = mo[o] || {})[d] = (mo[o][d]||0) + 1; if(!ds.includes(d)) ds.push(d); });
+  h += figura(F.g10(Object.keys(mo).sort((a,b) => Object.values(mo[b]).reduce((x,y)=>x+y,0) - Object.values(mo[a]).reduce((x,y)=>x+y,0)), ds, mo), "Entregas de projeto por obra e disciplina no mês.");
+  // 4. atrasos (sem responsável)
+  const abertasVenc = P.filter(a => !a.concluida_em && a.prazo && naData(a.prazo, ini, fim) && dia(a.prazo) < ref);
+  const listaAtr = atrasadas.concat(abertasVenc).sort((x, y) => obraNome(x.obra_id).localeCompare(obraNome(y.obra_id)) || dia(x.prazo) - dia(y.prazo));
+  const motivo = a => { const e = (EV[a.id]||[]).filter(x => x.tipo === "reprogramacao" && x.motivo).sort((x,y) => String(y.quando).localeCompare(String(x.quando)))[0]; return e ? esc(e.motivo + (e.detalhe ? " – " + e.detalhe : "")) : ""; };
+  h += `<h1>4. Atrasos do setor</h1>` + (listaAtr.length ? `<table class="t"><thead><tr><th>Obra</th><th>Projeto</th><th>Prazo</th><th>Concluído</th><th class="n">Atraso</th><th>Motivo</th></tr></thead><tbody>`
+    + listaAtr.map(a => { const n = a.concluida_em ? atrasoDias(a) : Math.round((ref - dia(a.prazo)) / 864e5);
+        return `<tr><td>${esc(obraNome(a.obra_id))}</td><td>${esc(a.titulo)} (${esc(discSigla(a) || "—")})</td><td>${dm(dia(a.prazo))}</td><td>${a.concluida_em ? dm(concl(a)) : "em aberto"}</td><td class="n sobre">+${plural(n, "dia")}</td>${celEd("mot_" + a.id, motivo(a), "motivo")}</tr>`; }).join("") + `</tbody></table>`
+    : `<p class="vaz">Nenhuma entrega de projeto com atraso no mês.</p>`);
+  h += figura(F.g6(est), "Horas estimadas × realizadas por disciplina no mês.");
+  h += `<h1>5. Coordenação do setor</h1>` + blocoEd("coord", pars(coordTxt));
+  h += `<h1>6. Dificuldades e balanço do período</h1>` + paragrafosBloco();
+  h += `<h1>7. Pontos de atenção e metas para ${MESES[m % 12]}</h1>` + tabelaPontos(ref, false);
+  h += blocoEd("metas", pars(textoMetas(prox0, prox1)));
+  h += fonteAss(DEFINICOES + " Horas por 1.000 m² = horas lançadas na obra ÷ área construída × 1.000.");
+  h += `</section><section class="r2anexo">` + anexoR2(semMes, false, C + " · Anexo") + `</section>`;
+  return {html: h, cab: C, rod: `Relatório mensal · ${MESES[m-1]}/${ano}`, tipo: "mes"};
+}
+
+// ---------------------------------------------------------------- ANEXO: cronograma deitado (seg–sex largos, sáb/dom estreitos)
+function linhasSemana(seg){
+  const fimS = somaD(seg, 6);
+  return visR2().filter(a => classe(a) !== "C" && a.prazo).filter(a => {
+    const i0 = dia(a.data_inicio) || dia(a.prazo), c = concl(a), p = dia(a.prazo);
+    const f = c ? (c > p ? c : p) : (p < HOJE ? HOJE : p);
+    return i0 <= fimS && f >= seg; }).sort((x, y) => obraNome(x.obra_id).localeCompare(obraNome(y.obra_id)) || (dia(x.data_inicio)||0) - (dia(y.data_inicio)||0));
+}
+function anexoR2(semanas, comResp, titulo){
+  const W = {at: 88, sit: 34, pr: 16}, wDias = 277 - W.at - W.sit - W.pr, larg = [1,1,1,1,1,0.45,0.45], u = wDias / larg.reduce((a,b)=>a+b,0);
+  const blocos = semanas.map(s => ({s, L: somaD(s, 6) < INICIO_REG ? null : linhasSemana(s)}));
+  // empacotar semanas em páginas (uma semana não é partida; semanas leves dividem a folha)
+  const MAXL = 21, paginas = []; let atual = [], n = 0;
+  blocos.forEach(b => { const r = 1 + Math.max(1, b.L ? b.L.length : 1);
+    if(atual.length && n + r > MAXL){ paginas.push(atual); atual = []; n = 0; } atual.push(b); n += r; });
+  if(atual.length) paginas.push(atual);
+  const leg = `<div class="gleg2">Barras = início → prazo:<i style="background:#1F4E89"></i>concluída<i style="background:#4C9BD6"></i>em andamento<i style="background:#D5D9DE"></i>a fazer<i style="background:repeating-linear-gradient(135deg,#F28E2B 0 3px,#FFFFFF 3px 6px)"></i>atraso (prazo → conclusão ou hoje) · fim de semana em cinza</div>`;
+  return paginas.map(pg => {
+    const nl = pg.reduce((t, b) => t + 1 + Math.max(1, b.L ? b.L.length : 1), 0);
+    const alt = Math.max(6.2, Math.min(22, 150 / nl)), fs = alt >= 15 ? 11 : alt >= 10 ? 9.5 : alt >= 8 ? 8.5 : 7, fs2 = alt >= 8 ? Math.min(8, fs - 1) : 6, hb = Math.min(8, alt * 0.5);
+    let corpo = "";
+    pg.forEach(b => {
+      const dias = [...Array(7)].map((_, k) => somaD(b.s, k));
+      corpo += `<tr class="gb" style="height:${alt}mm"><td colspan="3" style="font-size:${fs}pt">Semana de ${dm(b.s)} a ${dm(somaD(b.s, 6))}${!b.L ? ` · <span style="font-weight:400;color:#8A3D00">sem registro no RL Demandas</span>` : ""}</td>`
+        + dias.map((d, k) => `<td class="d" style="font-size:${k > 4 ? 7 : Math.min(fs, 9)}pt;background:${k > 4 ? "#F4F6F8" : "#F7F9FA"};line-height:1.1">${k > 4 ? DS3[d.getDay()] + "<br>" : NOMES_D[d.getDay()] + " "}${String(d.getDate()).padStart(2,"0")}</td>`).join("") + `</tr>`;
+      if(!b.L) return;
+      if(!b.L.length){ corpo += `<tr style="height:${alt}mm"><td colspan="10" style="font-size:${fs}pt;color:#5A6570">Nenhuma atividade de projeto ou apoio nesta semana.</td></tr>`; return; }
+      b.L.forEach(a => {
+        const i0 = dia(a.data_inicio) || dia(a.prazo), p = dia(a.prazo), c = concl(a);
+        const fimSol = c && c < p ? c : p, atrFim = c ? (c > p ? c : null) : (p < HOJE ? HOJE : null);
+        const cor = c ? "#1F4E89" : a.status === "Em andamento" ? "#4C9BD6" : "#D5D9DE";
+        const n = c ? atrasoDias(a) : 0;
+        const br_ = alt >= 8 ? "<br>" : " ";
+        const sit = c ? `<span class="tag ok" style="font-size:${fs2}pt">Concluída ${dm(c)}</span>${br_}<span style="font-size:${fs2}pt;${n > 0 ? "font-weight:700;color:#8A3D00" : ""}">${n > 0 ? "+" + plural(n, "dia") : "no prazo"}</span>`
+          : p < HOJE ? `<span class="tag atr" style="font-size:${fs2}pt">Vencida</span>${br_}<span style="font-size:${fs2}pt;font-weight:700;color:#8A3D00">+${plural(Math.round((HOJE - p)/864e5), "dia")}</span>`
+          : `<span class="tag ${a.status === "Em andamento" ? "and" : "faz"}" style="font-size:${fs2}pt">${esc(a.status === "Em andamento" ? "Em andamento" : "A fazer")}</span>`;
+        const tds = dias.map((d, k) => {
+          const naBarra = d >= i0 && d <= fimSol, naHach = atrFim && d > p && d <= atrFim;
+          const prim = naBarra && (+d === +i0 || k === 0), ult = naBarra && (+d === +fimSol || k === 6) && !(naHach || (atrFim && +somaD(d,1) > +p && +d === +p));
+          const bar = naBarra ? `<div class="abar" data-c="${cor}" style="box-sizing:border-box;background:${cor};height:${hb.toFixed(1)}mm;border-top:1px solid #22303A;border-bottom:1px solid #22303A;${prim ? "border-left:1px solid #22303A;margin-left:1px;" : ""}${ult ? "border-right:1px solid #22303A;margin-right:1px;" : ""}${prim && ult ? "border-radius:1.2mm" : prim ? "border-radius:1.2mm 0 0 1.2mm" : ult ? "border-radius:0 1.2mm 1.2mm 0" : ""}"></div>`
+            : naHach ? `<div class="ahach" data-t="atr" style="box-sizing:border-box;height:${hb.toFixed(1)}mm;background:repeating-linear-gradient(135deg,#F28E2B 0 1mm,#FFFFFF 1mm 2mm);border-top:1px solid #22303A;border-bottom:1px solid #22303A;${+d === +atrFim || k === 6 ? "border-right:1px solid #22303A;border-radius:0 1.2mm 1.2mm 0;margin-right:1px;" : ""}"></div>` : "";
+          return `<td class="d" style="background:${k > 4 ? "#F4F6F8" : "#FFFFFF"}">${bar}</td>`; }).join("");
+        corpo += `<tr style="height:${alt}mm"><td style="font-size:${fs}pt;line-height:1.15;overflow:hidden"><b>${esc(a.titulo)}</b>${classe(a) === "A" ? ' <span style="font-weight:400;color:#5A6570">(apoio)</span>' : ""}${alt >= 7.5 ? `<br><span style="font-size:${fs-1}pt;color:#5A6570">${esc(obraNome(a.obra_id))} · ${esc(discSigla(a) || "—")}${comResp ? " · " + esc(pnome(a.responsavel)) : ""}</span>` : ""}</td>
+          <td style="text-align:center;line-height:1.1">${sit}</td><td style="font-size:${fs-1}pt;text-align:center">${dm(p)}</td>${tds}</tr>`;
+      });
+    });
+    return `<div class="apag"><div class="atit">ANEXO – CRONOGRAMA DAS ATIVIDADES</div>${leg}
+      <table class="tgantt"><colgroup><col style="width:${W.at}mm"><col style="width:${W.sit}mm"><col style="width:${W.pr}mm">${larg.map(l => `<col style="width:${(l*u).toFixed(1)}mm">`).join("")}</colgroup>
+      <thead><tr><th>Atividade</th><th style="text-align:center">Situação</th><th style="text-align:center">Prazo</th><th colspan="7"></th></tr></thead><tbody>${corpo}</tbody></table></div>`;
+  }).join("");
+}
+
+// ---------------------------------------------------------------- tela: montar, ligar e guardar
+let R2 = null, LOGO_SVG = null;
+function relR2(){
+  const r = FR.tipo === "sem" ? relSemanal2() : relMensal2(); R2 = r;
+  const el = document.getElementById("rel"); el.className = "r2"; el.innerHTML = r.html;
+  estiloPaginaR2(r);
+  ligarR2();
+}
+async function logoParaImpressao(){
+  if(LOGO_SVG) return LOGO_SVG;
+  try { let dados = LOGO;
+    if(!LOGO.startsWith("data:")){ const b = await (await fetch(LOGO)).blob(); dados = await new Promise(ok => { const fr = new FileReader(); fr.onload = () => ok(fr.result); fr.readAsDataURL(b); }); }
+    const s = `<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="23.8mm" height="15mm" viewBox="0 0 512 323"><image width="512" height="323" xlink:href="${dados}"/></svg>`;
+    LOGO_SVG = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(s)));
+  } catch(e) { LOGO_SVG = ""; }
+  return LOGO_SVG;
+}
+async function estiloPaginaR2(r){
+  const logo = await logoParaImpressao(), q = s => '"' + s.replace(/"/g, "'") + '"';
+  let st = document.getElementById("r2page"); if(!st){ st = document.createElement("style"); st.id = "r2page"; document.head.appendChild(st); }
+  const rodTxt = `font:7.5pt Arial;color:#5A6570;border-top:1px solid #C3CAD0;vertical-align:top;padding-top:1.5mm`;
+  st.textContent = `@page r2capa{size:A4;margin:14mm 16mm 14mm}
+   @page r2{size:A4;margin:26mm 16mm 18mm;
+     @top-left{content:${logo ? `url(${logo})` : '""'};vertical-align:bottom;padding-bottom:1.5mm;border-bottom:2px solid #005A8A}
+     @top-right{content:${q(r.cab)};font:9pt Arial;color:#5A6570;vertical-align:bottom;padding-bottom:2.5mm;border-bottom:2px solid #005A8A}
+     @bottom-left{content:${q(ENDERECO)};${rodTxt}} @bottom-right{content:${q(r.rod + " · página ")} counter(page);${rodTxt}}}
+   @page r2pais{size:A4 landscape;margin:9mm 10mm 12mm;
+     @bottom-left{content:${q(ENDERECO)};${rodTxt}} @bottom-right{content:${q(r.rod + " · página ")} counter(page);${rodTxt}}}`;
+}
+function ligarR2(){
+  const el = document.getElementById("rel");
+  el.querySelectorAll(".ed").forEach(b => { const c = b.querySelector(".corpo"), s = b.querySelector(".ctl span"), id = b.dataset.id;
+    c.oninput = () => { s.textContent = "✎ editado"; s.className = "edit"; gravarLS(chaveR2("ed:" + id), c.innerHTML); };
+    b.querySelector(".rest").onclick = () => { c.innerHTML = AUTO[id]; s.textContent = "texto automático"; s.className = ""; gravarLS(chaveR2("ed:" + id), null); }; });
+  el.querySelectorAll("td[data-ed]").forEach(td => td.oninput = () => { td.classList.add("editado"); gravarLS(chaveR2("td:" + td.dataset.ed), td.innerHTML); });
+  el.querySelectorAll("[data-edx]").forEach(x => x.oninput = () => gravarLS(chaveR2(x.dataset.edx), x.innerHTML));
+  // pessoas na meta
+  el.querySelectorAll(".cpes").forEach(c => c.onchange = () => { const p = lerLS(chavePessoas(), {}); p[c.dataset.l] = c.value; gravarLS(chavePessoas(), p); relR2(); });
+  el.querySelectorAll(".cfer").forEach(c => c.onchange = () => { gravarLS(chaveR2("ferias"), [...el.querySelectorAll(".cfer:checked")].map(x => x.value)); relR2(); });
+  // pontos de atenção
+  el.querySelectorAll(".pontos tr[data-k] .tirar").forEach(b => b.onclick = () => { const k = b.closest("tr").dataset.k, o = lerLS(chaveR2("pontos_ocultos"), []); o.push(k); gravarLS(chaveR2("pontos_ocultos"), o); relR2(); });
+  el.querySelectorAll(".pontos tr[data-x] .tirar").forEach(b => b.onclick = () => { const i = +b.closest("tr").dataset.x, x = lerLS(chaveR2("pontos_extras"), []); x.splice(i, 1); gravarLS(chaveR2("pontos_extras"), x); relR2(); });
+  el.querySelectorAll("[data-ex]").forEach(c => c.oninput = () => { const [i, k] = c.dataset.ex.split(":"), x = lerLS(chaveR2("pontos_extras"), []);
+    x[+i] = x[+i] || {}; x[+i][k] = c.innerHTML; if(k === "nvt"){ const t = c.textContent.toLowerCase(); x[+i].nv = /cr[ií]t/.test(t) ? "crit" : /alto/.test(t) ? "alto" : /baixo/.test(t) ? "baixo" : "medio"; }
+    gravarLS(chaveR2("pontos_extras"), x); });
+  const ml = el.querySelector(".maislinha"); if(ml) ml.onclick = () => { const x = lerLS(chaveR2("pontos_extras"), []); x.push({nvt:"MÉDIO", nv:"medio", p:"Novo ponto", e:"", r:"", z:""}); gravarLS(chaveR2("pontos_extras"), x); relR2(); };
+  // parágrafos-padrão
+  const box = el.querySelector(".paras"), K = chaveR2("paras");
+  let salvos = lerLS(K, null);
+  if(salvos === null){ const B = lerBib(); salvos = PARS_INICIAIS[FR.tipo].filter(i => B[i]).map(i => ({t: B[i].t, x: preencher(B[i].x)})); }
+  const gravaPars = () => gravarLS(K, [...box.querySelectorAll(".pp")].map(d => ({t: d.dataset.t, x: d.querySelector("p").innerHTML})));
+  const inserePar = (t, x) => { const d = document.createElement("div"); d.className = "pp"; d.dataset.t = t;
+    d.innerHTML = `<div class="ctl nao-imprime"><button class="salva">💾 salvar como padrão</button><button class="novo">＋ salvar como novo</button><button class="tira">✕ tirar</button></div><p contenteditable="true">${x}</p>`;
+    d.querySelector("p").oninput = gravaPars;
+    d.querySelector(".salva").onclick = () => { const B = lerBib(), i = B.findIndex(b => b.t === d.dataset.t), novo = {t: d.dataset.t, x: d.querySelector("p").innerHTML};
+      if(i >= 0) B[i] = novo; else B.push(novo); gravarBib(B); avisoR2(d, "Salvo como padrão: “" + d.dataset.t + "”"); };
+    d.querySelector(".novo").onclick = () => { const t = prompt("Nome do novo parágrafo-padrão:"); if(!t) return; const B = lerBib(); B.push({t, x: d.querySelector("p").innerHTML}); gravarBib(B); d.dataset.t = t; gravaPars(); avisoR2(d, "Novo padrão criado: “" + t + "”"); };
+    d.querySelector(".tira").onclick = () => { d.remove(); gravaPars(); };
+    box.appendChild(d); };
+  salvos.forEach(p => inserePar(p.t, p.x));
+  const bt = el.querySelector(".abrir");
+  bt.onclick = e => { e.stopPropagation(); fechaMenuR2(); const B = lerBib(), usados = new Set([...box.querySelectorAll(".pp")].map(d => d.dataset.t));
+    const m = document.createElement("div"); m.className = "menu"; m.id = "menuBib";
+    m.innerHTML = B.map((b, i) => `<div data-i="${i}" class="${usados.has(b.t) ? "usado" : ""}">${usados.has(b.t) ? "✓ " : ""}${esc(b.t)}</div>`).join("") + `<div data-i="vazio" style="border-top:1px solid #E1E5E8;color:#005A8A">＋ Parágrafo em branco</div>`;
+    bt.parentNode.appendChild(m);
+    m.querySelectorAll("div").forEach(o => o.onclick = () => { if(o.dataset.i === "vazio") inserePar("(novo)", "<b>Título.</b> Escreva aqui."); else { const b = B[+o.dataset.i]; inserePar(b.t, preencher(b.x)); } gravaPars(); fechaMenuR2(); }); };
+}
+function fechaMenuR2(){ const m = document.getElementById("menuBib"); if(m) m.remove(); }
+document.addEventListener("click", e => { if(!e.target.closest || !e.target.closest(".menu")) fechaMenuR2(); });
+function avisoR2(el, t){ const s = document.createElement("div"); s.className = "aviso-rel nao-imprime"; s.style.fontWeight = "400"; s.textContent = "✔ " + t + " (guardado neste aparelho)"; el.after(s); setTimeout(() => s.remove(), 3500); }
+// exportar / importar textos (biblioteca junto)
+function exportarTextos(){
+  const d = {formato: "rl-painel-textos", v: 1, gerado: new Date().toISOString(), itens: {}};
+  for(let i = 0; i < localStorage.length; i++){ const k = localStorage.key(i); if(/^rl_(r2_|bib|rel_)/.test(k)) d.itens[k] = localStorage.getItem(k); }
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([JSON.stringify(d, null, 1)], {type: "application/json"}));
+  a.download = "RL textos dos relatorios " + iso(new Date()) + ".json"; document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1000);
+}
+function importarTextos(){
+  const inp = document.createElement("input"); inp.type = "file"; inp.accept = ".json,application/json";
+  inp.onchange = async () => { try { const d = JSON.parse(await inp.files[0].text()); if(d.formato !== "rl-painel-textos") throw 0;
+      const n = Object.keys(d.itens).length; if(!confirm(`Importar ${n} texto(s)? Os textos com o mesmo período serão substituídos pelos do arquivo.`)) return;
+      Object.entries(d.itens).forEach(([k, v]) => localStorage.setItem(k, v)); tRel(); alert("Textos importados."); }
+    catch(e) { alert("Arquivo inválido: escolha um arquivo gerado por \"Exportar textos\"."); } };
+  inp.click();
+}
+
+// ---------------------------------------------------------------- WORD com gráficos (MHTML: imagens PNG como partes do arquivo)
+async function svgParaPng(svgEl, escala = 3){
+  const w = +svgEl.getAttribute("width"), h = +svgEl.getAttribute("height");
+  const txt = new XMLSerializer().serializeToString(svgEl);
+  const img = new Image(); img.src = "data:image/svg+xml;base64," + btoa(unescape(encodeURIComponent(txt)));
+  await img.decode();
+  const cv = document.createElement("canvas"); cv.width = w * escala; cv.height = h * escala;
+  const cx = cv.getContext("2d"); cx.fillStyle = "#FFFFFF"; cx.fillRect(0, 0, cv.width, cv.height); cx.drawImage(img, 0, 0, cv.width, cv.height);
+  return {b64: cv.toDataURL("image/png").split(",")[1], w, h};
+}
+async function baixarWordR2(){
+  const orig = document.getElementById("rel"), partes = [];
+  const svgs = [...orig.querySelectorAll(".fig svg")], pngs = [];
+  for(const s of svgs) pngs.push(await svgParaPng(s));
+  const el = orig.cloneNode(true);
+  el.querySelectorAll(".ctl,.inserir,.maislinha,.tirar,.metas,.nao-imprime,.menu,.aviso-rel").forEach(x => x.remove());
+  el.querySelectorAll("[contenteditable]").forEach(x => x.removeAttribute("contenteditable"));
+  el.querySelectorAll(".motivo:empty").forEach(x => x.innerHTML = "&nbsp;");
+  // gráficos → imagens
+  el.querySelectorAll(".fig").forEach((f, i) => { const p = pngs[i]; if(!p) return; const nomeImg = `grafico${i+1}.png`;
+    partes.push({nome: nomeImg, tipo: "image/png", b64: p.b64});
+    const larg = Math.round(Math.min(600, p.w * 1.15)); // px (≈ 16 cm)
+    f.outerHTML = `<p align="center" style="text-align:center;margin:6pt 0 2pt"><img src="${nomeImg}" width="${larg}" height="${Math.round(larg * p.h / p.w)}"></p>`; });
+  // logo → parte do arquivo
+  let logoB64 = null;
+  try { const src = LOGO.startsWith("data:") ? LOGO : new URL(LOGO, location.href).href;
+    const b = await (await fetch(src)).blob(); logoB64 = await new Promise(ok => { const fr = new FileReader(); fr.onload = () => ok(String(fr.result).split(",")[1]); fr.readAsDataURL(b); }); } catch(e) {}
+  if(logoB64) partes.push({nome: "logo.jpg", tipo: "image/jpeg", b64: logoB64});
+  el.querySelectorAll(".r2capa img").forEach(i => { i.setAttribute("src", "logo.jpg"); i.setAttribute("width", "260"); i.setAttribute("height", "164"); });
+  // cartões → tabela
+  el.querySelectorAll(".r2cards").forEach(k => { const cs = [...k.querySelectorAll(".r2card")]; let t = "<table style='width:100%;border-collapse:collapse;margin:6pt 0'>";
+    for(let i = 0; i < cs.length; i += 4) t += "<tr>" + cs.slice(i, i+4).map(c => `<td style="width:25%;border:1px solid #C3CAD0;background:#F7FAFC;text-align:center;padding:4pt 3pt"><b style="font-size:17pt;color:#005A8A">${c.querySelector("b").innerHTML}</b><br><b style="font-size:8.5pt">${c.querySelector(".l").innerHTML}</b><br><span style="font-size:7.5pt;color:#5A6570">${c.querySelector(".c").innerHTML.replace(/<em class="pior">/g, '<b style="color:#8A3D00">').replace(/<em class="sr">/g, '<span style="color:#5A6570">').replace(/<em[^>]*>/g, '<b style="color:#1F4E89">').replace(/<\/em>/g, "</b>")}</span></td>`).join("") + "</tr>";
+    k.outerHTML = t + "</table>"; });
+  el.querySelectorAll(".tag").forEach(t => { const c = t.classList.contains("atr") ? ["#FCE3CC","#8A3D00"] : t.classList.contains("and") ? ["#DBEBF8","#0B3D66"] : t.classList.contains("faz") ? ["#ECEEF1","#4E5660"] : ["#D3DCEA","#1F3B73"];
+    t.setAttribute("style", `background:${c[0]};color:${c[1]};font-weight:bold;font-size:8pt`); });
+  el.querySelectorAll(".niv").forEach(t => { const c = t.classList.contains("crit") ? ["#F28E2B","#000000"] : t.classList.contains("alto") ? ["#FCE3CC","#8A3D00"] : t.classList.contains("medio") ? ["#DBEBF8","#0B3D66"] : ["#ECEEF1","#4E5660"];
+    t.setAttribute("style", `background:${c[0]};color:${c[1]};font-weight:bold;font-size:8pt;text-align:center`); });
+  // anexo: barras viram células pintadas
+  el.querySelectorAll(".tgantt tbody td.d").forEach(td => {
+    const fundo = /F4F6F8/i.test(td.getAttribute("style") || "") ? "#F4F6F8" : (td.closest("tr").classList.contains("gb") ? "#F7F9FA" : "#FFFFFF");
+    if(td.closest("tr").classList.contains("gb")){ td.setAttribute("style", `background:${fundo};font-size:7pt;text-align:center;border-left:0.5pt solid #E1E5E8`); return; }
+    const b = td.querySelector(".abar"), h = td.querySelector(".ahach"), cor = b ? b.dataset.c : h ? "#F6D2B0" : fundo;
+    td.setAttribute("style", `padding:0;font-size:4pt;background:${cor};border-top:5pt solid ${fundo};border-bottom:5pt solid ${fundo};border-left:0.5pt solid ${b || h ? cor : "#E1E5E8"};border-right:none`);
+    td.innerHTML = "&nbsp;"; });
+  el.querySelectorAll(".gleg2 i").forEach(i => { const st = i.getAttribute("style") || ""; i.outerHTML = `<span style="background:${st.includes("repeating") ? "#F6D2B0" : (st.match(/#[0-9A-F]{6}/i)||["#FFFFFF"])[0]};border:1px solid #22303A">&nbsp;&nbsp;&nbsp;&nbsp;</span> `; });
+  el.querySelectorAll(".tgantt tr").forEach(tr => tr.style.height = "20pt");
+  const capa = el.querySelector(".r2capa"), corpo = el.querySelector(".r2corpo"), anexo = el.querySelector(".r2anexo");
+  const quebraSecao = `<span style="font-size:1pt"><br clear=all style="page-break-before:always;mso-break-type:section-break"></span>`;
+  const anexoHtml = anexo ? [...anexo.querySelectorAll(".apag")].map(p => p.innerHTML).join(`<br clear=all style="page-break-before:always">`) : "";
+  const css = `body,p,div,span,td,th,b,li{font-family:Arial;color:#000000} body{font-size:11pt}
+   h1{font-family:Arial;font-size:13pt;text-transform:uppercase;margin:14pt 0 6pt;color:#000000} h2{font-family:Arial;font-size:11pt;margin:10pt 0 4pt;color:#000000}
+   p{margin:0 0 6pt;text-align:justify}
+   table.t{border-collapse:collapse;width:100%} table.t th{background:#005A8A;color:#FFFFFF;text-align:left;padding:3pt 4pt;font-size:9pt} table.t td{padding:2pt 4pt;border-bottom:1px solid #DDE3E7;font-size:9pt;vertical-align:top}
+   tr.g td{background:#EEF3F7;font-weight:bold;color:#005A8A} td.n,th.n{text-align:right} .sobre{color:#8A3D00;font-weight:bold} .leg{font-size:8.5pt;text-align:center;font-style:italic}
+   .fonte{font-size:8pt;border-top:1px solid #C3CAD0} .ass{text-align:center;font-size:10pt;margin-top:20pt} .ass .linha{border-top:1px solid #000000;width:200pt;margin:20pt auto 3pt}
+   .r2capa{text-align:center} .r2capa .t1{font-size:20pt;font-weight:bold;margin-top:60pt} .r2capa .t2{font-size:16pt;font-weight:bold} .r2capa .t3{font-size:12pt} .r2capa .setor{font-size:13pt;font-weight:bold;margin-top:70pt} .r2capa .pes{font-size:11pt} .r2capa .mes{font-weight:bold;margin-top:120pt}
+   .atit{font-size:12pt;font-weight:bold} .gleg2{font-size:8pt} table.tgantt{border-collapse:collapse;table-layout:fixed;width:100%;border:1px solid #C3CAD0} table.tgantt th{background:#ECEEF1;font-size:8pt;text-align:left}
+   table.tgantt td{font-size:8pt;border-bottom:0.5pt solid #EEF1F3;vertical-align:middle} tr.gb td{background:#F7F9FA;color:#005A8A;font-weight:bold}
+   @page WordSection1{size:595.3pt 841.9pt;margin:2cm 2cm 2cm 2cm;mso-header-margin:1cm;mso-footer-margin:1cm} div.WordSection1{page:WordSection1}
+   @page WordSection2{size:841.9pt 595.3pt;mso-page-orientation:landscape;margin:1cm} div.WordSection2{page:WordSection2}`;
+  const html = `<html xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8"><title>${esc(R2.cab)}</title>
+<!--[if gte mso 9]><xml><w:WordDocument><w:View>Print</w:View><w:Zoom>100</w:Zoom></w:WordDocument></xml><![endif]--><style>${css}</style></head>
+<body><div class="WordSection1">${capa ? capa.outerHTML : ""}<br clear=all style="page-break-before:always">${corpo ? corpo.innerHTML : ""}</div>${anexoHtml ? quebraSecao + `<div class="WordSection2">${anexoHtml}</div>` : ""}</body></html>`;
+  // MHTML
+  const B = "----=_RL_PAINEL_" + Date.now(), base = "file:///C:/RL_Painel/";
+  const b64Quebrado = s => s.replace(/.{1,76}/g, "$&\r\n");
+  const utf8b64 = s => btoa(unescape(encodeURIComponent(s)));
+  let mht = `MIME-Version: 1.0\r\nContent-Type: multipart/related; boundary="${B}"; type="text/html"\r\n\r\n`
+    + `--${B}\r\nContent-Location: ${base}relatorio.htm\r\nContent-Transfer-Encoding: base64\r\nContent-Type: text/html; charset="utf-8"\r\n\r\n${b64Quebrado(utf8b64(html.replace(/src="(grafico\d+\.png|logo\.jpg)"/g, `src="${base}$1"`)))}\r\n`;
+  partes.forEach(p => { mht += `--${B}\r\nContent-Location: ${base}${p.nome}\r\nContent-Transfer-Encoding: base64\r\nContent-Type: ${p.tipo}\r\n\r\n${b64Quebrado(p.b64)}\r\n`; });
+  mht += `--${B}--\r\n`;
+  const nomeArq = (R2.tipo === "sem" ? `Relatorio semanal S${semISO(dia(FR.semana))} ${FR.semana}` : `Relatorio mensal ${FR.mes}`) + ".doc";
+  const a = document.createElement("a"); a.href = URL.createObjectURL(new Blob([mht], {type: "application/msword"})); a.download = nomeArq;
+  document.body.appendChild(a); a.click(); setTimeout(() => { URL.revokeObjectURL(a.href); a.remove(); }, 1500);
+}
+
 // ---------------------------------------------------------------- eventos
 async function entrar(){
   const s = document.getElementById("senha").value; const m = document.getElementById("msg");
